@@ -1,0 +1,1852 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+   <FileVersion major="1" minor="6" />
+   <Project>
+      <Option title="vcl" />
+      <Option makefile_is_custom="1" />
+      <Option compiler="gcc" />
+      <Option virtualFolders="CMake Files\;CMake Files\v3p\;CMake Files\v3p\openjpeg2\;CMake Files\v3p\bzlib\;CMake Files\v3p\dcmtk\;CMake Files\v3p\geotiff\;CMake Files\v3p\jpeg\;CMake Files\v3p\netlib\;CMake Files\v3p\png\;CMake Files\v3p\tiff\;CMake Files\v3p\zlib\;CMake Files\v3p\rply\;CMake Files\config\;CMake Files\config\cmake\;CMake Files\config\cmake\Modules\;CMake Files\config\cmake\Modules\NewCMake\;CMake Files\config\cmake\config\;CMake Files\config\cmake\doxygen\;CMake Files\config\cmake\export\;CMake Files\vcl\;CMake Files\core\;CMake Files\core\vgl\;CMake Files\core\vgl\algo\;CMake Files\core\vgl\io\;CMake Files\core\vgl\xio\;CMake Files\core\vgui\;CMake Files\core\vidl\;CMake Files\core\vidl\gui\;CMake Files\core\vil\;CMake Files\core\vil\algo\;CMake Files\core\vil\io\;CMake Files\core\vnl\;CMake Files\core\vnl\algo\;CMake Files\core\vnl\io\;CMake Files\core\vnl\xio\;CMake Files\core\testlib\;CMake Files\core\vpl\;CMake Files\core\vul\;CMake Files\core\vul\io\;CMake Files\core\vbl\;CMake Files\core\vbl\io\;CMake Files\core\vil1\;CMake Files\core\vil1\io\;CMake Files\core\vsl\;CMake Files\core\vcsl\;CMake Files\core\vpgl\;CMake Files\core\vpgl\algo\;CMake Files\core\vpgl\file_formats\;CMake Files\core\vpgl\io\;CMake Files\core\vpgl\xio\;CMake Files\contrib\;CMake Files\contrib\brl\;CMake Files\contrib\brl\bmods\;" />
+      <Build>
+      <Target title="all">
+         <Option working_dir="/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/vcl" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/vcl/Makefile&quot;  VERBOSE=1 all" />
+            <CompileFile command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/vcl/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/vcl/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/vcl/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="vcl">
+         <Option output="/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/lib/libvcl.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/vcl" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DVXL_WARN_DEPRECATED" />
+            <Add option="-DVXL_WARN_DEPRECATED_ONCE" />
+            <Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1" />
+            <Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/include" />
+            <Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include" />
+            <Add directory="/Library/Frameworks" />
+            <Add directory="/System/Library/Frameworks" />
+            <Add directory="/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/core" />
+            <Add directory="/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/vcl" />
+            <Add directory="/Users/Sean/Desktop/cs_project/vxl-tsai/core" />
+            <Add directory="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/vcl/Makefile&quot;  VERBOSE=1 vcl" />
+            <CompileFile command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/vcl/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/vcl/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/vcl/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="vcl/fast">
+         <Option output="/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/lib/libvcl.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/vcl" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DVXL_WARN_DEPRECATED" />
+            <Add option="-DVXL_WARN_DEPRECATED_ONCE" />
+            <Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1" />
+            <Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/include" />
+            <Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include" />
+            <Add directory="/Library/Frameworks" />
+            <Add directory="/System/Library/Frameworks" />
+            <Add directory="/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/core" />
+            <Add directory="/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/vcl" />
+            <Add directory="/Users/Sean/Desktop/cs_project/vxl-tsai/core" />
+            <Add directory="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/vcl/Makefile&quot;  VERBOSE=1 vcl/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/vcl/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/vcl/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/vcl/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      </Build>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/borland55/vcl_cfloat.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/borland55/vcl_cmath.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/borland55/vcl_complex.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/borland55/vcl_cstdlib.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/borland55/vcl_memory.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/borland56/vcl_complex.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/egcs/vcl_algorithm.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/egcs/vcl_complex.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/egcs/vcl_deque.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/egcs/vcl_functional.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/egcs/vcl_iterator.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/egcs/vcl_list.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/egcs/vcl_map.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/egcs/vcl_set.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/egcs/vcl_string.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/egcs/vcl_utility.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/egcs/vcl_vector.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/egcs-stlconf.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/gcc-272-stlconf.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/gcc-2800-stlconf.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/gcc-281-stlconf.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/gcc-295-stlconf.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/sgi-CC-stlconf.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/stlcomp.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/sun-CC4.1-stlconf.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/sun-CC5.0-stlconf.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_algobase.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_algorithm.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_algorithm.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_alloc.cxx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_alloc.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_bool.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_bvector.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_ciso646.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_complex.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_complex.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_defalloc.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_deque.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_deque.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_functional.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_functional.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_functionx.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_hash.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_hash_map.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_hash_map.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_hash_set.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_hashtable.cxx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_hashtable.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_heap.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_iterator.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_iterator.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_limits.cxx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_limits.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_list.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_list.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_map.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_map.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_multimap.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_multimap.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_multiset.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_new.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_pair.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_rbtree.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_rbtree_instances.cxx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_rel_ops.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_set.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_set.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_stack.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_stlconf.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_stlfwd.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_string_instances.cxx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_tempbuf.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_tree.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_utility.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_utility.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_vector.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/vcl_vector.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/emulation/win32-vc50-stlconf.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-295/vcl_algorithm.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-295/vcl_complex.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-295/vcl_complex.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-295/vcl_deque.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-295/vcl_functional.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-295/vcl_iomanip.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-295/vcl_ios.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-295/vcl_iterator.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-295/vcl_list.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-295/vcl_map.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-295/vcl_memory.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-295/vcl_queue.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-295/vcl_set.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-295/vcl_string.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-295/vcl_utility.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-295/vcl_vector.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-libstdcxx-v3/vcl_algorithm.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-libstdcxx-v3/vcl_deque.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-libstdcxx-v3/vcl_functional.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-libstdcxx-v3/vcl_iterator.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-libstdcxx-v3/vcl_list.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-libstdcxx-v3/vcl_map.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-libstdcxx-v3/vcl_set.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-libstdcxx-v3/vcl_string.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-libstdcxx-v3/vcl_utility.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc-libstdcxx-v3/vcl_vector.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc/vcl_cmath.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/gcc/vcl_cstdlib.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_algorithm.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_bitset.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_blah.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_cassert.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_cctype.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_cerrno.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_cfloat.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_ciso646.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_climits.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_clocale.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_cmath.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_complex.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_csetjmp.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_csignal.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_cstdarg.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_cstddef.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_cstdio.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_cstdlib.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_cstring.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_ctime.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_cwchar.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_cwctype.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_deque.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_exception.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_fstream.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_functional.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_iomanip.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_ios.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_iosfwd.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_iostream.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_istream.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_iterator.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_limits.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_list.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_locale.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_map.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_memory.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_memory_tr1.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_numeric.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_ostream.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_queue.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_set.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_sstream.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_stack.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_stdexcept.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_streambuf.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_string.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_typeinfo.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_utility.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_valarray.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/generic/vcl_vector.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/internal/vcl_atomic_count_gcc.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/internal/vcl_atomic_count_gcc_x86.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/internal/vcl_atomic_count_pthreads.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/internal/vcl_atomic_count_solaris.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/internal/vcl_atomic_count_sync.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/internal/vcl_atomic_count_win32.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/internal/vcl_interlocked.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_algorithm.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_algorithm.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_bitset.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_cassert.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_cctype.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_cerrno.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_cfloat.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_ciso646.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_climits.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_clocale.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_cmath.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_complex.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_complex.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_csetjmp.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_csignal.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_cstdarg.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_cstddef.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_cstdio.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_cstdlib.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_cstring.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_ctime.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_cwchar.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_cwctype.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_deque.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_deque.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_exception.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_fstream.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_functional.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_functional.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_iomanip.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_ios.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_iosfwd.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_iostream.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_istream.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_iterator.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_iterator.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_limits.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_list.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_list.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_locale.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_map.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_map.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_memory.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_memory_tr1.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_new.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_numeric.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_ostream.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_queue.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_queue.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_set.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_set.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_sstream.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_stack.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_stack.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_stdexcept.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_streambuf.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_string.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_string.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_typeinfo.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_utility.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_utility.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_valarray.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_vector.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/iso/vcl_vector.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/mwerks/vcl_cmath.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/mwerks/vcl_complex.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/mwerks/vcl_cstdlib.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sgi/vcl_algorithm.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sgi/vcl_bitset.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sgi/vcl_cmath.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sgi/vcl_complex.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sgi/vcl_complex.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sgi/vcl_cstdlib.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sgi/vcl_deque.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sgi/vcl_functional.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sgi/vcl_iomanip.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sgi/vcl_ios.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sgi/vcl_iostream.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sgi/vcl_iterator.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sgi/vcl_list.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sgi/vcl_map.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sgi/vcl_set.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sgi/vcl_string.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sgi/vcl_string.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sgi/vcl_utility.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sgi/vcl_vector.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/stlport/vcl_cmath.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/stlport/vcl_complex.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/stlport/vcl_cstdlib.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sunpro/vcl_algorithm.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sunpro/vcl_cmath.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sunpro/vcl_complex.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sunpro/vcl_complex.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sunpro/vcl_cstdlib.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sunpro/vcl_deque.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sunpro/vcl_functional.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sunpro/vcl_iterator.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sunpro/vcl_iterator.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sunpro/vcl_list.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sunpro/vcl_map.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sunpro/vcl_map.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sunpro/vcl_set.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sunpro/vcl_stack.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sunpro/vcl_utility.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sunpro/vcl_vector.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/sunpro/vcl_vector.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_algorithm.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_algorithm.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_atomic_count.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_bitset.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_cassert.cxx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_cassert.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_cctype.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_cerrno.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_cfloat.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_ciso646.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_climits.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_clocale.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_cmath.cxx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_cmath.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_compiler.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_complex.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_complex.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_complex_fwd.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_config_compiler.h.in">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_config_headers.h.in">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_config_manual.h.in">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_csetjmp.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_csignal.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_cstdarg.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_cstddef.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_cstdio.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_cstdlib.cxx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_cstdlib.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_cstring.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_ctime.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_cwchar.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_cwctype.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_deprecated.cxx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_deprecated.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_deprecated_header.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_deque.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_deque.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_exception.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_fstream.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_functional.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_functional.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_iomanip.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_ios.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_iosfwd.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_iostream.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_istream.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_iterator.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_iterator.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_limits.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_list.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_list.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_locale.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_map.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_map.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_memory.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_new.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_numeric.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_ostream.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_queue.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_queue.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_set.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_set.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_sstream.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_stack.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_stack.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_stdexcept.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_stlfwd.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_streambuf.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_string.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_string.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_sys/time.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_sys/types.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_typeinfo.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_utility.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_utility.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_valarray.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_vector.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_vector.txx">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_where_root_dir.h.in">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/win32-vc60/vcl_cmath.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/win32-vc60/vcl_complex.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/win32-vc60/vcl_cstdarg.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/win32-vc60/vcl_cstdlib.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/win32-vc60/vcl_memory.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/win32-vc60/vcl_string.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/win32-vc60/vcl_valarray.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/win32-vc70/vcl_cmath.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/win32-vc70/vcl_complex.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/win32-vc70/vcl_cstdlib.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/win32-vc70/vcl_valarray.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/win32-vc8/vcl_cmath.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/win32-vc8/vcl_complex.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/win32-vc8/vcl_cstdlib.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/win32-vc8/vcl_valarray.h">
+         <Option target="vcl"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/openjpeg2/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\openjpeg2\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/openjpeg2/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\openjpeg2\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/openjpeg2/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\openjpeg2\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/bzlib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\bzlib\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/bzlib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\bzlib\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/bzlib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\bzlib\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/dcmtk/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\dcmtk\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/dcmtk/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\dcmtk\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/dcmtk/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\dcmtk\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\geotiff\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\geotiff\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\geotiff\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/jpeg/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\jpeg\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/jpeg/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\jpeg\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/jpeg/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\jpeg\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/netlib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\netlib\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/netlib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\netlib\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/netlib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\netlib\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/png/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\png\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/png/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\png\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/png/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\png\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/tiff/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\tiff\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/tiff/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\tiff\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/tiff/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\tiff\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/zlib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\zlib\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/zlib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\zlib\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/zlib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\zlib\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/rply/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\rply\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/rply/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\rply\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindOpenJPEG2.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindJPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindPNG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindJPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/UseVGUI.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindNetlib.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindJPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindJPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindPNG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindOpenJPEG2.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/VXLStandardOptions.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/UseVXL.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/CTestCustom.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindNetlib.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindQv.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindPNG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindJPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/VXLConfig.cmake.in">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/VXLConfig_export.cmake.in">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindJPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindJPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindPNG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindOpenJPEG2.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindPNG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindJPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindOpenJPEG2.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindDCMTK.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindJPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindPNG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindNetlib.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/UseVGUI.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindPNG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindJPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindOpenJPEG2.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindDCMTK.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindJPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindPNG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindNetlib.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/UseVGUI.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindFFMPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindDC1394.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindDirectShow.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindECW.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindWin32SDK.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindDCMTK.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindFFMPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindDC1394.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindDirectShow.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindECW.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindWin32SDK.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindDCMTK.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindFFMPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindDC1394.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindDirectShow.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/config/vxl_utils.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\config\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/config/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\config\cmake\config\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/config/vxl_config_macros.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\config\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/config/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\config\cmake\config\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/config/vxl_config_macros.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\config\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/doxygen/doxygen.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\doxygen\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/export/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\config\cmake\export\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_where_root_dir.h.in">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_config_compiler.h.in">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_config_headers.h.in">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_config_manual.h.in">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_where_root_dir.h.in">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_where_root_dir.h.in">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_config_compiler.h.in">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_config_headers.h.in">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_config_manual.h.in">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_where_root_dir.h.in">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vxl_config.h.in">
+          <Option virtualFolder="CMake Files\core\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vxl_config.h.in">
+          <Option virtualFolder="CMake Files\core\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgl/algo/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgl\algo\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgl/algo/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgl\algo\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgl/algo/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgl\algo\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgl/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgl\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgl/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgl\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgl/xio/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgl\xio\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgl/xio/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgl\xio\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgui/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgui\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgui/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgui\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgui/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgui\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vidl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vidl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vidl/vidl_config.h.in">
+          <Option virtualFolder="CMake Files\core\vidl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vidl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vidl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vidl/vidl_config.h.in">
+          <Option virtualFolder="CMake Files\core\vidl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vidl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vidl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vidl/vidl_config.h.in">
+          <Option virtualFolder="CMake Files\core\vidl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vidl/gui/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vidl\gui\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vidl/gui/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vidl\gui\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vidl/gui/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vidl\gui\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vil\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil/vil_config.h.in">
+          <Option virtualFolder="CMake Files\core\vil\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vil\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil/vil_config.h.in">
+          <Option virtualFolder="CMake Files\core\vil\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil/algo/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vil\algo\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil/algo/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vil\algo\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil/algo/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vil\algo\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vil\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vil\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vnl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vnl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vnl/vnl_config.h.in">
+          <Option virtualFolder="CMake Files\core\vnl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vnl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vnl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vnl/vnl_config.h.in">
+          <Option virtualFolder="CMake Files\core\vnl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vnl/algo/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vnl\algo\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vnl/algo/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vnl\algo\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vnl/algo/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vnl\algo\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vnl/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vnl\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vnl/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vnl\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vnl/xio/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vnl\xio\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vnl/xio/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vnl\xio\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/testlib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\testlib\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/testlib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\testlib\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vul/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vul\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vul/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vul\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vul/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vul\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vul/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vul\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vbl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vbl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vbl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vbl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vbl/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vbl\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vbl/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vbl\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil1/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vil1\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil1/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vil1\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil1/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vil1\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil1/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vil1\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vsl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vsl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vsl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vsl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vcsl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vcsl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vcsl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vcsl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpgl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpgl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpgl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpgl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpgl/algo/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpgl\algo\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpgl/algo/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpgl\algo\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpgl/file_formats/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpgl\file_formats\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpgl/file_formats/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpgl\file_formats\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpgl/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpgl\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpgl/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpgl\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpgl/xio/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpgl\xio\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpgl/xio/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpgl\xio\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/contrib/brl/bmods/FindEXPAT.cmake">
+          <Option virtualFolder="CMake Files\contrib\brl\bmods\" />
+      </Unit>
+   </Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,843 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+   <FileVersion major="1" minor="6" />
+   <Project>
+      <Option title="geotiff" />
+      <Option makefile_is_custom="1" />
+      <Option compiler="gcc" />
+      <Option virtualFolders="CMake Files\;CMake Files\v3p\;CMake Files\v3p\openjpeg2\;CMake Files\v3p\bzlib\;CMake Files\v3p\dcmtk\;CMake Files\v3p\geotiff\;CMake Files\v3p\jpeg\;CMake Files\v3p\netlib\;CMake Files\v3p\png\;CMake Files\v3p\tiff\;CMake Files\v3p\zlib\;CMake Files\v3p\rply\;CMake Files\config\;CMake Files\config\cmake\;CMake Files\config\cmake\Modules\;CMake Files\config\cmake\Modules\NewCMake\;CMake Files\config\cmake\config\;CMake Files\config\cmake\doxygen\;CMake Files\config\cmake\export\;CMake Files\vcl\;CMake Files\core\;CMake Files\core\vgl\;CMake Files\core\vgl\algo\;CMake Files\core\vgl\io\;CMake Files\core\vgl\xio\;CMake Files\core\vgui\;CMake Files\core\vidl\;CMake Files\core\vidl\gui\;CMake Files\core\vil\;CMake Files\core\vil\algo\;CMake Files\core\vil\io\;CMake Files\core\vnl\;CMake Files\core\vnl\algo\;CMake Files\core\vnl\io\;CMake Files\core\vnl\xio\;CMake Files\core\testlib\;CMake Files\core\vpl\;CMake Files\core\vul\;CMake Files\core\vul\io\;CMake Files\core\vbl\;CMake Files\core\vbl\io\;CMake Files\core\vil1\;CMake Files\core\vil1\io\;CMake Files\core\vsl\;CMake Files\core\vcsl\;CMake Files\core\vpgl\;CMake Files\core\vpgl\algo\;CMake Files\core\vpgl\file_formats\;CMake Files\core\vpgl\io\;CMake Files\core\vpgl\xio\;CMake Files\contrib\;CMake Files\contrib\brl\;CMake Files\contrib\brl\bmods\;" />
+      <Build>
+      <Target title="all">
+         <Option working_dir="/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/v3p/geotiff" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/v3p/geotiff/Makefile&quot;  VERBOSE=1 all" />
+            <CompileFile command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/v3p/geotiff/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/v3p/geotiff/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/v3p/geotiff/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="geotiff">
+         <Option output="/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/lib/libgeotiff.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/v3p/geotiff" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DVXL_WARN_DEPRECATED" />
+            <Add option="-DVXL_WARN_DEPRECATED_ONCE" />
+            <Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1" />
+            <Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/include" />
+            <Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include" />
+            <Add directory="/Library/Frameworks" />
+            <Add directory="/System/Library/Frameworks" />
+            <Add directory="/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/core" />
+            <Add directory="/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/vcl" />
+            <Add directory="/Users/Sean/Desktop/cs_project/vxl-tsai/core" />
+            <Add directory="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/tiff" />
+            <Add directory="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/v3p/geotiff/Makefile&quot;  VERBOSE=1 geotiff" />
+            <CompileFile command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/v3p/geotiff/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/v3p/geotiff/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/v3p/geotiff/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="geotiff/fast">
+         <Option output="/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/lib/libgeotiff.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/v3p/geotiff" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DVXL_WARN_DEPRECATED" />
+            <Add option="-DVXL_WARN_DEPRECATED_ONCE" />
+            <Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1" />
+            <Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/include" />
+            <Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include" />
+            <Add directory="/Library/Frameworks" />
+            <Add directory="/System/Library/Frameworks" />
+            <Add directory="/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/core" />
+            <Add directory="/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/vcl" />
+            <Add directory="/Users/Sean/Desktop/cs_project/vxl-tsai/core" />
+            <Add directory="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/tiff" />
+            <Add directory="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/v3p/geotiff/Makefile&quot;  VERBOSE=1 geotiff/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/v3p/geotiff/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/v3p/geotiff/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/Users/Sean/Desktop/cs_project/vxl-tsai-codeblocks-bin/v3p/geotiff/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      </Build>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/cpl_csv.c">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/cpl_serv.c">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/cpl_serv.h">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/defs.h">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/geo_config.h">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/geo_extra.c">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/geo_free.c">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/geo_get.c">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/geo_keyp.h">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/geo_names.c">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/geo_new.c">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/geo_normalize.c">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/geo_normalize.h">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/geo_print.c">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/geo_set.c">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/geo_tiffp.c">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/geo_tiffp.h">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/geo_trans.c">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/geo_write.c">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/geokeys.h">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/geonames.h">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/geotiff.h">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/geotiff_proj4.c">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/geotiffio.h">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/geovalues.h">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/xtiff.c">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/xtiffio.h">
+         <Option target="geotiff"/>
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/openjpeg2/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\openjpeg2\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/openjpeg2/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\openjpeg2\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/openjpeg2/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\openjpeg2\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/bzlib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\bzlib\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/bzlib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\bzlib\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/bzlib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\bzlib\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/dcmtk/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\dcmtk\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/dcmtk/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\dcmtk\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/dcmtk/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\dcmtk\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\geotiff\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\geotiff\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/geotiff/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\geotiff\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/jpeg/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\jpeg\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/jpeg/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\jpeg\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/jpeg/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\jpeg\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/netlib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\netlib\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/netlib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\netlib\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/netlib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\netlib\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/png/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\png\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/png/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\png\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/png/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\png\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/tiff/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\tiff\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/tiff/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\tiff\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/tiff/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\tiff\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/zlib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\zlib\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/zlib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\zlib\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/zlib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\zlib\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/rply/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\rply\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/v3p/rply/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\v3p\rply\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindOpenJPEG2.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindJPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindPNG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindJPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/UseVGUI.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindNetlib.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindJPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindJPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindPNG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindOpenJPEG2.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/VXLStandardOptions.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/UseVXL.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/CTestCustom.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindNetlib.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindQv.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindPNG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindJPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/VXLConfig.cmake.in">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/VXLConfig_export.cmake.in">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindJPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindJPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindPNG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindOpenJPEG2.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindPNG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindJPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindOpenJPEG2.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindDCMTK.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindJPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindPNG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindNetlib.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/UseVGUI.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindPNG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindJPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindOpenJPEG2.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindDCMTK.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindJPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindPNG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindNetlib.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/UseVGUI.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/FindZLIB.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindFFMPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindDC1394.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindDirectShow.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindECW.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindWin32SDK.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindDCMTK.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindFFMPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindDC1394.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindDirectShow.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindECW.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindWin32SDK.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindDCMTK.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindFFMPEG.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindDC1394.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindDirectShow.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/Modules/NewCMake/FindGEOTIFF.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\Modules\NewCMake\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/config/vxl_utils.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\config\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/config/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\config\cmake\config\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/config/vxl_config_macros.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\config\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/config/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\config\cmake\config\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/config/vxl_config_macros.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\config\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/doxygen/doxygen.cmake">
+          <Option virtualFolder="CMake Files\config\cmake\doxygen\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/config/cmake/export/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\config\cmake\export\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_where_root_dir.h.in">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_config_compiler.h.in">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_config_headers.h.in">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_config_manual.h.in">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_where_root_dir.h.in">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_where_root_dir.h.in">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_config_compiler.h.in">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_config_headers.h.in">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_config_manual.h.in">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/vcl/vcl_where_root_dir.h.in">
+          <Option virtualFolder="CMake Files\vcl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vxl_config.h.in">
+          <Option virtualFolder="CMake Files\core\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vxl_config.h.in">
+          <Option virtualFolder="CMake Files\core\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgl/algo/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgl\algo\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgl/algo/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgl\algo\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgl/algo/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgl\algo\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgl/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgl\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgl/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgl\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgl/xio/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgl\xio\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgl/xio/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgl\xio\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgui/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgui\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgui/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgui\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vgui/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vgui\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vidl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vidl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vidl/vidl_config.h.in">
+          <Option virtualFolder="CMake Files\core\vidl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vidl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vidl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vidl/vidl_config.h.in">
+          <Option virtualFolder="CMake Files\core\vidl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vidl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vidl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vidl/vidl_config.h.in">
+          <Option virtualFolder="CMake Files\core\vidl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vidl/gui/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vidl\gui\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vidl/gui/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vidl\gui\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vidl/gui/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vidl\gui\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vil\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil/vil_config.h.in">
+          <Option virtualFolder="CMake Files\core\vil\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vil\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil/vil_config.h.in">
+          <Option virtualFolder="CMake Files\core\vil\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil/algo/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vil\algo\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil/algo/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vil\algo\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil/algo/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vil\algo\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vil\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vil\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vnl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vnl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vnl/vnl_config.h.in">
+          <Option virtualFolder="CMake Files\core\vnl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vnl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vnl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vnl/vnl_config.h.in">
+          <Option virtualFolder="CMake Files\core\vnl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vnl/algo/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vnl\algo\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vnl/algo/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vnl\algo\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vnl/algo/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vnl\algo\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vnl/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vnl\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vnl/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vnl\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vnl/xio/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vnl\xio\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vnl/xio/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vnl\xio\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/testlib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\testlib\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/testlib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\testlib\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vul/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vul\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vul/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vul\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vul/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vul\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vul/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vul\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vbl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vbl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vbl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vbl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vbl/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vbl\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vbl/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vbl\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil1/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vil1\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil1/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vil1\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil1/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vil1\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil1/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vil1\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vsl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vsl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vsl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vsl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vcsl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vcsl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vcsl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vcsl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpgl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpgl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpgl/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpgl\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpgl/algo/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpgl\algo\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpgl/algo/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpgl\algo\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpgl/file_formats/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpgl\file_formats\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpgl/file_formats/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpgl\file_formats\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpgl/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpgl\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpgl/io/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpgl\io\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpgl/xio/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpgl\xio\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/core/vpgl/xio/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\vpgl\xio\" />
+      </Unit>
+      <Unit filename="/Users/Sean/Desktop/cs_project/vxl-tsai/contrib/brl/bmods/FindEXPAT.cmake">
+          <Option virtualFolder="CMake Files\contrib\brl\bmods\" />
+      </Unit>
+   </Project>
+</CodeBlocks_project_file>

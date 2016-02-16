@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil1/file_formats/vil1_viff_support.c
+vil1_viff_support.h
+/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil1/file_formats/vil1_viff_support.h
+vil1_viffheader.h
+/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil1/file_formats/vil1_viffheader.h
+stddef.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+
+/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil1/file_formats/vil1_viff_support.h
+vxl_config.h
+-
+
+/Users/Sean/Desktop/cs_project/vxl-tsai/core/vil1/file_formats/vil1_viffheader.h
+vxl_config.h
+-
+
+core/vxl_config.h
+
