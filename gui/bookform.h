@@ -1,30 +1,42 @@
 #ifndef BOOKFORM_H
 #define BOOKFORM_H
 
-#include <QtWidgets>
 #include "rti/rti_book.h"
+#include <QWidget>
+#include <QLineEdit>
+class QLabel;
+class QTextEdit;
+class QComboBox;
+class QPushButton;
 
 class BookForm : public QWidget
 {
-public:
     Q_OBJECT
 
+public:
     BookForm(QWidget *parent = 0);
-    BookForm(rti_book *book, bool isEditable = false, QWidget *parent = 0);
+    BookForm(rti_book *book, bool editable = false, QWidget *parent = 0);
 
+    // Accessors
     rti_book *book() const { return _book; }
-    bool isEditable() const { return _isEditable; }
+    bool isEditable() const { return !isbnLineEdit->isReadOnly(); }
+
+    // Mutators
+    void setBook(rti_book *book);
+    void setEditable(bool editable);
 
 private slots:
     void updateBook();
 
 private:
+    void init();
     void createInterface();
     void layoutInterface();
 
     // Data
     bool _isEditable;
     rti_book *_book;
+    QMap<rti_book::AGE, QString> gradeLevelMap;
 
     // GUI
     QLabel *isbnLabel;
@@ -34,9 +46,9 @@ private:
     QLabel *authorLabel;
     QLineEdit *authorLineEdit;
     QLabel *gradeLevelLabel;
-    QLineEdit *gradeLevelLineEdit;
+    QComboBox *gradeLevelComboBox;
     QLabel *contentsLabel;
-    QTextEdit *contentsTextArea;
+    QTextEdit *contentsTextEdit;
     QPushButton *updateBookButton;
 };
 

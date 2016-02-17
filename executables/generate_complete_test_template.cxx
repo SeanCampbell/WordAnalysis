@@ -120,7 +120,7 @@ main( int argc, char** argv )
     vcl_cout<<"***** Input for essay "<<i+1<<" ***********"<<vcl_endl; 
     vcl_string title, author, book_file;
     vcl_string age;
-    AGE age_range;
+    rti_book::AGE age_range;
     vcl_cout<<"Essay title: ";
     vcl_getline(vcl_cin,title);
     vcl_cout<<"First author: ";
@@ -128,13 +128,13 @@ main( int argc, char** argv )
     vcl_cout<<"Age range (NS, PK, K, G1, G2, G3, G4): ";
     vcl_getline(vcl_cin,age);
     vul_string_upcase(age);
-    if (age == vcl_string("NS")) age_range = NS;
-    else if  (age == vcl_string("PK")) age_range = PK;
-    else if (age == vcl_string("K")) age_range = K;
-    else if (age == vcl_string("G1")) age_range = G1;
-    else if (age == vcl_string("G2")) age_range = G2;
-    else if (age == vcl_string("G3")) age_range = G3;
-    else age_range = G4;
+    if (age == vcl_string("NS")) age_range = rti_book::NS;
+    else if  (age == vcl_string("PK")) age_range = rti_book::PK;
+    else if (age == vcl_string("K")) age_range = rti_book::K;
+    else if (age == vcl_string("G1")) age_range = rti_book::G1;
+    else if (age == vcl_string("G2")) age_range = rti_book::G2;
+    else if (age == vcl_string("G3")) age_range = rti_book::G3;
+    else age_range = rti_book::G4;
 
     vcl_cout<<"Essay filename: ";
     vcl_getline(vcl_cin,book_file);  

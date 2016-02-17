@@ -56,21 +56,21 @@ namespace
     bool found = false;
     for (unsigned int i = 0; i<neighbors.size(); i++) 
       if (neighbors[i].compare("long") == 0) found = true; 
-    TEST("Test computer_neighbors function: deletion \n", found, true);
+    TEST("Test compute_neighbors function: deletion \n", found, true);
 
     // check if "blink" is the neighbor of "bink"
     neighbors = (*dictionary)[1]->neighbors();
     found = false;
     for (unsigned int i = 0; i<neighbors.size(); i++) 
       if (neighbors[i].compare("blink") == 0) found = true; 
-    TEST("Test computer_neighbors function: addition \n", found, true);
+    TEST("Test compute_neighbors function: addition \n", found, true);
 
     // check if "song" is the neighbor of "long"
     neighbors = (*dictionary)[4]->neighbors();
     found = false;
     for (unsigned int i = 0; i<neighbors.size(); i++) 
       if (neighbors[i].compare("song") == 0) found = true; 
-    TEST("Test computer_neighbors function: replacement \n", found, true);
+    TEST("Test compute_neighbors function: replacement \n", found, true);
 
     dictionary->write_xml("dictionary.xml", true);
     dictionary->read_xml("dictionary.xml");

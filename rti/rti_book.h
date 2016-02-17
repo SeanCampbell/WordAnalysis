@@ -19,18 +19,25 @@ using namespace tinyxml2;
 	#define XMLCheckResult(a_eResult) if (a_eResult != XML_SUCCESS) { vcl_cout<<"Error: "<<a_eResult<<vcl_endl; return a_eResult; }
 #endif
 
-enum AGE {NS, PK, K, G1, G2, G3, G4}; 
-
 //: Defines the word record  
 class rti_book: public vbl_ref_count
 {
 public:
+  enum AGE {NS, PK, K, G1, G2, G3, G4};
+
   rti_book()
-    :title_(vcl_string("")), is_valid_(false) {};
-  rti_book(const vcl_string& in_title, const vcl_string& in_author, AGE in_age_range, const vcl_string& text_file); 
+    : isbn_(vcl_string("")), title_(vcl_string("")), is_valid_(false) {}
+  //TODO: Add ISBN to constructor
+  rti_book(const vcl_string& in_title, const vcl_string& in_author, AGE in_age_range, const vcl_string& text_file);
   ~rti_book(){}
   
+  void set_isbn(vcl_string const &isbn) { isbn_ = isbn; }
+  void set_title(vcl_string const &title) { title_ = title; }
+  void set_author(vcl_string const &author) { author_ = author; }
+  void set_age_range(AGE age) { age_range_ = age; }
+
   bool is_valid() const {return is_valid_;}
+  vcl_string const & isbn() const { return isbn_; }
   vcl_string const & title() const {return title_;}
   vcl_string title_downcase() const;
   vcl_string const & author() const {return author_;}
@@ -46,6 +53,7 @@ public:
 
 private:
   bool is_valid_;
+  vcl_string isbn_;
   vcl_string title_;
   vcl_string author_;
   AGE age_range_;  

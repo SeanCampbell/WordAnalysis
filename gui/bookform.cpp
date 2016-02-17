@@ -3,30 +3,45 @@
 
 #include <iostream>
 
+//
+// Constructors
+//
 BookForm::BookForm(QWidget *parent)
     : QWidget(parent)
 {
-    _book = NULL;
-    _isEditable = true;
-
-    createInterface();
-    layoutInterface();
-
+    init();
+    _book = new rti_book();
     updateBookButton->setText(tr("Add Book"));
-    setWindowTitle(tr("Book Form"));
 }
 
 
-BookForm::BookForm(rti_book *book, bool isEditable, QWidget *parent)
+BookForm::BookForm(rti_book *book, bool editable, QWidget *parent)
     : QWidget(parent)
 {
+    init();
+    setEditable(editable);
+    setBook(book);
+}
+
+//
+// Public Methods
+//
+void BookForm::setBook(rti_book *book)
+{
     _book = book;
-    _isEditable = isEditable;
+    isbnLineEdit->setText(QString::fromStdString(book->isbn()));
+    titleLineEdit->setText(QString::fromStdString(_book->title()));
+    authorLineEdit->setText(QString::fromStdString(_book->author()));
+    gradeLevelComboBox->setCurrentText(gradeLevelMap.value(_book->age_range()));
+    //contentsTextEdit;
+}
 
-    createInterface();
-    layoutInterface();
-
-    setWindowTitle(tr("Book Form"));
+void BookForm::setEditable(bool editable)
+{
+    isbnLineEdit->setReadOnly(!editable);
+    titleLineEdit->setReadOnly(!editable);
+    authorLineEdit->setReadOnly(!editable);
+    contentsTextEdit->setReadOnly(!editable);
 }
 
 
@@ -35,15 +50,32 @@ BookForm::BookForm(rti_book *book, bool isEditable, QWidget *parent)
 //
 void BookForm::updateBook()
 {
-    if (_book != NULL)
-        delete _book;
-    _book = new rti_book(isbnLineEdit->text().toStdString(), titleLineEdit->text().toStdString(),
-                         authorLineEdit->text().toStdString(), contentsTextArea->toPlainText().toStdString());
+    _book->set_isbn(isbnLineEdit->text().toStdString());
+    _book->set_title(titleLineEdit->text().toStdString());
+    _book->set_author(authorLineEdit->text().toStdString());
+    _book->set_age_range(gradeLevelMap.key(gradeLevelComboBox->currentText()));
+    close();
 }
 
 //
 // Private Methods
 //
+void BookForm::init()
+{
+    setWindowTitle(tr("Book Form"));
+
+    gradeLevelMap.insert(rti_book::NS, "Nursery");
+    gradeLevelMap.insert(rti_book::PK, "Pre-K");
+    gradeLevelMap.insert(rti_book::K,  "Kindergartern");
+    gradeLevelMap.insert(rti_book::G1, "Grade 1");
+    gradeLevelMap.insert(rti_book::G2, "Grade 2");
+    gradeLevelMap.insert(rti_book::G3, "Grade 3");
+    gradeLevelMap.insert(rti_book::G4, "Grade 4");
+
+    createInterface();
+    layoutInterface();
+}
+
 void BookForm::createInterface()
 {
     isbnLabel = new QLabel(tr("ISBN"));
@@ -53,10 +85,12 @@ void BookForm::createInterface()
     authorLabel = new QLabel(tr("Author"));
     authorLineEdit = new QLineEdit;
     gradeLevelLabel = new QLabel(tr("Grade Level"));
-    gradeLevelLineEdit = new QLineEdit;
+    gradeLevelComboBox = new QComboBox;
+    gradeLevelComboBox->addItems(gradeLevelMap.values());
     contentsLabel = new QLabel(tr("Contents"));
-    contentsTextArea = new QTextEdit;
+    contentsTextEdit = new QTextEdit;
     updateBookButton = new QPushButton(tr("Update Book"));
+    connect(updateBookButton, SIGNAL(clicked()), this, SLOT(updateBook()));
 }
 
 void BookForm::layoutInterface()
@@ -69,9 +103,9 @@ void BookForm::layoutInterface()
     mainLayout->addWidget(authorLabel, 2, 0);
     mainLayout->addWidget(authorLineEdit, 2, 1);
     mainLayout->addWidget(gradeLevelLabel, 3, 0);
-    mainLayout->addWidget(gradeLevelLineEdit, 3, 1);
+    mainLayout->addWidget(gradeLevelComboBox, 3, 1);
     mainLayout->addWidget(contentsLabel,4, 0);
-    mainLayout->addWidget(contentsTextArea, 5, 0, 1, 2);
+    mainLayout->addWidget(contentsTextEdit, 5, 0, 1, 2);
     mainLayout->addWidget(updateBookButton, 6, 0, 1, 2);
     setLayout(mainLayout);
 }

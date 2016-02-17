@@ -7,17 +7,20 @@
 #include <rti/rti_literature.h>
 #include <rti/rti_literature_sptr.h>
 
+
+#include <iostream>
+
 namespace
 {
 
   static void test_all()
   {
-    rti_book_sptr book = new rti_book("First Book","Charlene Tsai", PK, "input_file.txt");
+    rti_book_sptr book = new rti_book("First Book","Charlene Tsai", rti_book::PK, "input_file.txt");
     rti_literature_sptr lit= new rti_literature();
     int index;
     if (!lit->find(book->title(),index)) lit->insert(book, index);
 
-    rti_book_sptr book2 = new rti_book("cat","Marlene Zakierski", PK, "input_file.txt");
+    rti_book_sptr book2 = new rti_book("cat","Marlene Zakierski", rti_book::PK, "input_file.txt");
     if (!lit->find(book2->title(),index)) lit->insert(book2, index);
 
     TEST("Test literature Insertion: \n", (*lit)[0]->title()=="cat", true);

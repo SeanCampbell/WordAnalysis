@@ -4,8 +4,7 @@ SET( gui_sources
 
 ADD_LIBRARY( gui ${gui_sources} )
 
-target_link_libraries(gui ${Qt5Widgets_LIBRARIES} rti)
-
+target_link_libraries(gui ${Qt5Widgets_LIBRARIES} rti vul)
 
 IF( BUILD_TESTING )
     add_subdirectory( tests )
