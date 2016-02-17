@@ -1,2 +1,0 @@
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc ../../lib/libvpl.a  CMakeFiles/vpl.dir/vpl.o CMakeFiles/vpl.dir/vpl_fdopen.o CMakeFiles/vpl.dir/vpl_fileno.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib ../../lib/libvpl.a

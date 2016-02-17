@@ -1,2 +1,0 @@
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc ../lib/libTinyXML.a  CMakeFiles/TinyXML.dir/tinyxml2.cpp.o CMakeFiles/TinyXML.dir/TinyXML_automoc.cpp.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib ../lib/libTinyXML.a
