@@ -97,10 +97,7 @@ rti_literature::getBook(vcl_string isbn)
 	for(int i = 0; i < books_.size(); i++)
 	{
 		if(books_.at(i)->isbn() == isbn)
-		{
-			rti_book_sptr book = books_.at(i)->isbn();
-		}
-		return book;
+            return books_.at(i);
 	}
 	return NULL;
 }
@@ -108,12 +105,7 @@ rti_literature::getBook(vcl_string isbn)
 std::vector<rti_book_sptr>
 rti_literature::getAllBooks()
 {
-	vector <rti_book_sptr> all_books;
-	for(int i = 0; i < books_.size(); i++)
-	{
-		all_books.push_back(books_.at(i));
-	}
-	return all_books;
+    return books_;
 }
 //*****New Code
 

@@ -15,12 +15,12 @@ namespace
 
   static void test_all()
   {
-    rti_book_sptr book = new rti_book("First Book","Charlene Tsai", rti_book::PK, "input_file.txt");
-    rti_literature_sptr lit= new rti_literature();
+    rti_book_sptr book = new rti_book("0123456789012", "First Book","Charlene Tsai", rti_book::PK, "input_file.txt");
+    rti_literature_sptr lit = new rti_literature();
     int index;
     if (!lit->find(book->title(),index)) lit->insert(book, index);
 
-    rti_book_sptr book2 = new rti_book("cat","Marlene Zakierski", rti_book::PK, "input_file.txt");
+    rti_book_sptr book2 = new rti_book("2109876543210", "cat","Marlene Zakierski", rti_book::PK, "input_file.txt");
     if (!lit->find(book2->title(),index)) lit->insert(book2, index);
 
     TEST("Test literature Insertion: \n", (*lit)[0]->title()=="cat", true);

@@ -11,8 +11,8 @@
 
 #include <fstream>
 
-rti_book::rti_book(const vcl_string& in_title, const vcl_string& in_author, AGE in_age_range, const vcl_string& text_file)
-  : title_(in_title), author_(in_author), age_range_(in_age_range)
+rti_book::rti_book(const vcl_string& in_isbn, const vcl_string& in_title, const vcl_string& in_author, AGE in_age_range, const vcl_string& text_file)
+  : isbn_(in_isbn), title_(in_title), author_(in_author), age_range_(in_age_range)
 {
   vcl_vector< vcl_string > in_words;
   in_words.reserve(4000);
@@ -68,6 +68,7 @@ XMLError
 rti_book::read_xml_node(XMLElement* pRoot)
 {
   //read in the attributes
+  isbn_ = pRoot->Attribute("isbn13");
   title_ = pRoot->Attribute("title");
   author_ = pRoot->Attribute("author");
 
@@ -120,6 +121,7 @@ rti_book::write_xml_node(XMLDocument& xmlDoc, XMLElement* node)
   }
   node->SetAttribute("author",author_.c_str());
   node->SetAttribute("title",title_.c_str());
+  node->SetAttribute("isbn13", isbn_.c_str());
 
   //store others as elements
   XMLElement * pElement = xmlDoc.NewElement("Words");

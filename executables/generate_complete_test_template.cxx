@@ -118,9 +118,11 @@ main( int argc, char** argv )
   vcl_cin.ignore();
   for (int i = 0; i<e_count; i++) {
     vcl_cout<<"***** Input for essay "<<i+1<<" ***********"<<vcl_endl; 
-    vcl_string title, author, book_file;
+    vcl_string isbn, title, author, book_file;
     vcl_string age;
     rti_book::AGE age_range;
+    vcl_cout<<"Essay ISBN: ";
+    vcl_getline(vcl_cin,isbn);
     vcl_cout<<"Essay title: ";
     vcl_getline(vcl_cin,title);
     vcl_cout<<"First author: ";
@@ -147,7 +149,7 @@ main( int argc, char** argv )
       file.open(book_file);
     } 
    
-    rti_book_sptr essay = new rti_book(title, author, age_range, book_file);
+    rti_book_sptr essay = new rti_book(isbn, title, author, age_range, book_file);
     vcl_cout<<"Number of questions: ";
     vcl_cin>>q_count;
     vcl_cin.ignore();

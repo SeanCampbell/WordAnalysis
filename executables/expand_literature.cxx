@@ -44,7 +44,7 @@ main( int argc, char** argv )
   rti_literature_sptr literature = new rti_literature();
   vcl_string lit_name;
   if (!lit.set()) {
-    vcl_cout<<"Provide the name for the NEW literature with extention xml, e.g. literture.xml: "<<vcl_endl;
+    vcl_cout<<"Provide the name for the NEW literature with extention xml, e.g. literature.xml: "<<vcl_endl;
     vcl_getline(vcl_cin,lit_name);
   }
   else { //read in from the existing literature
@@ -56,9 +56,11 @@ main( int argc, char** argv )
   vcl_string choice;
   while (!quit) {
     // Get other information about the book
-    vcl_string title, author, book_file;
+    vcl_string isbn, title, author, book_file;
     vcl_string age;
     rti_book::AGE age_range;
+    vcl_cout<<"ISBN: ";
+    vcl_getline(vcl_cin,isbn);
     vcl_cout<<"Book title: ";
     vcl_getline(vcl_cin,title);
     vcl_cout<<"First author: ";
@@ -86,7 +88,7 @@ main( int argc, char** argv )
     } 
 
     //Add the book to the literature
-    rti_book_sptr book = new rti_book(title, author, age_range, book_file);
+    rti_book_sptr book = new rti_book(isbn, title, author, age_range, book_file);
     int pos;
     if (!literature->find(title, pos)) literature->insert(book, pos); 
     else {

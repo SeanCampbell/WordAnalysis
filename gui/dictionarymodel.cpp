@@ -29,7 +29,7 @@ QVariant DictionaryModel::data(const QModelIndex &index, int role) const
         case 1:
             return QString::fromStdString(word->arpabet());
         case 2:
-            return "phonemes";//word->phonemes();
+            return "";//QStringList(word->phonemes()).join();"phonemes";//word->phonemes();
         case 3:
             return tr("Stresses");
         case 4:
