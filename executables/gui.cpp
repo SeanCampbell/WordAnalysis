@@ -7,6 +7,7 @@
 #include "rti/rti_dictionary_sptr.h"
 #include "rti/rti_word.h"
 
+
 #include <iostream>
 
 int main(int argc, char *argv[])
