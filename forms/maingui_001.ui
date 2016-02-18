@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>910</width>
+    <height>595</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_5">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>Dictionary</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Dictionary</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox">
+           <item>
+            <property name="text">
+             <string>Master</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Pre-K</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Kindergarten</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox">
+           <property name="text">
+            <string>Show only incomplete words</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Search</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="tableWidget">
+         <row>
+          <property name="text">
+           <string>1</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>2</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>3</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>4</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>5</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>6</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>7</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>8</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>9</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>10</string>
+          </property>
+         </row>
+         <column>
+          <property name="text">
+           <string>Word</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Arpabet</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Morphemes</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>PSegAve</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>BiphAve</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Neighborhood</string>
+          </property>
+         </column>
+         <item row="0" column="0">
+          <property name="text">
+           <string>a</string>
+          </property>
+         </item>
+         <item row="0" column="1">
+          <property name="text">
+           <string>AH0</string>
+          </property>
+         </item>
+         <item row="0" column="2">
+          <property name="text">
+           <string>XXX</string>
+          </property>
+         </item>
+         <item row="0" column="3">
+          <property name="text">
+           <string>0.041930757</string>
+          </property>
+         </item>
+         <item row="0" column="4">
+          <property name="text">
+           <string>0</string>
+          </property>
+         </item>
+         <item row="0" column="5">
+          <property name="text">
+           <string>i, the, of, us</string>
+          </property>
+         </item>
+         <item row="1" column="0">
+          <property name="text">
+           <string>about</string>
+          </property>
+         </item>
+         <item row="1" column="1">
+          <property name="text">
+           <string>AH0 B AW1 T</string>
+          </property>
+         </item>
+         <item row="1" column="2">
+          <property name="text">
+           <string>XXX</string>
+          </property>
+         </item>
+         <item row="1" column="3">
+          <property name="text">
+           <string>0.056547605</string>
+          </property>
+         </item>
+         <item row="1" column="4">
+          <property name="text">
+           <string>0.0052791131</string>
+          </property>
+         </item>
+         <item row="1" column="5">
+          <property name="text">
+           <string/>
+          </property>
+         </item>
+         <item row="2" column="0">
+          <property name="text">
+           <string>act</string>
+          </property>
+         </item>
+         <item row="2" column="1">
+          <property name="text">
+           <string>AE1 K T</string>
+          </property>
+         </item>
+         <item row="2" column="2">
+          <property name="text">
+           <string>XXX</string>
+          </property>
+         </item>
+         <item row="2" column="3">
+          <property name="text">
+           <string>0.031698007</string>
+          </property>
+         </item>
+         <item row="2" column="4">
+          <property name="text">
+           <string>0.003234416</string>
+          </property>
+         </item>
+         <item row="2" column="5">
+          <property name="text">
+           <string>at</string>
+          </property>
+         </item>
+         <item row="3" column="0">
+          <property name="text">
+           <string/>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QPushButton" name="pushButton_7">
+           <property name="text">
+            <string>Display Morphemes</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton">
+           <property name="text">
+            <string>Delete Dictionary</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_6">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_5">
+           <property name="text">
+            <string>Import From Master</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
+       <string>Library</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Library</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string>Select all</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_3">
+           <item>
+            <property name="text">
+             <string>NS</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>PK</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>K</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>G1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>G2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>G3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>G4</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>Search</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_2"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="tableWidget_2">
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <row>
+          <property name="text">
+           <string>1</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>2</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>3</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>4</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>5</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>6</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>7</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>8</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>9</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>10</string>
+          </property>
+         </row>
+         <column>
+          <property name="text">
+           <string/>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Title</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Author</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Grade Level</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Contents</string>
+          </property>
+         </column>
+         <item row="0" column="0">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checkState">
+           <enum>Checked</enum>
+          </property>
+         </item>
+         <item row="0" column="1">
+          <property name="text">
+           <string>Follow That Horse</string>
+          </property>
+         </item>
+         <item row="0" column="2">
+          <property name="text">
+           <string>Shannon Teper</string>
+          </property>
+         </item>
+         <item row="0" column="3">
+          <property name="text">
+           <string>G4</string>
+          </property>
+         </item>
+         <item row="0" column="4">
+          <property name="text">
+           <string>Cuddles is on the job! Her owner Dan...</string>
+          </property>
+         </item>
+         <item row="1" column="0">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checkState">
+           <enum>Unchecked</enum>
+          </property>
+         </item>
+         <item row="1" column="1">
+          <property name="text">
+           <string>My Hand Was in the Cookie Jar</string>
+          </property>
+         </item>
+         <item row="1" column="2">
+          <property name="text">
+           <string>Dave Crawley</string>
+          </property>
+         </item>
+         <item row="1" column="3">
+          <property name="text">
+           <string>G4</string>
+          </property>
+         </item>
+         <item row="1" column="4">
+          <property name="text">
+           <string>My hand was in the cookie jar When Grandma wandered in...</string>
+          </property>
+         </item>
+         <item row="2" column="0">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checkState">
+           <enum>Checked</enum>
+          </property>
+         </item>
+         <item row="2" column="1">
+          <property name="text">
+           <string>First in Line</string>
+          </property>
+         </item>
+         <item row="2" column="2">
+          <property name="text">
+           <string>Gertrude Fass</string>
+          </property>
+         </item>
+         <item row="2" column="3">
+          <property name="text">
+           <string>G4</string>
+          </property>
+         </item>
+         <item row="2" column="4">
+          <property name="text">
+           <string>Caronline was eating her scambled eggs too fast...</string>
+          </property>
+         </item>
+         <item row="3" column="0">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checkState">
+           <enum>Checked</enum>
+          </property>
+         </item>
+         <item row="3" column="1">
+          <property name="text">
+           <string/>
+          </property>
+         </item>
+         <item row="4" column="0">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checkState">
+           <enum>Unchecked</enum>
+          </property>
+         </item>
+         <item row="5" column="0">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checkState">
+           <enum>Checked</enum>
+          </property>
+         </item>
+         <item row="5" column="1">
+          <property name="text">
+           <string/>
+          </property>
+         </item>
+         <item row="6" column="0">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checkState">
+           <enum>Checked</enum>
+          </property>
+         </item>
+         <item row="6" column="1">
+          <property name="text">
+           <string/>
+          </property>
+         </item>
+         <item row="7" column="0">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checkState">
+           <enum>Checked</enum>
+          </property>
+         </item>
+         <item row="8" column="0">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checkState">
+           <enum>Checked</enum>
+          </property>
+         </item>
+         <item row="9" column="0">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checkState">
+           <enum>Unchecked</enum>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QPushButton" name="addBookButton">
+           <property name="text">
+            <string>Add Book</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_2">
+           <property name="text">
+            <string>Edit Book</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_4">
+           <property name="text">
+            <string>View Book</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_7">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_3">
+           <property name="text">
+            <string>Create Dictionary</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_8">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_8">
+           <property name="text">
+            <string>Create Library</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_9">
+           <property name="text">
+            <string>Delete Library</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -29,16 +29,16 @@ public:
   bool find(const vcl_string& word, int& pos); //find position for the exact search or the position the word should be found.
 	void insert(rti_word_sptr word, int idx); //successful insertion if entries are complete
 
-  bool valid() const {return is_valid_;}
-  size_t size() const {return words_.size();}
+    bool valid() const {return is_valid_;}
+    size_t size() const {return words_.size();}
 	void compute_PSegAves();
 	void compute_BiphAves();
 	void compute_neighbors(rti_word_sptr target_word, int starting_index = 0); //compute neighbors of a given word. It's neighbors's neighbors are updated too
-  void compute_neighbors(); //compute neighbors for all words in the dictionary
-  XMLError read_xml(const vcl_string& xml_filename); 
+    void compute_neighbors(); //compute neighbors for all words in the dictionary
+    XMLError read_xml(const vcl_string& xml_filename);
 	XMLError write_xml(vcl_string vxl_filename, bool up_to_date);
-  rti_word_sptr& operator[](std::size_t idx) { return words_[idx]; }
-  const rti_word_sptr& operator[](std::size_t idx) const { return words_[idx]; }
+    rti_word_sptr& operator[](std::size_t idx) { return words_[idx]; }
+    const rti_word_sptr& operator[](std::size_t idx) const { return words_[idx]; }
 
 private:
   void push_back(rti_word_sptr word); //insertion at the end of the word list

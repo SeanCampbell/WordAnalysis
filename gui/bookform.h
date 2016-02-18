@@ -14,8 +14,8 @@ class BookForm : public QWidget
     Q_OBJECT
 
 public:
-    BookForm(QWidget *parent = 0);
-    BookForm(rti_book *book, bool editable = false, QWidget *parent = 0);
+    explicit BookForm(QWidget *parent = 0);
+    explicit BookForm(rti_book *book, bool editable = false, QWidget *parent = 0);
 
     // Accessors
     rti_book *book() const { return _book; }
