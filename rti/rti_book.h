@@ -27,8 +27,8 @@ public:
 
   rti_book()
     : isbn_(vcl_string("")), title_(vcl_string("")), is_valid_(false) {}
-  //TODO: Add ISBN to constructor
-  rti_book(const vcl_string& in_title, const vcl_string& in_author, AGE in_age_range, const vcl_string& text_file);
+  
+  rti_book(const vcl_string& in_isbn, const vcl_string& in_title, const vcl_string& in_author, AGE in_age_range, const vcl_string& text_file);
   ~rti_book(){}
   
   void set_isbn(vcl_string const &isbn) { isbn_ = isbn; }
