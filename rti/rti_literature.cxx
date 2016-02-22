@@ -88,6 +88,10 @@ rti_literature::remove(rti_book_sptr book, int pos)
 		{
 			is_empty_ = false;
 		}
+		else
+		{
+			is_empty_ = true;
+		}
 	}
 }
 
@@ -97,7 +101,9 @@ rti_literature::getBook(vcl_string isbn)
 	for(int i = 0; i < books_.size(); i++)
 	{
 		if(books_.at(i)->isbn() == isbn)
-            return books_.at(i);
+		{
+			return books_.at(i);
+		}
 	}
 	return NULL;
 }
