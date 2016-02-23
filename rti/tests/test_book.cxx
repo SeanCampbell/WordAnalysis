@@ -23,6 +23,7 @@ namespace
     rti_book_sptr book2 = new rti_book("2109876543210", "cat","Marlene Zakierski", rti_book::PK, "input_file.txt");
     if (!lit->find(book2->title(),index)) lit->insert(book2, index);
 
+    TEST("Test literature isbn: \n", (*lit)[0]->isbn()=="2109876543210", true);
     TEST("Test literature Insertion: \n", (*lit)[0]->title()=="cat", true);
     TEST("Test literature Insertion: \n", (*lit)[1]->title()=="First Book", true);
     vcl_cout<<"number of books = "<<lit->size()<<vcl_endl;
