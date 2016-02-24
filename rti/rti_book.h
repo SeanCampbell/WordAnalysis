@@ -46,6 +46,7 @@ public:
   size_t size() const {return words_.size();}
   vcl_pair<vcl_string, int>& operator[](std::size_t idx) { return words_[idx]; }
   const vcl_pair<vcl_string, int>& operator[](std::size_t idx) const { return words_[idx]; }
+  bool operator==(const rti_book &other) { return isbn_ == other.isbn_; }
 
   XMLError read_xml_node(XMLElement* root_node);
   void write_xml_node(XMLDocument& xmlDoc, XMLElement* root_node);

@@ -1,5 +1,6 @@
 #include "rti/rti_dictionary.h"
 #include "rti/rti_word.h"
+#include "rti/rti_util.h"
 #include "dictionarymodel.h"
 
 DictionaryModel::DictionaryModel(rti_dictionary *dict)
@@ -25,15 +26,15 @@ QVariant DictionaryModel::data(const QModelIndex &index, int role) const
     switch (index.column())
     {
         case 0:
-            return QString::fromStdString(word->spelling());
+            return tr(QString::fromStdString(word->spelling()));
         case 1:
-            return QString::fromStdString(word->arpabet());
+            return tr(QString::fromStdString(word->arpabet()));
         case 2:
-            return "";//QStringList(word->phonemes()).join();"phonemes";//word->phonemes();
+            return tr(QString::fromStdString(join(word->phonemes(), ", ")));
         case 3:
-            return tr("Stresses");
+            return tr(QString::fromStdString(join(word->stresses_(), ", ")););
         case 4:
-            return tr("Morphemes");
+            return tr(QString::fromStdString(join(word->morphemes(), ", ")););
         case 5:
             return word->syllables();
         case 6:
