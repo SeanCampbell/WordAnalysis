@@ -84,6 +84,14 @@ rti_word::valid() const
     return arpabet_ != vcl_string("XXX"); 
 }
 
+void
+rti_word::set_morphemes(const vcl_string & in_morphemes)
+{
+    morphemes_str_ = in_morphemes;
+    morphemes_.clear();
+    decompose(in_morphemes, morphemes_);
+}
+
 XMLError
 rti_word::read_xml_node(XMLElement* pRoot)
 {

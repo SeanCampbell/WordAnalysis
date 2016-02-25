@@ -43,6 +43,7 @@ public:
   void increase_frequency(int & increment) {frequency_ += increment;}
   void set_psa(float in_psa) {psa_ = in_psa;}
   void set_bipha(float in_bipha) {bipha_ = in_bipha;}
+  void set_morphemes(const vcl_string & in_morphemes);
   void add_neighbor(const vcl_string& str) {neighbors_.push_back(str);}
   XMLError read_xml_node(XMLElement* root_node);
   void write_xml_node(XMLDocument& xmlDoc, XMLElement* root_node);

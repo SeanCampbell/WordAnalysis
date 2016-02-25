@@ -27,7 +27,9 @@ int main(int argc, char *argv[])
     if (!dictionary->find(vcl_string("baby"), pos)) dictionary->insert(new rti_word("baby", 15, "B EY1 B IY0", "baby", false), pos);
     if (!dictionary->find(vcl_string("error"), pos))  dictionary->insert(new rti_word("error", 15, "EH1 R ER0", "error", false), pos);
     if (!dictionary->find(vcl_string("dictionary"), pos)) dictionary->insert(new rti_word("bear", 15, "B EH1 R", "bear", false), pos);
-    DictionaryForm dictForm(dictionary);
+    QMap<QString, rti_dictionary *> dMap;
+    dMap.insert("Dictionary", dictionary);
+    DictionaryForm dictForm(dMap);
     dictForm.show();
 
     return app.exec();

@@ -18,7 +18,7 @@ public:
     explicit BookForm(rti_book *book, bool editable = false, QWidget *parent = 0);
 
     // Accessors
-    rti_book *book() const { return _book; }
+    rti_book *book() const { return book_; }
     bool isEditable() const { return !isbnLineEdit->isReadOnly(); }
 
     // Mutators
@@ -34,8 +34,8 @@ private:
     void layoutInterface();
 
     // Data
-    bool _isEditable;
-    rti_book *_book;
+    bool isEditable_;
+    rti_book *book_;
     QMap<rti_book::AGE, QString> gradeLevelMap;
 
     // GUI

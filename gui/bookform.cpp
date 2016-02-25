@@ -10,7 +10,7 @@ BookForm::BookForm(QWidget *parent)
     : QWidget(parent)
 {
     init();
-    _book = new rti_book();
+    book_ = new rti_book();
     updateBookButton->setText(tr("Add Book"));
 }
 
@@ -28,11 +28,11 @@ BookForm::BookForm(rti_book *book, bool editable, QWidget *parent)
 //
 void BookForm::setBook(rti_book *book)
 {
-    _book = book;
-    isbnLineEdit->setText(QString::fromStdString(book->isbn()));
-    titleLineEdit->setText(QString::fromStdString(_book->title()));
-    authorLineEdit->setText(QString::fromStdString(_book->author()));
-    gradeLevelComboBox->setCurrentText(gradeLevelMap.value(_book->age_range()));
+    book_ = book;
+    isbnLineEdit->setText(QString::fromStdString(book_->isbn()));
+    titleLineEdit->setText(QString::fromStdString(book_->title()));
+    authorLineEdit->setText(QString::fromStdString(book_->author()));
+    gradeLevelComboBox->setCurrentText(gradeLevelMap.value(book_->age_range()));
     //contentsTextEdit;
 }
 
@@ -50,10 +50,10 @@ void BookForm::setEditable(bool editable)
 //
 void BookForm::updateBook()
 {
-    _book->set_isbn(isbnLineEdit->text().toStdString());
-    _book->set_title(titleLineEdit->text().toStdString());
-    _book->set_author(authorLineEdit->text().toStdString());
-    _book->set_age_range(gradeLevelMap.key(gradeLevelComboBox->currentText()));
+    book_->set_isbn(isbnLineEdit->text().toStdString());
+    book_->set_title(titleLineEdit->text().toStdString());
+    book_->set_author(authorLineEdit->text().toStdString());
+    book_->set_age_range(gradeLevelMap.key(gradeLevelComboBox->currentText()));
     close();
 }
 
