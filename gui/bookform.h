@@ -12,7 +12,6 @@ class QPushButton;
 class BookForm : public QWidget
 {
     Q_OBJECT
-
 public:
     explicit BookForm(QWidget *parent = 0);
     explicit BookForm(rti_book *book, bool editable = false, QWidget *parent = 0);

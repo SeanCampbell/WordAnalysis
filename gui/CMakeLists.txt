@@ -2,6 +2,8 @@ SET( gui_sources
     bookform.h		bookform.cpp
     dictionaryform.h	dictionaryform.cpp
     dictionarymodel.h	dictionarymodel.cpp
+    libraryform.h	libraryform.cpp
+    librarymodel.h	librarymodel.cpp
 )
 
 ADD_LIBRARY( gui ${gui_sources} )

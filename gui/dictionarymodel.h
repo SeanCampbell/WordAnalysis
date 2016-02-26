@@ -12,7 +12,9 @@ public:
 
     DictionaryModel(rti_dictionary *dict);
 
+    void setDictionary(rti_dictionary *d);
     void setIncompleteEntryBackgroundColor(QColor color) { incompleteEntryBgColor_ = color; }
+    rti_dictionary *dictionary() const { return dictionary_; }
     QColor incompleteEntryBackgroundColor() const { return incompleteEntryBgColor_; }
 
     int rowCount(const QModelIndex &parent) const;

@@ -2,11 +2,22 @@
 #include "rti/rti_word.h"
 #include "rti/rti_util.h"
 #include "dictionarymodel.h"
+#include <QFont>
 
 DictionaryModel::DictionaryModel(rti_dictionary *dict)
 {
     incompleteEntryBgColor_ = QColor(255, 200, 200);
     dictionary_ = dict;
+}
+
+//
+// Public Methods
+//
+void DictionaryModel::setDictionary(rti_dictionary *d)
+{
+    emit layoutAboutToBeChanged();
+    dictionary_ = d;
+    emit layoutChanged();
 }
 
 int DictionaryModel::rowCount(const QModelIndex &parent) const
@@ -23,6 +34,16 @@ QVariant DictionaryModel::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid())
         return QVariant();
+
+    // Color and italicize editable columns.
+    if (role == Qt::TextColorRole && index.column() == MORPHEME_COL)
+        return QColor(Qt::blue);
+    if (role == Qt::FontRole && index.column() == MORPHEME_COL)
+    {
+        QFont font;
+        font.setItalic(true);
+        return font;
+    }
 
     rti_word_sptr word = (*dictionary_)[index.row()];
     if (role == Qt::DisplayRole || role == Qt::EditRole)
@@ -92,6 +113,10 @@ QVariant DictionaryModel::headerData(int section, Qt::Orientation orientation, i
             default:
                 return QVariant();
         }
+    }
+    else
+    {
+        return section + 1;
     }
 
     return QVariant();

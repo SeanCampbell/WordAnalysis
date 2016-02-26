@@ -20,8 +20,9 @@ public:
     explicit DictionaryForm(std::map<std::string, rti_dictionary *> dictMap, QWidget *parent = 0);
 
 private slots:
-    void search(QString searchTerm);
+    void search(const QString &searchTerm);
     void showOnlyIncompleteWords(bool incomplete);
+    void changeDictionary(const QString &dictName);
     void importFromMaster();
     void deleteDictionary();
 
