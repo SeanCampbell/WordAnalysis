@@ -1,22 +1,15 @@
 #include "libraryform.h"
+#include "librarymodel.h"
 #include <QtWidgets>
 
 LibraryForm::LibraryForm(QWidget *parent) : QWidget(parent)
 {
-    gradeLevelMap.insert(rti_book::NS, "Nursery");
-    gradeLevelMap.insert(rti_book::PK, "Pre-K");
-    gradeLevelMap.insert(rti_book::K,  "Kindergartern");
-    gradeLevelMap.insert(rti_book::G1, "Grade 1");
-    gradeLevelMap.insert(rti_book::G2, "Grade 2");
-    gradeLevelMap.insert(rti_book::G3, "Grade 3");
-    gradeLevelMap.insert(rti_book::G4, "Grade 4");
+    init(NULL);
+}
 
-    //libraryModel = new LibraryModel;
-    proxyModel = new QSortFilterProxyModel;
-    proxyModel->setSourceModel(NULL);//libraryModel);
-
-    createInterface();
-    layoutInterface();
+LibraryForm::LibraryForm(rti_literature *library, QWidget *parent) : QWidget(parent)
+{
+    init(library);
 }
 
 
@@ -30,7 +23,9 @@ void LibraryForm::selectBooksWithGradeLevel(const QString &gradeLevel)
 
 void LibraryForm::search(const QString &searchTerm)
 {
-    proxyModel->setFilterRegExp(searchTerm);
+    QRegExp regExp = QRegExp(searchTerm);
+    regExp.setCaseSensitivity(Qt::CaseInsensitive);
+    proxyModel->setFilterRegExp(regExp);
     proxyModel->setFilterKeyColumn(-1);
 }
 
@@ -63,11 +58,30 @@ void LibraryForm::createFrequencyList()
 //
 // Private Methods
 //
+void LibraryForm::init(rti_literature *library)
+{
+    gradeLevelMap.insert(rti_book::NS, "Nursery");
+    gradeLevelMap.insert(rti_book::PK, "Pre-K");
+    gradeLevelMap.insert(rti_book::K,  "Kindergartern");
+    gradeLevelMap.insert(rti_book::G1, "Grade 1");
+    gradeLevelMap.insert(rti_book::G2, "Grade 2");
+    gradeLevelMap.insert(rti_book::G3, "Grade 3");
+    gradeLevelMap.insert(rti_book::G4, "Grade 4");
+
+    libraryModel = new LibraryModel(library);
+    proxyModel = new QSortFilterProxyModel;
+    proxyModel->setSourceModel(libraryModel);
+
+    createInterface();
+    layoutInterface();
+}
+
 void LibraryForm::createInterface()
 {
     libraryView = new QTableView;
     libraryView->setModel(proxyModel);
     libraryView->setSortingEnabled(true);
+    libraryView->resizeColumnsToContents();
 
     selectGradeLevelLabel = new QLabel(tr("Select all books in grade level"));
     selectGradeLevelComboBox = new QComboBox;

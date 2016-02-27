@@ -4,6 +4,7 @@
 #include "rti/rti_book.h"
 #include <QMap>
 #include <QWidget>
+class rti_literature;
 class LibraryModel;
 class QTableView;
 class QLabel;
@@ -17,6 +18,7 @@ class LibraryForm : public QWidget
     Q_OBJECT
 public:
     explicit LibraryForm(QWidget *parent = 0);
+    explicit LibraryForm(rti_literature *library, QWidget *parent = 0);
 
 private slots:
     void selectBooksWithGradeLevel(const QString &gradeLevel);
@@ -29,6 +31,7 @@ private slots:
     void createFrequencyList();
 
 private:
+    void init(rti_literature *library);
     void createInterface();
     void layoutInterface();
 

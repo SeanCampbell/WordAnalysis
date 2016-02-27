@@ -6,6 +6,11 @@
 //
 // Constructors
 //
+DictionaryForm::DictionaryForm(QWidget *parent) : QWidget(parent)
+{
+    init(QMap<QString, rti_dictionary *>());
+}
+
 DictionaryForm::DictionaryForm(QMap<QString, rti_dictionary *> dictMap, QWidget *parent) : QWidget(parent)
 {
     init(dictMap);
@@ -21,12 +26,37 @@ DictionaryForm::DictionaryForm(std::map<std::string, rti_dictionary *> dictMap, 
 
 
 //
+// Public Slots
+//
+
+/**
+ * @brief DictionaryForm::addDictionary
+ * @param name - name of dictionary in the form
+ * @param dictionary - the dictionary to add
+ * @return true if the dictionary is inserted,
+ *      false if a dictionary of the same name
+ *      is already in the form, so the dictionary
+ *      can't be added
+ */
+bool DictionaryForm::addDictionary(const QString &name, rti_dictionary *dictionary)
+{
+    if (!dictionaryMap.contains(name))
+    {
+        dictionaryMap.insert(name, dictionary);
+        return true;
+    }
+    return false;
+}
+
+
+//
 // Private Slots
 //
 void DictionaryForm::search(const QString &searchTerm)
 {
-    proxyModel->setFilterRegExp(searchTerm);
-    proxyModel->setFilterKeyColumn(-1);
+    QRegExp regExp = QRegExp(searchTerm);
+    regExp.setCaseSensitivity(Qt::CaseInsensitive);
+    proxyModel->setFilterRegExp(regExp);
 }
 
 void DictionaryForm::showOnlyIncompleteWords(bool incomplete)
@@ -45,7 +75,15 @@ void DictionaryForm::showOnlyIncompleteWords(bool incomplete)
 void DictionaryForm::changeDictionary(const QString &dictName)
 {
     if (dictionaryMap.contains(dictName))
+    {
         dictionaryModel->setDictionary(dictionaryMap.value(dictName));
+        dictionaryView->resizeColumnsToContents();
+    }
+    else
+    {
+        dictionaryModel = NULL;
+        proxyModel->setSourceModel(NULL);
+    }
 }
 
 void DictionaryForm::importFromMaster()
@@ -63,6 +101,7 @@ void DictionaryForm::deleteDictionary()
         dictionaryComboBox->removeItem(dictionaryComboBox->currentIndex());
         delete curDict;
     }
+    dictionaryView->resizeColumnsToContents();
 }
 
 
@@ -73,7 +112,10 @@ void DictionaryForm::init(QMap<QString, rti_dictionary *> dictMap)
 {
     dictionaryMap = dictMap;
     // Set the dictionary to be whatever the iterator starts at.
-    dictionaryModel = new DictionaryModel(dictionaryMap.begin().value());
+    if (!dictMap.isEmpty())
+        dictionaryModel = new DictionaryModel(dictionaryMap.begin().value());
+    else
+        dictionaryModel = NULL;
     proxyModel = new QSortFilterProxyModel;
     proxyModel->setSourceModel(dictionaryModel);
 
@@ -86,6 +128,7 @@ void DictionaryForm::createInterface()
     dictionaryView = new QTableView;
     dictionaryView->setModel(proxyModel);
     dictionaryView->setSortingEnabled(true);
+    dictionaryView->resizeColumnsToContents();
 
     dictionaryLabel = new QLabel(tr("Dictionary"));
     dictionaryComboBox = new QComboBox;

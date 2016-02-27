@@ -2,13 +2,14 @@
 #include "gui/bookform.h"
 #include "gui/dictionaryform.h"
 #include "gui/libraryform.h"
+#include "gui/mainwindow.h"
 #include "rti/rti_book.h"
 #include "rti/rti_book_sptr.h"
 #include "rti/rti_dictionary.h"
 #include "rti/rti_dictionary_sptr.h"
+#include "rti/rti_literature.h"
+#include "rti/rti_literature_sptr.h"
 #include "rti/rti_word.h"
-
-
 #include <iostream>
 
 int main(int argc, char *argv[])
@@ -19,6 +20,7 @@ int main(int argc, char *argv[])
     //BookForm form(&book, true);
     //form.show();
 
+    /*
     rti_dictionary *d1 = new rti_dictionary;
     int pos;
     if (!d1->find(vcl_string("dictionary"), pos)) d1->insert(new rti_word("dictionary", 20, "D IH1 K SH AH0 N EH2 R IY0", "dictionary", false), pos);
@@ -49,9 +51,18 @@ int main(int argc, char *argv[])
     dMap.insert("Dictionary 2", d2);
     DictionaryForm dictForm(dMap);
     //dictForm.show();
-
-    LibraryForm libForm;
+*/
+    rti_book_sptr book = new rti_book("012-3456789012", "First Book","Charlene Tsai", rti_book::PK, "input_file.txt");
+    rti_literature *lit = new rti_literature();
+    int index;
+    if (!lit->find(book->title(),index)) lit->insert(book, index);
+    rti_book_sptr book2 = new rti_book("210-9876543210", "cat","Marlene Zakierski", rti_book::PK, "input_file.txt");
+    if (!lit->find(book2->title(),index)) lit->insert(book2, index);
+    LibraryForm libForm(lit);
     libForm.show();
+
+    //MainWindow mainWin;
+    //mainWin.show();
 
     return app.exec();
 }

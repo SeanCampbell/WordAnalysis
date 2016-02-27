@@ -2,6 +2,7 @@
 #define DICTIONARYFORM_H
 
 #include <QWidget>
+#include <QMap>
 class rti_dictionary;
 class DictionaryModel;
 class QTableView;
@@ -16,8 +17,12 @@ class DictionaryForm : public QWidget
 {
     Q_OBJECT
 public:
+    explicit DictionaryForm(QWidget *parent = 0);
     explicit DictionaryForm(QMap<QString, rti_dictionary *> dictMap, QWidget *parent = 0);
     explicit DictionaryForm(std::map<std::string, rti_dictionary *> dictMap, QWidget *parent = 0);
+
+public slots:
+    bool addDictionary(const QString &name, rti_dictionary *dictionary);
 
 private slots:
     void search(const QString &searchTerm);

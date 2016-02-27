@@ -29,6 +29,7 @@ IF( NOT EXECUTABLE_OUTPUT_PATH )
 ENDIF( NOT EXECUTABLE_OUTPUT_PATH )
 
 # BEGIN QT
+# Code from: https://www.kdab.com/using-cmake-with-qt-5/
 # Tell CMake to run moc when necessary:
 set(CMAKE_AUTOMOC ON)
 # As moc files are generated in the binary dir, tell CMake

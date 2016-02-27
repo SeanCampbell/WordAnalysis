@@ -1,9 +1,11 @@
-SET( gui_sources
+SET(gui_sources
+    comboboxdelegate.h	comboboxdelegate.cpp
     bookform.h		bookform.cpp
     dictionaryform.h	dictionaryform.cpp
     dictionarymodel.h	dictionarymodel.cpp
     libraryform.h	libraryform.cpp
     librarymodel.h	librarymodel.cpp
+    mainwindow.h	mainwindow.cpp
 )
 
 ADD_LIBRARY( gui ${gui_sources} )

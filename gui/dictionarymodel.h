@@ -10,9 +10,9 @@ class DictionaryModel : public QAbstractTableModel
 public:
     enum { MORPHEME_COL = 3 };
 
-    DictionaryModel(rti_dictionary *dict);
+    DictionaryModel(rti_dictionary *dictionary = NULL);
 
-    void setDictionary(rti_dictionary *d);
+    void setDictionary(rti_dictionary *dictionary);
     void setIncompleteEntryBackgroundColor(QColor color) { incompleteEntryBgColor_ = color; }
     rti_dictionary *dictionary() const { return dictionary_; }
     QColor incompleteEntryBackgroundColor() const { return incompleteEntryBgColor_; }

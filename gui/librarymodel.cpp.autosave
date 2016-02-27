@@ -61,7 +61,7 @@ QVariant LibraryModel::data(const QModelIndex &index, int role) const
                 return QString::fromStdString(book->author());
             case 4:
                 //TODO
-                return QString::number(book->age_range());
+                return gradeLevelQString::number(book->age_range());
             default:
                 return QVariant();
         }

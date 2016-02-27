@@ -4,35 +4,35 @@
 #include "dictionarymodel.h"
 #include <QFont>
 
-DictionaryModel::DictionaryModel(rti_dictionary *dict)
+DictionaryModel::DictionaryModel(rti_dictionary *dictionary)
 {
     incompleteEntryBgColor_ = QColor(255, 200, 200);
-    dictionary_ = dict;
+    dictionary_ = dictionary;
 }
 
 //
 // Public Methods
 //
-void DictionaryModel::setDictionary(rti_dictionary *d)
+void DictionaryModel::setDictionary(rti_dictionary *dictionary)
 {
     emit layoutAboutToBeChanged();
-    dictionary_ = d;
+    dictionary_ = dictionary;
     emit layoutChanged();
 }
 
-int DictionaryModel::rowCount(const QModelIndex &parent) const
+int DictionaryModel::rowCount(const QModelIndex &/*parent*/) const
 {
-    return dictionary_->size();
+    return dictionary_ != NULL ? dictionary_->size() : 0;
 }
 
-int DictionaryModel::columnCount(const QModelIndex &parent) const
+int DictionaryModel::columnCount(const QModelIndex &/*parent*/) const
 {
     return 10;
 }
 
 QVariant DictionaryModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid())
+    if (dictionary_ == NULL || !index.isValid())
         return QVariant();
 
     // Color and italicize editable columns.
@@ -124,7 +124,10 @@ QVariant DictionaryModel::headerData(int section, Qt::Orientation orientation, i
 
 bool DictionaryModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    if (!index.isValid() || role != Qt::EditRole)
+    if (dictionary_ == NULL
+            || !index.isValid()
+            || index.row() > dictionary_->size()
+            || role != Qt::EditRole)
         return false;
 
     if (index.column() == MORPHEME_COL)

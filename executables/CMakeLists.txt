@@ -33,4 +33,5 @@ TARGET_LINK_LIBRARIES(class_assessment_template vul vcl rti TinyXML)
 
 ADD_EXECUTABLE(main_gui gui.cpp)
 # The Qt5Widgets_LIBRARIES variable also includes QtGui and QtCore
-target_link_libraries(main_gui gui ${Qt5Widgets_LIBRARIES} rti)
+SET_TARGET_PROPERTIES(main_gui PROPERTIES OUTPUT_NAME "Word Analysis")
+TARGET_LINK_LIBRARIES(main_gui gui ${Qt5Widgets_LIBRARIES} rti)
