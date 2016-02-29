@@ -5,37 +5,27 @@
 #include <QWidget>
 #include <QLineEdit>
 class QLabel;
-class QTextEdit;
 class QComboBox;
 class QPushButton;
 
 class BookForm : public QWidget
 {
     Q_OBJECT
+
 public:
     explicit BookForm(QWidget *parent = 0);
-    explicit BookForm(rti_book *book, bool editable = false, QWidget *parent = 0);
 
-    // Accessors
-    rti_book *book() const { return book_; }
-    bool isEditable() const { return !isbnLineEdit->isReadOnly(); }
-
-    // Mutators
-    void setBook(rti_book *book);
-    void setEditable(bool editable);
+signals:
+    void bookAdded(rti_book *book);
 
 private slots:
-    void updateBook();
+    void addBook();
+    void browseForBook();
+    void validateBookFilePath();
 
 private:
-    void init();
     void createInterface();
     void layoutInterface();
-
-    // Data
-    bool isEditable_;
-    rti_book *book_;
-    QMap<rti_book::AGE, QString> gradeLevelMap;
 
     // GUI
     QLabel *isbnLabel;
@@ -46,9 +36,10 @@ private:
     QLineEdit *authorLineEdit;
     QLabel *gradeLevelLabel;
     QComboBox *gradeLevelComboBox;
-    QLabel *contentsLabel;
-    QTextEdit *contentsTextEdit;
-    QPushButton *updateBookButton;
+    QLabel *filePathLabel;
+    QLineEdit *filePathLineEdit;
+    QPushButton *browseButton;
+    QPushButton *addBookButton;
 };
 
 #endif // BOOKFORM_H

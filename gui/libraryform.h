@@ -9,6 +9,7 @@ class LibraryModel;
 class QTableView;
 class QLabel;
 class QComboBox;
+class QCheckBox;
 class QLineEdit;
 class QPushButton;
 class QSortFilterProxyModel;
@@ -20,13 +21,17 @@ public:
     explicit LibraryForm(QWidget *parent = 0);
     explicit LibraryForm(rti_literature *library, QWidget *parent = 0);
 
+    void setLibrary(rti_literature *library);
+
+signals:
+    void createDictionaryRequested(QList<rti_book *> books);
+    void createFrequencyListRequested(QList<rti_book *> books);
+
 private slots:
     void selectBooksWithGradeLevel(const QString &gradeLevel);
     void search(const QString &searchTerm);
 
     void addBook();
-    void editBook();
-    void viewBook();
     void createDictionary();
     void createFrequencyList();
 
@@ -36,21 +41,20 @@ private:
     void layoutInterface();
 
     // Data
-    QMap<rti_book::AGE, QString> gradeLevelMap;
     LibraryModel *libraryModel;
     QSortFilterProxyModel *proxyModel;
 
     // GUI
     QTableView *libraryView;
 
+    QCheckBox *selectAllCheckBox;
     QLabel *selectGradeLevelLabel;
     QComboBox *selectGradeLevelComboBox;
     QLabel *searchLabel;
     QLineEdit *searchLineEdit;
 
     QPushButton *addBookButton;
-    QPushButton *editBookButton;
-    QPushButton *viewBookButton;
+    QPushButton *removeBooksButton;
     QPushButton *createDictionaryButton;
     QPushButton *createFrequencyListButton;
 };

@@ -1,7 +1,6 @@
+#include "wautils.h"
 #include "bookform.h"
 #include <QtWidgets>
-
-#include <iostream>
 
 //
 // Constructors
@@ -9,73 +8,46 @@
 BookForm::BookForm(QWidget *parent)
     : QWidget(parent)
 {
-    init();
-    book_ = new rti_book();
-    updateBookButton->setText(tr("Add Book"));
-}
-
-
-BookForm::BookForm(rti_book *book, bool editable, QWidget *parent)
-    : QWidget(parent)
-{
-    init();
-    setEditable(editable);
-    setBook(book);
-}
-
-//
-// Public Methods
-//
-void BookForm::setBook(rti_book *book)
-{
-    book_ = book;
-    isbnLineEdit->setText(QString::fromStdString(book_->isbn()));
-    titleLineEdit->setText(QString::fromStdString(book_->title()));
-    authorLineEdit->setText(QString::fromStdString(book_->author()));
-    gradeLevelComboBox->setCurrentText(gradeLevelMap.value(book_->age_range()));
-    //contentsTextEdit;
-}
-
-void BookForm::setEditable(bool editable)
-{
-    isbnLineEdit->setReadOnly(!editable);
-    titleLineEdit->setReadOnly(!editable);
-    authorLineEdit->setReadOnly(!editable);
-    contentsTextEdit->setReadOnly(!editable);
+    createInterface();
+    layoutInterface();
+    setWindowTitle(tr("Add a New Book"));
 }
 
 
 //
 // Private Slots
 //
-void BookForm::updateBook()
+void BookForm::addBook()
 {
-    book_->set_isbn(isbnLineEdit->text().toStdString());
-    book_->set_title(titleLineEdit->text().toStdString());
-    book_->set_author(authorLineEdit->text().toStdString());
-    book_->set_age_range(gradeLevelMap.key(gradeLevelComboBox->currentText()));
+    rti_book *book = new rti_book(isbnLineEdit->text().toStdString(),
+                                 titleLineEdit->text().toStdString(),
+                                 authorLineEdit->text().toStdString(),
+                                 wa_utils::gradeLevelMap().key(gradeLevelComboBox->currentText()),
+                                 filePathLineEdit->text().toStdString());
+    emit bookAdded(book);
     close();
+}
+
+void BookForm::browseForBook()
+{
+    QString filePath = QFileDialog::getOpenFileName(this, tr("Choose file with text of book..."),
+                                                    "", "Text files (*.txt)");
+    if (!filePath.isEmpty())
+        filePathLineEdit->setText(filePath);
+}
+
+void BookForm::validateBookFilePath()
+{
+    if (!QFile(filePathLineEdit->text()).exists()) {
+        filePathLineEdit->setStyleSheet("* { background-color: yellow; }");
+    } else {
+        filePathLineEdit->setStyleSheet("* { background-color: white; }");
+    }
 }
 
 //
 // Private Methods
 //
-void BookForm::init()
-{
-    setWindowTitle(tr("Book Form"));
-
-    gradeLevelMap.insert(rti_book::NS, "Nursery");
-    gradeLevelMap.insert(rti_book::PK, "Pre-K");
-    gradeLevelMap.insert(rti_book::K,  "Kindergartern");
-    gradeLevelMap.insert(rti_book::G1, "Grade 1");
-    gradeLevelMap.insert(rti_book::G2, "Grade 2");
-    gradeLevelMap.insert(rti_book::G3, "Grade 3");
-    gradeLevelMap.insert(rti_book::G4, "Grade 4");
-
-    createInterface();
-    layoutInterface();
-}
-
 void BookForm::createInterface()
 {
     isbnLabel = new QLabel(tr("ISBN"));
@@ -86,15 +58,22 @@ void BookForm::createInterface()
     authorLineEdit = new QLineEdit;
     gradeLevelLabel = new QLabel(tr("Grade Level"));
     gradeLevelComboBox = new QComboBox;
-    gradeLevelComboBox->addItems(gradeLevelMap.values());
-    contentsLabel = new QLabel(tr("Contents"));
-    contentsTextEdit = new QTextEdit;
-    updateBookButton = new QPushButton(tr("Update Book"));
-    connect(updateBookButton, SIGNAL(clicked()), this, SLOT(updateBook()));
+    gradeLevelComboBox->addItems(wa_utils::gradeLevelMap().values());
+    filePathLabel = new QLabel(tr("File Path"));
+    filePathLineEdit = new QLineEdit;
+    connect(filePathLineEdit, SIGNAL(textChanged(QString)), this, SLOT(validateBookFilePath()));
+    browseButton = new QPushButton(tr("Browse"));
+    connect(browseButton, SIGNAL(clicked()), this, SLOT(browseForBook()));
+    addBookButton = new QPushButton(tr("Add Book"));
+    connect(addBookButton, SIGNAL(clicked()), this, SLOT(addBook()));
 }
 
 void BookForm::layoutInterface()
 {
+    QHBoxLayout *filePathLayout = new QHBoxLayout;
+    filePathLayout->addWidget(filePathLineEdit);
+    filePathLayout->addWidget(browseButton);
+
     QGridLayout *mainLayout = new QGridLayout;
     mainLayout->addWidget(isbnLabel, 0, 0);
     mainLayout->addWidget(isbnLineEdit, 0, 1);
@@ -104,8 +83,8 @@ void BookForm::layoutInterface()
     mainLayout->addWidget(authorLineEdit, 2, 1);
     mainLayout->addWidget(gradeLevelLabel, 3, 0);
     mainLayout->addWidget(gradeLevelComboBox, 3, 1);
-    mainLayout->addWidget(contentsLabel,4, 0);
-    mainLayout->addWidget(contentsTextEdit, 5, 0, 1, 2);
-    mainLayout->addWidget(updateBookButton, 6, 0, 1, 2);
+    mainLayout->addWidget(filePathLabel, 4, 0);
+    mainLayout->addLayout(filePathLayout, 4, 1);
+    mainLayout->addWidget(addBookButton, 6, 0, 1, 2);
     setLayout(mainLayout);
 }

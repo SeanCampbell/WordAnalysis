@@ -1,5 +1,6 @@
 #include "dictionaryform.h"
 #include "libraryform.h"
+#include "rti/rti_literature.h"
 #include "mainwindow.h"
 #include <QtWidgets>
 
@@ -16,6 +17,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 //
 void MainWindow::importLibrary()
 {
+    QString libraryFilePath = QFileDialog::getOpenFileName(this, tr("Choose library file to import..."),
+                                                           "", "XML files (*.xml)");
+    if (!libraryFilePath.isEmpty())
+    {
+        rti_literature *library = new rti_literature;
+        library->read_xml(libraryFilePath.toStdString());
+        libraryForm->setLibrary(library);
+        tabWidget->setCurrentWidget(libraryForm);
+    }
 
 }
 

@@ -129,6 +129,7 @@ void DictionaryForm::createInterface()
     dictionaryView->setModel(proxyModel);
     dictionaryView->setSortingEnabled(true);
     dictionaryView->resizeColumnsToContents();
+    dictionaryView->horizontalHeader()->setStretchLastSection(true);
 
     dictionaryLabel = new QLabel(tr("Dictionary"));
     dictionaryComboBox = new QComboBox;

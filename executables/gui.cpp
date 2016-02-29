@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     //BookForm form(&book, true);
     //form.show();
 
-    /*
+/*
     rti_dictionary *d1 = new rti_dictionary;
     int pos;
     if (!d1->find(vcl_string("dictionary"), pos)) d1->insert(new rti_word("dictionary", 20, "D IH1 K SH AH0 N EH2 R IY0", "dictionary", false), pos);
@@ -50,8 +50,9 @@ int main(int argc, char *argv[])
     dMap.insert("Dictionary 1", d1);
     dMap.insert("Dictionary 2", d2);
     DictionaryForm dictForm(dMap);
-    //dictForm.show();
+    dictForm.show();
 */
+/*
     rti_book_sptr book = new rti_book("012-3456789012", "First Book","Charlene Tsai", rti_book::PK, "input_file.txt");
     rti_literature *lit = new rti_literature();
     int index;
@@ -60,9 +61,9 @@ int main(int argc, char *argv[])
     if (!lit->find(book2->title(),index)) lit->insert(book2, index);
     LibraryForm libForm(lit);
     libForm.show();
-
-    //MainWindow mainWin;
-    //mainWin.show();
+*/
+    MainWindow mainWin;
+    mainWin.show();
 
     return app.exec();
 }

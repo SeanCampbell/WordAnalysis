@@ -17,7 +17,7 @@ rti_literature::~rti_literature()
 {}
 
 bool
-rti_literature::find(vcl_string in_title, int& idx)
+rti_literature::find(vcl_string in_isbn, int& idx)
 {
   // if the dictictionary is empty, return right away
   if (books_.empty()) {
@@ -25,26 +25,24 @@ rti_literature::find(vcl_string in_title, int& idx)
     return false;
   }
 
-  vul_string_downcase(in_title);
-  vcl_string title_lowercase;
-  //find position for the exact search using bisection search (iterative version) or return the position the word should be found.
+  //find position for the exact search using bisection search (iterative version) or return the position the book should be found.
   int imax = int(books_.size()-1);
   int imin = 0;
   while (imax >= imin) {
     idx = (imax+imin)/2; // calculate the midpoint for roughly equal partition
-    if(books_[idx]->title_downcase() == in_title) {
+    if(books_[idx]->isbn() == in_isbn) {
       return true; // key found at index imid
     }
-    else if (books_[idx]->title_downcase() < in_title)// determine which subarray to search
+    else if (books_[idx]->isbn() < in_isbn)// determine which subarray to search
       imin = idx + 1; // change min index to search upper subarray
     else imax = idx - 1; // change max index to search lower subarray
   }
 
-  if (books_[idx]->title_downcase() < in_title) idx++; 
+  if (books_[idx]->isbn() < in_isbn) idx++;
   return false;// key was not found
 }
 
-//find(.) should be called first to find out the pos for insertion. Books are ordered by title
+//find(.) should be called first to find out the pos for insertion. Books are ordered by ISBN
 void 
 rti_literature::insert(rti_book_sptr book, int pos) 
 {
@@ -75,7 +73,7 @@ rti_literature::replace(rti_book_sptr book, int pos)
 
 //*****New Code
 void
-rti_literature::remove(rti_book_sptr book, int pos)
+rti_literature::remove(int pos)
 {
 	if (books_.empty())
 	{
@@ -83,7 +81,7 @@ rti_literature::remove(rti_book_sptr book, int pos)
 	}
 	else
 	{
-		books_.erase(books_.begin() + (pos - 1));
+        books_.erase(books_.begin() + (pos));
 		if (books_.size() != 0)
 		{
 			is_empty_ = false;

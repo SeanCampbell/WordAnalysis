@@ -31,7 +31,7 @@ public:
 	void insert(rti_book_sptr book, int idx); //successful insertion if entries are complete
   void replace(rti_book_sptr book, int idx);
 //*****New Code  
-  void remove(rti_book_sptr book, int idx); //remove specified book from library
+  void remove(int idx); //remove specified book from library
   rti_book_sptr getBook(vcl_string isbn); //retrieve book with specified ISBN #
   std::vector<rti_book_sptr> getAllBooks(); //retrieve all books that exist in the library
 //*****New Code
@@ -49,6 +49,5 @@ private:
   bool is_empty_;
   vcl_vector<rti_book_sptr> books_;
 };
-
 
 #endif 

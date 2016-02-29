@@ -6,6 +6,7 @@ SET(gui_sources
     libraryform.h	libraryform.cpp
     librarymodel.h	librarymodel.cpp
     mainwindow.h	mainwindow.cpp
+    wautils.h		wautils.cpp
 )
 
 ADD_LIBRARY( gui ${gui_sources} )

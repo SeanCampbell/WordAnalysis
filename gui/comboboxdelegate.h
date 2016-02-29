@@ -5,39 +5,20 @@
 
 class ComboBoxDelegate : public QStyledItemDelegate
 {
-public:
-    ComboBoxDelegate();
-};
-
-#endif // COMBOBOXDELEGATE_H
-
-
-/*
-
-#ifndef DELEGATE_H
-#define DELEGATE_H
-
-#include <QStyledItemDelegate>
-
-//! [0]
-class SpinBoxDelegate : public QStyledItemDelegate
-{
     Q_OBJECT
 
 public:
-    SpinBoxDelegate(QObject *parent = 0);
+    ComboBoxDelegate(int col, const QStringList &options, QObject *parent = 0);
 
-    QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option,
-                          const QModelIndex &index) const Q_DECL_OVERRIDE;
+    QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const;
+    void setEditorData(QWidget *editor, const QModelIndex &index) const;
+    void setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const;
 
-    void setEditorData(QWidget *editor, const QModelIndex &index) const Q_DECL_OVERRIDE;
-    void setModelData(QWidget *editor, QAbstractItemModel *model,
-                      const QModelIndex &index) const Q_DECL_OVERRIDE;
+    void updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex &index) const;
 
-    void updateEditorGeometry(QWidget *editor,
-        const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;
+private:
+    int column_;
+    QStringList options_;
 };
-//! [0]
 
-#endif
-*/
+#endif // COMBOBOXDELEGATE_H
