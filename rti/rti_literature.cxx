@@ -17,7 +17,7 @@ rti_literature::~rti_literature()
 {}
 
 bool
-rti_literature::find(vcl_string in_isbn, int& idx)
+rti_literature::find(vcl_string isbn, int& idx)
 {
   // if the dictictionary is empty, return right away
   if (books_.empty()) {
@@ -30,15 +30,15 @@ rti_literature::find(vcl_string in_isbn, int& idx)
   int imin = 0;
   while (imax >= imin) {
     idx = (imax+imin)/2; // calculate the midpoint for roughly equal partition
-    if(books_[idx]->isbn() == in_isbn) {
+    if(books_[idx]->isbn() == isbn) {
       return true; // key found at index imid
     }
-    else if (books_[idx]->isbn() < in_isbn)// determine which subarray to search
+    else if (books_[idx]->isbn() < isbn)// determine which subarray to search
       imin = idx + 1; // change min index to search upper subarray
     else imax = idx - 1; // change max index to search lower subarray
   }
 
-  if (books_[idx]->isbn() < in_isbn) idx++;
+  if (books_[idx]->isbn() < isbn) idx++;
   return false;// key was not found
 }
 
@@ -139,7 +139,14 @@ rti_literature::read_xml(const vcl_string& xml_filename)
   while (pElement != nullptr) {
     rti_book_sptr book = new rti_book();
     book->read_xml_node(pElement);
-    books_.push_back(book);
+    // Need to do find/insert instead of just push_back
+    // in case the XML file is out of order (which it likely
+    // will be if it was exported ordered by title, and
+    // now is being imported based on ISBN).
+    int index;
+    find(book->isbn(), index);
+    insert(book, index);
+    //books_.push_back(book);
     pElement = pElement->NextSiblingElement("Book");
   }
 

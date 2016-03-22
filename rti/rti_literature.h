@@ -27,7 +27,7 @@ public:
   ~rti_literature();
   
 public:
-  bool find(vcl_string title, int& pos); //find position for the exact search or the position the book should be found. Search is based on the book title.
+  bool find(vcl_string isbn, int& pos); //find position for the exact search or the position the book should be found. Search is based on the book isbn.
 	void insert(rti_book_sptr book, int idx); //successful insertion if entries are complete
   void replace(rti_book_sptr book, int idx);
 //*****New Code  

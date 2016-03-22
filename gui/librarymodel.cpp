@@ -93,7 +93,6 @@ QVariant LibraryModel::data(const QModelIndex &index, int role) const
 
 QVariant LibraryModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
-
     if (role != Qt::DisplayRole)
         return QVariant();
 

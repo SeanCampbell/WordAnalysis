@@ -1,5 +1,5 @@
 SET( rti_sources
- rti_util.h
+ rti_utils.h						rti_utils.cpp
  rti_word.h 						rti_word.cxx
  rti_word_sptr.h
  rti_dictionary.h 					rti_dictionary.cxx

@@ -21,8 +21,11 @@ public:
     explicit DictionaryForm(QMap<QString, rti_dictionary *> dictMap, QWidget *parent = 0);
     explicit DictionaryForm(std::map<std::string, rti_dictionary *> dictMap, QWidget *parent = 0);
 
+    rti_dictionary *masterDictionary() const { return masterDictionary_; }
+
 public slots:
     bool addDictionary(const QString &name, rti_dictionary *dictionary);
+    void setMasterDictionary(rti_dictionary *master);
 
 private slots:
     void search(const QString &searchTerm);
@@ -37,6 +40,7 @@ private:
     void layoutInterface();
 
     // Data
+    rti_dictionary *masterDictionary_;
     QMap<QString, rti_dictionary *> dictionaryMap;
     DictionaryModel *dictionaryModel;
     QSortFilterProxyModel *proxyModel;

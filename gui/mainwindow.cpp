@@ -1,13 +1,13 @@
 #include "dictionaryform.h"
 #include "libraryform.h"
 #include "rti/rti_literature.h"
+#include "rti/rti_utils.h"
 #include "mainwindow.h"
 #include <QtWidgets>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
     setupInterface();
-
     setWindowTitle(tr("Word Analysis"));
 }
 
@@ -26,25 +26,74 @@ void MainWindow::importLibrary()
         libraryForm->setLibrary(library);
         tabWidget->setCurrentWidget(libraryForm);
     }
-
 }
 
-void MainWindow::exportLibrary() const
+void MainWindow::exportLibrary()
 {
-
+    QString libraryFilePath = QFileDialog::getSaveFileName(this, tr("Choose file to save exported library into..."),
+                                                           "", "XML files (*.xml)");
+    if (!libraryFilePath.isEmpty())
+        libraryForm->library()->write_xml(libraryFilePath.toStdString());
 }
 
 void MainWindow::importMasterDictionary()
 {
+    QString masterDictionaryFilePath = QFileDialog::getOpenFileName(this, tr("Choose master dictionary file to import..."),
+                                                                    "", "XML files (*.xml)");
 
+    if (!masterDictionaryFilePath.isEmpty())
+    {
+        rti_dictionary *masterDictionary = new rti_dictionary;
+        masterDictionary->read_xml(masterDictionaryFilePath.toStdString());
+        dictionaryForm->setMasterDictionary(masterDictionary);
+        tabWidget->setCurrentWidget(dictionaryForm);
+    }
 }
 
-void MainWindow::exportMasterDictionary() const
+void MainWindow::exportMasterDictionary()
+{
+    QString masterDictionaryFilePath = QFileDialog::getSaveFileName(this, tr("Choose file to save master dictionary into..."),
+                                                                    "", "XML files (*.xml)");
+
+    if (!masterDictionaryFilePath.isEmpty())
+        // boolean value isn't used for anything - should double check why it's there
+        dictionaryForm->masterDictionary()->write_xml(masterDictionaryFilePath.toStdString(), true);
+}
+
+void MainWindow::displayMorphemes() const
 {
 
 }
 
-void MainWindow::displayMorphemes() const
+
+void MainWindow::createDictionary(QList<rti_book*> books)
+{
+    int index;
+    rti_literature *library = new rti_literature;
+    foreach (rti_book *book, books)
+        if (!library->find(book->isbn(), index))
+            library->insert(book, index);
+    vcl_vector<vcl_pair<vcl_string, vcl_string> > arpabets;
+    // TODO: REFERENCE A RESOURCE HERE
+    rti_utils::import_cmu_dictionary("cmudict-0.7b.txt", arpabets);
+    bool upToDate;
+    rti_dictionary *dictionary = rti_utils::build_dictionary(library, dictionaryForm->masterDictionary(), arpabets, &upToDate);
+    // We have no more need of this. Dispose of it.
+    delete library;
+
+    // Prompt for a name for the dictionary.
+    QString masterDictionaryMessage = dictionaryForm->masterDictionary() != NULL
+            ? "Some missing information imported from master dictionary.\n\n"
+            : "";
+    QString dictionaryName = QInputDialog::getText(this, tr("Dictionary Name"), tr("%1Give a name to the dictionary:").arg(masterDictionaryMessage));
+    if (!dictionaryName.isEmpty())
+    {
+        dictionaryForm->addDictionary(dictionaryName, dictionary);
+        tabWidget->setCurrentWidget(dictionaryForm);
+    }
+}
+
+void MainWindow::createFrequencyList(QList<rti_book*> books)
 {
 
 }
@@ -55,12 +104,14 @@ void MainWindow::displayMorphemes() const
 //
 void MainWindow::setupInterface()
 {
-    dictionaryForm = new DictionaryForm;
     libraryForm = new LibraryForm;
+    connect(libraryForm, SIGNAL(createDictionaryRequested(QList<rti_book*>)),
+            this, SLOT(createDictionary(QList<rti_book*>)));
+    dictionaryForm = new DictionaryForm;
     tabWidget = new QTabWidget;
 
-    tabWidget->addTab(dictionaryForm, tr("Dictionary"));
     tabWidget->addTab(libraryForm, tr("Library"));
+    tabWidget->addTab(dictionaryForm, tr("Dictionary"));
 
     // Stick tab widget in another widget, because
     // otherwise the margins are too small.
@@ -71,7 +122,6 @@ void MainWindow::setupInterface()
     setCentralWidget(centralWidget);
 
     createMenus();
-
 }
 
 void MainWindow::createMenus()

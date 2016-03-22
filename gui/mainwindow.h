@@ -13,10 +13,13 @@ public:
 
 private slots:
     void importLibrary();
-    void exportLibrary() const;
+    void exportLibrary();
     void importMasterDictionary();
-    void exportMasterDictionary() const;
+    void exportMasterDictionary();
     void displayMorphemes() const;
+
+    void createDictionary(QList<rti_book*> books);
+    void createFrequencyList(QList<rti_book*> books);
 
 private:
     void setupInterface();

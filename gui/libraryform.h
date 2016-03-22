@@ -2,6 +2,7 @@
 #define LIBRARYFORM_H
 
 #include "rti/rti_book.h"
+#include "librarymodel.h"
 #include <QMap>
 #include <QWidget>
 class rti_literature;
@@ -22,6 +23,7 @@ public:
     explicit LibraryForm(rti_literature *library, QWidget *parent = 0);
 
     void setLibrary(rti_literature *library);
+    rti_literature *library() { return libraryModel->library(); }
 
 signals:
     void createDictionaryRequested(QList<rti_book *> books);

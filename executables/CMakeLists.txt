@@ -35,3 +35,30 @@ ADD_EXECUTABLE(main_gui gui.cpp)
 # The Qt5Widgets_LIBRARIES variable also includes QtGui and QtCore
 SET_TARGET_PROPERTIES(main_gui PROPERTIES OUTPUT_NAME "Word Analysis")
 TARGET_LINK_LIBRARIES(main_gui gui ${Qt5Widgets_LIBRARIES} rti)
+
+
+
+
+
+
+
+
+
+# we don't want to copy if we're building in the source dir
+if (NOT CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_CURRENT_BINARY_DIR)
+
+    # list of files for which we add a copy rule
+    set(data_GUI ../rti/cmudict-0.7b.txt)
+
+    foreach(item IN LISTS data_GUI)
+	message(STATUS ${item})
+	add_custom_command(
+	    OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${item}"
+	    COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/${item}" "${CMAKE_CURRENT_BINARY_DIR}/${item}"
+	    DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/${item}"
+	)
+    endforeach()
+endif()
+
+# files are only copied if a target depends on them
+add_custom_target(data-target ALL DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/../rti/cmudict-0.7b.txt")

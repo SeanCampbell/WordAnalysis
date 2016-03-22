@@ -43,9 +43,20 @@ bool DictionaryForm::addDictionary(const QString &name, rti_dictionary *dictiona
     if (!dictionaryMap.contains(name))
     {
         dictionaryMap.insert(name, dictionary);
+        //dictionaryComboBox->clear();
+        //dictionaryComboBox->addItems(dictionaryMap.keys());
+        dictionaryComboBox->addItem(name);
+        //connect(dictionaryComboBox, SIGNAL(currentIndexChanged(QString)), this, SLOT(changeDictionary(QString)));
+        dictionaryComboBox->setCurrentText(name);
         return true;
     }
     return false;
+}
+
+void DictionaryForm::setMasterDictionary(rti_dictionary *master)
+{
+    masterDictionary_ = master;
+    changeDictionary("Master Dictionary");
 }
 
 
@@ -74,7 +85,9 @@ void DictionaryForm::showOnlyIncompleteWords(bool incomplete)
 
 void DictionaryForm::changeDictionary(const QString &dictName)
 {
-    if (dictionaryMap.contains(dictName))
+    if (dictName == "Master Dictionary")
+        dictionaryModel->setDictionary(masterDictionary_);
+    else if (dictionaryMap.contains(dictName))
     {
         dictionaryModel->setDictionary(dictionaryMap.value(dictName));
         dictionaryView->resizeColumnsToContents();
@@ -94,6 +107,11 @@ void DictionaryForm::importFromMaster()
 void DictionaryForm::deleteDictionary()
 {
     QString curDictName = dictionaryComboBox->currentText();
+    if (curDictName == "Master Dictionary")
+    {
+        QMessageBox::warning(this, tr("Cannot Delete Dictionary"), tr("You cannot delete the master dictionary."));
+        return;
+    }
     rti_dictionary *curDict = dictionaryMap.value(curDictName);
     if (curDict != NULL)
     {
@@ -110,12 +128,13 @@ void DictionaryForm::deleteDictionary()
 //
 void DictionaryForm::init(QMap<QString, rti_dictionary *> dictMap)
 {
+    masterDictionary_ = NULL;
     dictionaryMap = dictMap;
     // Set the dictionary to be whatever the iterator starts at.
     if (!dictMap.isEmpty())
         dictionaryModel = new DictionaryModel(dictionaryMap.begin().value());
     else
-        dictionaryModel = NULL;
+        dictionaryModel = new DictionaryModel;
     proxyModel = new QSortFilterProxyModel;
     proxyModel->setSourceModel(dictionaryModel);
 
@@ -134,6 +153,7 @@ void DictionaryForm::createInterface()
     dictionaryLabel = new QLabel(tr("Dictionary"));
     dictionaryComboBox = new QComboBox;
     connect(dictionaryComboBox, SIGNAL(currentIndexChanged(QString)), this, SLOT(changeDictionary(QString)));
+    dictionaryComboBox->addItem("Master Dictionary");
     dictionaryComboBox->addItems(dictionaryMap.keys());
     incompleteWordsCheckBox = new QCheckBox(tr("Show only incomplete words"));
     connect(incompleteWordsCheckBox, SIGNAL(clicked(bool)), this, SLOT(showOnlyIncompleteWords(bool)));

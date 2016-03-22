@@ -1,6 +1,6 @@
 #include "rti/rti_dictionary.h"
 #include "rti/rti_word.h"
-#include "rti/rti_util.h"
+#include "rti/rti_utils.h"
 #include "dictionarymodel.h"
 #include <QFont>
 
@@ -55,7 +55,7 @@ QVariant DictionaryModel::data(const QModelIndex &index, int role) const
             case 1:
                 return QString::fromStdString(word->arpabet());
             case 2:
-                return QString::fromStdString(join(word->phonemes(), ", "));
+                return QString::fromStdString(rti_utils::join(word->phonemes(), ", "));
             case 3:
                 return QString::fromStdString(word->morphemes());
             case 4:
@@ -69,7 +69,7 @@ QVariant DictionaryModel::data(const QModelIndex &index, int role) const
             case 8:
                 return word->bipha();
             case 9:
-                return tr(QString::fromStdString(join(word->neighbors(), ", ")).toLatin1());
+                return tr(QString::fromStdString(rti_utils::join(word->neighbors(), ", ")).toLatin1());
             default:
                 return QVariant();
         }
@@ -147,5 +147,4 @@ Qt::ItemFlags DictionaryModel::flags(const QModelIndex &index) const
         return Qt::ItemIsSelectable | Qt::ItemIsEditable | Qt::ItemIsEnabled | QAbstractItemModel::flags(index);
     return QAbstractItemModel::flags(index);
 }
-
 
