@@ -282,7 +282,7 @@ rti_dictionary::import_dictionary(rti_dictionary *other_dictionary, bool *up_to_
 }
 //New Code
 void
-rti_dictionary::incWordFreq(vcl_string word, int pos)
+rti_dictionary::inc_wordfreq(vcl_string word, int pos)
 {
     if(word = words_[pos])
     {
@@ -291,7 +291,7 @@ rti_dictionary::incWordFreq(vcl_string word, int pos)
 }
 
 void
-rti_dictionary::getWordsAdded(vcl_string listofWords)
+rti_dictionary::get_wordsadded(vcl_string listofWords)
 {   for(int i; listofWords.size(); i++){
     rti_word_sptr word = listofWords[i];
     insert(rti_word_sptr word, int idx);
@@ -321,21 +321,21 @@ rti_dictionary::get(vcl_string word)
 }
 
 std::vector<rti_word_sptr>
-rti_dictionary::getWords()
+rti_dictionary::get_words()
 {
     return words_;
 }
 
 
 void
-rti_dictionary::displayMessage()
+rti_dictionary::display_message()
 {
     cout<<"There are no differences between the lists";
     return 0;
 }
 
 void
-rti_dictionary::displayList(const vcl_string& filename)
+rti_dictionary::display_list(const vcl_string& filename)
 {
      words_.clear();
   is_empty_ = true;
