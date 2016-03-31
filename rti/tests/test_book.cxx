@@ -31,7 +31,7 @@ namespace
     rti_literature_sptr lit2= new rti_literature();
     TEST("Test literature xml read: \n", lit2->read_xml("literature.xml")==XML_SUCCESS, true);
     TEST("Test literature xml write: \n", lit2->write_xml("literature.xml")==XML_SUCCESS, true);
-    TEST("Test literature Removal: \n", (*lit)[1]==NULL, true);
+    TEST("Test literature Removal: \n", (*lit)[1]->find("210-9876543210", 1)==false, true);
     TEST("Test literature Get Book: \n", (*lit)[0]->isbn()=="012-3456789012", true);
   }
 
