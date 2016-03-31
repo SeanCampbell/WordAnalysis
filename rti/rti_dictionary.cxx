@@ -41,13 +41,13 @@ rti_dictionary::find(const vcl_string& word, int& idx)
     else imax = idx - 1; // change max index to search lower subarray
   }
 
-  if (words_[idx]->spelling() < word) idx++; 
+  if (words_[idx]->spelling() < word) idx++;
   return false;// key was not found
 }
 
-//find(.) should be called first to find out the pos for insertion. When a new word is inserted, 
+//find(.) should be called first to find out the pos for insertion. When a new word is inserted,
 //up_to_date becomes invalid since psa, bipha and neighbors should be recomputed at certain point
-void 
+void
 rti_dictionary::insert(rti_word_sptr word, int pos) //successful insertion if entries are complete
 {
   // if the new word should be at the end of list
@@ -61,23 +61,23 @@ rti_dictionary::insert(rti_word_sptr word, int pos) //successful insertion if en
     words_[pos] = word;
   }
 
-  if (!word->valid()) is_valid_ = false; 
+  if (!word->valid()) is_valid_ = false;
   is_empty_ = false;
 }
 
 void
 rti_dictionary::push_back(rti_word_sptr word)
-{ 
-  words_.push_back(word); 
+{
+  words_.push_back(word);
 }
 
-void 
+void
 rti_dictionary::compute_PSegAves()
 {
   assert(!is_empty_);
-//Positional Segment Frequency (PSF): for each sound in the target word, sum together log10 values of frequencies (PSF) 
-//of words in the corpus having the same sound in the same position. Normalize the sum by dividing the total log10 frequency 
-//of all words in the corpus that have a segment in the given position.  
+//Positional Segment Frequency (PSF): for each sound in the target word, sum together log10 values of frequencies (PSF)
+//of words in the corpus having the same sound in the same position. Normalize the sum by dividing the total log10 frequency
+//of all words in the corpus that have a segment in the given position.
 //Positional segment average (PSA): average of PSF
   float psf = 0;
   float psa = 0;
@@ -94,7 +94,7 @@ rti_dictionary::compute_PSegAves()
     //vcl_cout<<"Target word = "<<word->spelling()<<vcl_endl;
     for (unsigned int j = 0; j<phonemes.size(); j++) {
       count_nume = 0;
-      count_deno = 0;  
+      count_deno = 0;
       for (unsigned int k = 0; k<words_.size(); k++) {
         if (words_[k]->size() > j ) { //only consider words having sounds in the same position
           if ( words_[k]->phonemes()[j].compare(phonemes[j])== 0 ) {
@@ -109,8 +109,8 @@ rti_dictionary::compute_PSegAves()
     word->set_psa(ps_total/phonemes.size());
   }
 }
-	
-void 
+
+void
 rti_dictionary::compute_BiphAves()
 {
   assert(!is_empty_);
@@ -127,42 +127,42 @@ rti_dictionary::compute_BiphAves()
       words_[i]->set_bipha(0.0);
       continue;
     }
-   
+
     bf_total = 0;
     word = words_[i];
     vcl_vector<vcl_string> phonemes = word->phonemes();
     for (unsigned int j = 0; j<phonemes.size()-1; j++) {
       count_nume = 0;
-      count_deno = 0;  
+      count_deno = 0;
       for (unsigned int k = 0; k<words_.size(); k++) {
         if (words_[k]->size() > j+1 ) { //only consider words having adjacent sounds in the same position
-          if (words_[k]->phonemes()[j] == phonemes[j] && words_[k]->phonemes()[j+1] == phonemes[j+1]) 
+          if (words_[k]->phonemes()[j] == phonemes[j] && words_[k]->phonemes()[j+1] == phonemes[j+1])
             count_nume += log10((float)words_[k]->frequency()) + 1; //1 is added to the log value to avoid values of 0
           count_deno += log10((float)words_[k]->frequency()) + 1;
         }
       }
       bf_total += count_nume/count_deno;
-    }   
+    }
     word->set_bipha(bf_total/(phonemes.size()-1));
   }
 }
 
-void 
+void
 rti_dictionary::compute_neighbors(rti_word_sptr target_word, int starting_index)
 {
   assert(!is_empty_);
 
   //Neighborhood density: the number of words differing from a given target word by a one phoneme substitution, deletion, or addition.
 
-  //one phoneme substitution 
-  //All candidates should have the same length as the target word 
+  //one phoneme substitution
+  //All candidates should have the same length as the target word
   vcl_vector<vcl_string> phonemes = target_word->phonemes();
   //vcl_cout<<"Target word = "<<target_word->spelling()<<vcl_endl;
   for (unsigned int j = 0; j<phonemes.size(); j++) {
-    // produce the regular expression with the given phoneme replace with a .* 
+    // produce the regular expression with the given phoneme replace with a .*
     vcl_string reg_exp_str = vcl_string("^");
     if (j == 0) reg_exp_str = reg_exp_str + vcl_string(".+");
-    else reg_exp_str = reg_exp_str + phonemes[0]; 
+    else reg_exp_str = reg_exp_str + phonemes[0];
     for (unsigned int k = 1; k<phonemes.size(); k++) {
       if (k==j) reg_exp_str = reg_exp_str + vcl_string(" .+") ;
       else reg_exp_str = reg_exp_str + vcl_string(" ") + phonemes[k];
@@ -175,7 +175,7 @@ rti_dictionary::compute_neighbors(rti_word_sptr target_word, int starting_index)
     for (unsigned int i = starting_index; i<words_.size(); i++) {
       if ( (words_[i]->size() != target_word->size()) || (!words_[i]->valid()) ) continue;
 
-      if (re.find(words_[i]->arpabet_no_stresses().c_str()) && target_word->spelling().compare(words_[i]->spelling()) != 0) {  
+      if (re.find(words_[i]->arpabet_no_stresses().c_str()) && target_word->spelling().compare(words_[i]->spelling()) != 0) {
         //has to check if the neighbor already exisit, which happens for words with identical arpabet, e.g. bear and bear's
         bool nb_found = false;
         vcl_vector<vcl_string> neighbors = target_word->neighbors();
@@ -194,10 +194,10 @@ rti_dictionary::compute_neighbors(rti_word_sptr target_word, int starting_index)
     }
   }
 
-  //one phoneme deletion 
-  //All candidates should have one phoneme short of target word 
+  //one phoneme deletion
+  //All candidates should have one phoneme short of target word
   for (unsigned int j = 0; j<phonemes.size(); j++) {
-    // produce the regular expression with the given phoneme replace with a .* 
+    // produce the regular expression with the given phoneme replace with a .*
     vcl_string reg_exp_str = vcl_string("^");
     for (unsigned int k = 0; k<phonemes.size()-1; k++) {
       if (k!=j) reg_exp_str += phonemes[k] + vcl_string(" ");
@@ -211,7 +211,7 @@ rti_dictionary::compute_neighbors(rti_word_sptr target_word, int starting_index)
     for (unsigned int i = starting_index; i<words_.size(); i++) {
       if ( (words_[i]->size() != target_word->size() -1) || (!words_[i]->valid()) ) continue;
 
-      if (re.find(words_[i]->arpabet_no_stresses().c_str())) {  
+      if (re.find(words_[i]->arpabet_no_stresses().c_str())) {
         target_word->add_neighbor(words_[i]->spelling());
         words_[i]->add_neighbor(target_word->spelling());
         //vcl_cout<<"\t neighbor = "<<words_[i]->spelling()<<vcl_endl;
@@ -219,11 +219,11 @@ rti_dictionary::compute_neighbors(rti_word_sptr target_word, int starting_index)
     }
   }
 
-  //one phoneme addition (for each space between every two phonemes, and the space before and after the word, insert any phoneme (*) and check if such word exist 
+  //one phoneme addition (for each space between every two phonemes, and the space before and after the word, insert any phoneme (*) and check if such word exist
   //All candidates should be one phoneme more than the target word
   //Produce the reg_exp_str by inserting .+ inbetween any two phonemes and before and after the str.
   for (unsigned int space = 0; space<=phonemes.size(); space++) {
-    // produce the regular expression with the given phoneme replace with a .+ 
+    // produce the regular expression with the given phoneme replace with a .+
     vcl_string reg_exp_str = vcl_string("^");
     if (space==0) reg_exp_str += vcl_string(".+ ") + phonemes[0] + vcl_string(" ");
     else reg_exp_str += phonemes[0] + vcl_string(" ");
@@ -240,7 +240,7 @@ rti_dictionary::compute_neighbors(rti_word_sptr target_word, int starting_index)
     for (unsigned int i = starting_index; i<words_.size(); i++) {
       if ( (words_[i]->size() != target_word->size() + 1) || (!words_[i]->valid()) ) continue;
 
-      if (re.find(words_[i]->arpabet_no_stresses().c_str())) {  
+      if (re.find(words_[i]->arpabet_no_stresses().c_str())) {
         target_word->add_neighbor(words_[i]->spelling());
         words_[i]->add_neighbor(target_word->spelling());
       }
@@ -248,8 +248,8 @@ rti_dictionary::compute_neighbors(rti_word_sptr target_word, int starting_index)
   }
 
 }
-	
-void 
+
+void
 rti_dictionary::compute_neighbors()
 {
   //Neighborhood density: the number of words differing from a given target word by a one phoneme substitution, deletion, or addition.
@@ -283,7 +283,11 @@ rti_dictionary::import_dictionary(rti_dictionary *other_dictionary, bool *up_to_
 
 //New Code
 void
+<<<<<<< HEAD
 rti_dictionary::get_words_added(std::vector<rti_word_sptr> listofWords)
+=======
+rti_dictionary::inc_wordfreq(vcl_string word, int pos)
+>>>>>>> WordAnalysis/master
 {
     int idx;
     for(int i; listofWords.size(); i++)
@@ -295,6 +299,18 @@ rti_dictionary::get_words_added(std::vector<rti_word_sptr> listofWords)
 }
 
 void
+<<<<<<< HEAD
+=======
+rti_dictionary::get_wordsadded(vcl_string listofWords)
+{   for(int i; listofWords.size(); i++){
+    rti_word_sptr word = listofWords[i];
+    insert(rti_word_sptr word, int idx);
+}
+    return 0;
+}
+
+void
+>>>>>>> WordAnalysis/master
 rti_dictionary::incomplete(rti_word_sptr word) //search each field
 {
     if (word->arpabet() == "XXX" || word->morphemes() == "XXX")
@@ -328,7 +344,11 @@ rti_dictionary::display_message()
     std::cout<<"There are no differences between the lists";
 }
 
+<<<<<<< HEAD
 XMLError
+=======
+void
+>>>>>>> WordAnalysis/master
 rti_dictionary::display_list(const vcl_string& filename)
 {
     words_.clear();
@@ -371,7 +391,7 @@ rti_dictionary::read_xml(const vcl_string& xml_filename)
   is_valid_ = true;
 
 	XMLDocument xmlDoc;
-    
+
   //Parse the resource
   XMLError eResult = xmlDoc.LoadFile( xml_filename.c_str() );
   XMLCheckResult(eResult);
@@ -392,15 +412,15 @@ rti_dictionary::read_xml(const vcl_string& xml_filename)
     }
     words_.push_back(word);
     pElement = pElement->NextSiblingElement();
-  }      
-  if (!is_valid_) 
+  }
+  if (!is_valid_)
      vcl_cout<<xml_filename<<" has incomplete entries"<<vcl_endl;
 
   is_empty_ = false;
   return XML_SUCCESS;
 }
 
-XMLError 
+XMLError
 rti_dictionary::write_xml(vcl_string xml_filename, bool up_to_date)
 {
   XMLDocument xmlDoc;
@@ -416,7 +436,7 @@ rti_dictionary::write_xml(vcl_string xml_filename, bool up_to_date)
     words_[i]->write_xml_node(xmlDoc, wElement);
     root_node->InsertEndChild(wElement);
   }
-  
+
   XMLError eResult = xmlDoc.SaveFile( xml_filename.c_str() );
   XMLCheckResult(eResult);
   return eResult;
