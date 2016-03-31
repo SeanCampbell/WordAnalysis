@@ -129,19 +129,7 @@ namespace rti_utils
 	  }
 	}
 
-	// If the old dictionary is provided, import information from the old dictionary
-	if (old_dict != NULL) {
-	  //vcl_cout<<"Importing information from "<<old()<<" ..."<<vcl_endl;
-	  *up_to_date = true;
-	  for (unsigned int i = 0; i<dict->size(); i++) {
-	    if (old_dict->find((*dict)[i]->spelling(), pos) && (*old_dict)[pos]->valid())
-	      (*dict)[i]->copy_arpabet_morpheme( (*old_dict)[pos] );
-	    if (!(*dict)[i]->valid()) {
-	      vcl_cout<<"\t"<<(*dict)[i]->spelling()<<" not found"<<vcl_endl;
-	      *up_to_date = false;
-	    }
-	  }
-	}
+    dict->import_dictionary(old_dict, up_to_date);
 
 	vcl_cout<<"Computing phonotactic information ..."<<vcl_endl;
 	dict->compute_PSegAves();

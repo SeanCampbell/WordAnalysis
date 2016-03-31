@@ -259,6 +259,28 @@ rti_dictionary::compute_neighbors()
   }
 }
 
+
+bool
+rti_dictionary::import_dictionary(rti_dictionary *other_dictionary, bool *up_to_date)
+{
+    if (other_dictionary == NULL)
+        return false;
+    // If the old dictionary is provided, import information from the old dictionary
+    //vcl_cout<<"Importing information from "<<old()<<" ..."<<vcl_endl;
+    int pos;
+    *up_to_date = true;
+    printf("1\n");
+    for (unsigned int i = 0; i<size(); i++) {
+        if (other_dictionary->find((*this)[i]->spelling(), pos) && (*other_dictionary)[pos]->valid())
+            (*this)[i]->copy_arpabet_morpheme( (*other_dictionary)[pos]);
+        if (!(*this)[i]->valid()) {
+            vcl_cout<<"\t"<<(*this)[i]->spelling()<<" not found"<<vcl_endl;
+           *up_to_date = false;
+        }
+    }
+    return true;
+}
+
 XMLError
 rti_dictionary::read_xml(const vcl_string& xml_filename)
 {

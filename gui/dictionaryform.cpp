@@ -56,7 +56,7 @@ bool DictionaryForm::addDictionary(const QString &name, rti_dictionary *dictiona
 void DictionaryForm::setMasterDictionary(rti_dictionary *master)
 {
     masterDictionary_ = master;
-    changeDictionary("Master Dictionary");
+    dictionaryComboBox->setCurrentText("Master Dictionary");
 }
 
 
@@ -101,7 +101,31 @@ void DictionaryForm::changeDictionary(const QString &dictName)
 
 void DictionaryForm::importFromMaster()
 {
+    if (masterDictionary_ == NULL)
+    {
+        QMessageBox::warning(this, tr("No Master Dictionary"), tr("Cannot import from master dictionary because"
+                                                                  "no master dictionary is loaded. Please import"
+                                                                  "a master dictionary and try again."));
+        return;
+    }
 
+    QString curDictName = dictionaryComboBox->currentText();
+    if (curDictName == "Master Dictionary")
+    {
+        QMessageBox::warning(this, tr("Master Dictionary Selected"), tr("Cannot import master dictionary into itself."));
+        return;
+    }
+    rti_dictionary *curDictionary = dictionaryMap.value(curDictName);
+    if (curDictionary == NULL)
+    {
+        QMessageBox::warning(this, tr("No Dictionary Selected"), tr("Cannot import from master dictionary because"
+                                                                    "no dictionary is currently selected."));
+        return;
+    }
+
+    bool up_to_date;
+    if (curDictionary->import_dictionary(masterDictionary_, &up_to_date))
+        QMessageBox::information(this, tr("Success"), tr("Master dictionary imported successfully."));
 }
 
 void DictionaryForm::deleteDictionary()

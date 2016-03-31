@@ -35,6 +35,7 @@ public:
 	void compute_BiphAves();
 	void compute_neighbors(rti_word_sptr target_word, int starting_index = 0); //compute neighbors of a given word. It's neighbors's neighbors are updated too
     void compute_neighbors(); //compute neighbors for all words in the dictionary
+    bool import_dictionary(rti_dictionary *other_dictionary, bool *up_to_date);
     XMLError read_xml(const vcl_string& xml_filename);
 	XMLError write_xml(vcl_string vxl_filename, bool up_to_date);
     rti_word_sptr& operator[](std::size_t idx) { return words_[idx]; }
