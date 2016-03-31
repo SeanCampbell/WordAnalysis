@@ -280,97 +280,87 @@ rti_dictionary::import_dictionary(rti_dictionary *other_dictionary, bool *up_to_
     }
     return true;
 }
+
 //New Code
 void
-rti_dictionary::incWordFreq(vcl_string word, int pos)
+rti_dictionary::get_words_added(std::vector<rti_word_sptr> listofWords)
 {
-    if(word = words_[pos])
+    int idx;
+    for(int i; listofWords.size(); i++)
     {
-        (word_[pos]->frequency_())++;
+        rti_word_sptr word = listofWords[i];
+        if (!find(word->spelling(), idx))
+            insert(word, idx);
     }
-}
-
-void
-rti_dictionary::getWordsAdded(vcl_string listofWords)
-{   for(int i; listofWords.size(); i++){
-    rti_word_sptr word = listofWords[i];
-    insert(rti_word_sptr word, int idx);
-}
-    return 0;
 }
 
 void
 rti_dictionary::incomplete(rti_word_sptr word) //search each field
 {
-    if( arpabet = "XXX" || morphemes_str_ = "XXX" )
-        cout<< word;
-return 0;
+    if (word->arpabet() == "XXX" || word->morphemes() == "XXX")
+        std::cout<< word;
 }
 
 
 rti_word_sptr
-rti_dictionary::get(vcl_string word)
+rti_dictionary::get(rti_word_sptr word)
 {
-    for(int i = 0; i< words_.size; i++)
+    for(int i = 0; i< words_.size(); i++)
     {
-        if(words_.at(i)->word() == word)
+        if(words_.at(i) == word)
         {
             return words_.at(i);
         }
     }
+    return NULL;
 }
 
 std::vector<rti_word_sptr>
-rti_dictionary::getWords()
+rti_dictionary::get_words()
 {
     return words_;
 }
 
 
 void
-rti_dictionary::displayMessage()
+rti_dictionary::display_message()
 {
-    cout<<"There are no differences between the lists";
-    return 0;
+    std::cout<<"There are no differences between the lists";
 }
 
-void
-rti_dictionary::displayList(const vcl_string& filename)
+XMLError
+rti_dictionary::display_list(const vcl_string& filename)
 {
-     words_.clear();
-  is_empty_ = true;
-  is_valid_ = true;
+    words_.clear();
+    is_empty_ = true;
+    is_valid_ = true;
 
 	XMLDocument xmlDoc;
 
-  //Parse the resource
-  XMLError eResult = xmlDoc.LoadFile(filename.c_str() );
-  XMLCheckResult(eResult);
+    //Parse the resource
+    XMLError eResult = xmlDoc.LoadFile(filename.c_str() );
+    XMLCheckResult(eResult);
 
-	/*Get the root element node */
-  XMLElement * pRoot = xmlDoc.RootElement();
-  if (pRoot == nullptr) return XML_ERROR_FILE_READ_ERROR;
+    /*Get the root element node */
+    XMLElement * pRoot = xmlDoc.RootElement();
+    if (pRoot == nullptr) return XML_ERROR_FILE_READ_ERROR;
 
-  //Read the words
-	words_.reserve(10000);
-  XMLElement* pElement = pRoot->FirstChildElement();
-  while (pElement != nullptr) {
-    rti_word_sptr word = new rti_word();
-    word->read_xml_node(pElement);
-    cout<< word;
-    if (!word->valid()) {
-      is_valid_ = false;
-
+    //Read the words
+    words_.reserve(10000);
+    XMLElement* pElement = pRoot->FirstChildElement();
+    while (pElement != nullptr) {
+        rti_word_sptr word = new rti_word();
+        word->read_xml_node(pElement);
+        std::cout << word;
+        if (!word->valid())
+            is_valid_ = false;
     }
+    if (!is_valid_)
+        vcl_cout << filename << " has incomplete entries" << vcl_endl;
 
-  }
-  if (!is_valid_)
-     vcl_cout<<xml_filename<<" has incomplete entries"<<vcl_endl;
-
-  is_empty_ = false;
-  return XML_SUCCESS;
+    is_empty_ = false;
+    return XML_SUCCESS;
 }
-
 //New Code
 
 XMLError
