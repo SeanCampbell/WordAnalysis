@@ -319,11 +319,11 @@ rti_dictionary::incomplete(rti_word_sptr word) //search each field
 
 
 rti_word_sptr
-rti_dictionary::get(rti_word_sptr word)
+rti_dictionary::get(vcl_string spelling)
 {
     for(int i = 0; i< words_.size(); i++)
     {
-        if(words_.at(i) == word)
+        if(words_.at(i)->spelling() == spelling)
         {
             return words_.at(i);
         }
