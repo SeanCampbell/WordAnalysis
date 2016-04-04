@@ -40,7 +40,7 @@ public:
     // New methods
     void get_words_added(std::vector<rti_word_sptr> listofWords);
     void incomplete(rti_word_sptr word);
-    rti_word_sptr get(rti_word_sptr word);
+    rti_word_sptr get(vcl_string spelling);
     std::vector<rti_word_sptr> get_words();
     void display_message();
     XMLError display_list(const vcl_string& filename);
