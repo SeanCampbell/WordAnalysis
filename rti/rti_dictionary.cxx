@@ -283,11 +283,7 @@ rti_dictionary::import_dictionary(rti_dictionary *other_dictionary, bool *up_to_
 
 //New Code
 void
-<<<<<<< HEAD
 rti_dictionary::get_words_added(std::vector<rti_word_sptr> listofWords)
-=======
-rti_dictionary::inc_wordfreq(vcl_string word, int pos)
->>>>>>> WordAnalysis/master
 {
     int idx;
     for(int i; listofWords.size(); i++)
@@ -299,18 +295,6 @@ rti_dictionary::inc_wordfreq(vcl_string word, int pos)
 }
 
 void
-<<<<<<< HEAD
-=======
-rti_dictionary::get_wordsadded(vcl_string listofWords)
-{   for(int i; listofWords.size(); i++){
-    rti_word_sptr word = listofWords[i];
-    insert(rti_word_sptr word, int idx);
-}
-    return 0;
-}
-
-void
->>>>>>> WordAnalysis/master
 rti_dictionary::incomplete(rti_word_sptr word) //search each field
 {
     if (word->arpabet() == "XXX" || word->morphemes() == "XXX")
@@ -344,18 +328,14 @@ rti_dictionary::display_message()
     std::cout<<"There are no differences between the lists";
 }
 
-<<<<<<< HEAD
 XMLError
-=======
-void
->>>>>>> WordAnalysis/master
 rti_dictionary::display_list(const vcl_string& filename)
 {
     words_.clear();
     is_empty_ = true;
     is_valid_ = true;
 
-	XMLDocument xmlDoc;
+    XMLDocument xmlDoc;
 
     //Parse the resource
     XMLError eResult = xmlDoc.LoadFile(filename.c_str() );
@@ -382,6 +362,7 @@ rti_dictionary::display_list(const vcl_string& filename)
     return XML_SUCCESS;
 }
 //New Code
+
 
 XMLError
 rti_dictionary::read_xml(const vcl_string& xml_filename)
