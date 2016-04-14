@@ -80,8 +80,8 @@ namespace
     TEST("Test dictionary xml write: \n",dictionary->write_xml("dictionary.xml", true)==XML_SUCCESS, true);
     TEST("Test dictionary xml read: \n",dic2->read_xml("dictionary.xml")==XML_SUCCESS, true);
     TEST("Test dictionary xml write: \n",dic2->write_xml("dictionary2.xml", false)==XML_SUCCESS, true);
-    TEST("Test dictionary Get Word:\n", (dictionary)-> find(vcl_string("read"),pos)) dictionary-> spelling()=="read", true);
-    TEST("Test if a word is incomplete:\n", dictionary->word()=="XXX",true);
+    TEST("Test dictionary Get Word:\n", (*dictionary)-> dictionary-> spelling()=="read", true);
+    
   }
 }
 static void test_dictionary()
