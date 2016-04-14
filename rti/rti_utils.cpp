@@ -151,6 +151,7 @@ namespace rti_utils
         for (i = 0; i < literature->size(); i++)
         {
             rti_book *book = (*literature)[i].ptr();
+            // Add book to the correct grade level.
             switch (book->age_range())
             {
                 case rti_book::NS:
