@@ -6,6 +6,7 @@
 
 #include "rti_literature.h"
 #include "rti_dictionary.h"
+#include "rti_word_frequency_list.h"
 
 namespace rti_utils
 {
@@ -15,6 +16,8 @@ namespace rti_utils
     bool find_arpabet(vcl_string spelling, const vcl_vector<vcl_pair<vcl_string, vcl_string> >& cmu_arpabets, vcl_string& arpabet);
     rti_dictionary *build_dictionary(rti_literature *literature, rti_dictionary *old_dict,
                                      vcl_vector<vcl_pair<vcl_string, vcl_string> > cmu_arpabets, bool *up_to_date);
+
+    rti_word_frequency_list generate_word_frequency_list_from_literature(rti_literature *literature);
 }
 
 #endif // RTI_UTIL

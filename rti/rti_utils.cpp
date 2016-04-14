@@ -138,5 +138,66 @@ namespace rti_utils
 
 	return dict;
     }
+
+
+
+    rti_word_frequency_list generate_word_frequency_list_from_literature(rti_literature *literature)
+    {
+        int i;
+        std::vector<rti_book*> gradeLevels[5];
+
+        // Divide into groups by grade level:
+        // Nursery/Pre-K/Kindergarten, 1st, 2nd, 3rd, 4th
+        for (i = 0; i < literature->size(); i++)
+        {
+            rti_book *book = (*literature)[i].ptr();
+            switch (book->age_range())
+            {
+                case rti_book::NS:
+                    gradeLevels[0].push_back(book);
+                case rti_book::PK:
+                    gradeLevels[0].push_back(book);
+                case rti_book::K:
+                    gradeLevels[0].push_back(book);
+                case rti_book::G1:
+                    gradeLevels[1].push_back(book);
+                case rti_book::G2:
+                    gradeLevels[2].push_back(book);
+                case rti_book::G3:
+                    gradeLevels[3].push_back(book);
+                case rti_book::G4:
+                    gradeLevels[4].push_back(book);
+            }
+        }
+
+        rti_word_frequency_list *wflist = new rti_word_frequency_list;
+        // For each grade level...
+        for (i = 0; i < 5; i++)
+        {/*
+            std::map<string, int> wordMap;
+            for (int j = 0; j < gradeLevels[i].size(); j++)
+            {
+                rti_book *book = gradeLevels[i].at(j);
+                for (int k = 0; k < book->size(); k++)
+                {
+                    if (wflist->)
+                }
+            }*/
+        }
+
+        /*
+            For each grade level...
+                Go through each word in each book
+                    Check if word is in previous grade level list
+                    If not, tally occurrences of word in master map
+        Add # of occurrences to tally of total # of words
+        Calculate expected frequency of each word
+                For each word in map...
+                    Calculate normalized frequency by dividing by # of words in grade level
+                    Compare to expected frequency – if ratio is greater than a given
+        parameter, add to list of words for that grade level
+        */
+    }
+
 }
 

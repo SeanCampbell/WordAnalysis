@@ -16,6 +16,7 @@ SET( rti_sources
  rti_examination_complete.h 		rti_examination_complete.cxx
  rti_assessment.h 					rti_assessment.cxx
  rti_assessment_sptr.h
+ rti_word_frequency_list.h				rti_word_frequency_list.cpp
 )
 
 AUX_SOURCE_DIRECTORY( Templates rti_sources )
