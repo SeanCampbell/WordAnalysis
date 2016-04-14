@@ -84,7 +84,7 @@ namespace
     TEST("Test dictionary Get Word:\n",  dictionary->get("sing")->spelling()=="sing", true);
     TEST("Test dictionary Get Word:\n",  dictionary->get("read")==NULL, true);
 =======
-    TEST("Test dictionary Get Word:\n", (*dictionary)-> dictionary-> spelling()=="read", true);
+    
     
 >>>>>>> WordAnalysis/master
   }
