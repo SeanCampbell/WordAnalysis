@@ -2,6 +2,7 @@
 #include "gui/bookform.h"
 #include "gui/dictionaryform.h"
 #include "gui/libraryform.h"
+#include "gui/wordfrequencyform.h"
 #include "gui/mainwindow.h"
 #include "rti/rti_book.h"
 #include "rti/rti_book_sptr.h"
@@ -63,8 +64,12 @@ int main(int argc, char *argv[])
     LibraryForm libForm(lit);
     libForm.show();
 */
+
+    WordFrequencyForm wordForm;
+    wordForm.show();
+
     MainWindow mainWin;
-    mainWin.show();
+    //mainWin.show();
 
     return app.exec();
 }

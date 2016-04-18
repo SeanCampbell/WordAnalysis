@@ -80,13 +80,8 @@ namespace
     TEST("Test dictionary xml write: \n",dictionary->write_xml("dictionary.xml", true)==XML_SUCCESS, true);
     TEST("Test dictionary xml read: \n",dic2->read_xml("dictionary.xml")==XML_SUCCESS, true);
     TEST("Test dictionary xml write: \n",dic2->write_xml("dictionary2.xml", false)==XML_SUCCESS, true);
-<<<<<<< HEAD
     TEST("Test dictionary Get Word:\n",  dictionary->get("sing")->spelling()=="sing", true);
-    TEST("Test dictionary Get Word:\n",  dictionary->get("read")==NULL, true);
-=======
-    
-    
->>>>>>> WordAnalysis/master
+    TEST("Test dictionary Get Word:\n",  dictionary->get("read")==NULL, true);    
   }
 }
 static void test_dictionary()

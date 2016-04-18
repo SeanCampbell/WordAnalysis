@@ -1,5 +1,6 @@
-#include "dictionaryform.h"
 #include "libraryform.h"
+#include "dictionaryform.h"
+#include "wordfrequencyform.h"
 #include "rti/rti_literature.h"
 #include "rti/rti_utils.h"
 #include "mainwindow.h"
@@ -108,10 +109,12 @@ void MainWindow::setupInterface()
     connect(libraryForm, SIGNAL(createDictionaryRequested(QList<rti_book*>)),
             this, SLOT(createDictionary(QList<rti_book*>)));
     dictionaryForm = new DictionaryForm;
+    wordFrequencyForm = new WordFrequencyForm;
     tabWidget = new QTabWidget;
 
     tabWidget->addTab(libraryForm, tr("Library"));
     tabWidget->addTab(dictionaryForm, tr("Dictionary"));
+    tabWidget->addTab(wordFrequencyForm, tr("Word Frequency"));
 
     // Stick tab widget in another widget, because
     // otherwise the margins are too small.

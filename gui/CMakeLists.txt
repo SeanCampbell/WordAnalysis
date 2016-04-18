@@ -1,12 +1,14 @@
 SET(gui_sources
-    comboboxdelegate.h	comboboxdelegate.cpp
-    bookform.h		bookform.cpp
-    dictionaryform.h	dictionaryform.cpp
-    dictionarymodel.h	dictionarymodel.cpp
-    libraryform.h	libraryform.cpp
-    librarymodel.h	librarymodel.cpp
-    mainwindow.h	mainwindow.cpp
-    wautils.h		wautils.cpp
+    comboboxdelegate.h	        comboboxdelegate.cpp
+    bookform.h		        bookform.cpp
+    libraryform.h	        libraryform.cpp
+    librarymodel.h	        librarymodel.cpp
+    dictionaryform.h	        dictionaryform.cpp
+    dictionarymodel.h	        dictionarymodel.cpp
+    wordfrequencyform.h		wordfrequencyform.cpp
+    wordfrequencymodel.h	wordfrequencymodel.cpp
+    mainwindow.h	        mainwindow.cpp
+    wautils.h		        wautils.cpp
 )
 
 ADD_LIBRARY( gui ${gui_sources} )

@@ -140,8 +140,8 @@ namespace rti_utils
     }
 
 
-    rti_word_frequency_list *generate_word_frequency_list_from_literature(rti_literature *literature, double frequencyRatioThreshold)
-    {
+    rti_word_frequency_list *generate_word_frequency_list_from_literature(rti_literature *literature, int frequencyThreshold)
+    {/*
         int i;
         std::vector<rti_book*> gradeLevels[5];
 
@@ -215,7 +215,18 @@ namespace rti_utils
         }
 
         return wflist;
-
+*/
+        /*
+            For each grade level...
+                Go through each word in each book
+                    Check if word is in previous grade level lists
+                    If not, tally occurrences of word in master map
+                Add # of occurrences to tally of total # of words
+                Calculate expected frequency of each word
+                For each word in map...
+                    Compare to expected frequency – if ratio is greater than a given
+                    parameter, add to list of words for that grade level
+        */
         /*
             For each grade level...
                 Go through each word in each book

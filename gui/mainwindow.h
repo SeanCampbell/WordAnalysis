@@ -2,8 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-class DictionaryForm;
 class LibraryForm;
+class DictionaryForm;
+class WordFrequencyForm;
 
 class MainWindow : public QMainWindow
 {
@@ -28,6 +29,7 @@ private:
     // GUI
     DictionaryForm *dictionaryForm;
     LibraryForm *libraryForm;
+    WordFrequencyForm *wordFrequencyForm;
     QTabWidget *tabWidget;
     QMenu *fileMenu;
     QAction *importLibraryAction;
