@@ -183,23 +183,31 @@ namespace rti_utils
                 for (int k = 0; k < book->size(); k++)
                 {
                     vcl_pair<std::string, int> wordFreqPair = (*book)[k];
-                    //If the word does not exist in previous lists
-                    
+                    bool check = false;
+                    //Check to see if word exists in previous lists
                     for(int n = 0; n < i, n++)
                     {
-                    	bool check = false;
-                    	std::map<std::string, int>::iterator it = gradeLevelMaps[n].find(wordFreqPair);
-		    	int x;
-		    	if(it != gradeLevelMaps[n].end())
+                    	
+                    	std::map<std::string, int>::iterator it1 = gradeLevelMaps[n].find(wordFreqPair->first);
+		    	if(it1 != gradeLevelMaps[n].end())
 		        {
 			 	//element found;
-   			 	x = it->second;
    			 	check = true;
 		    	}
                     }
                     if(check == false)
                     {
-                    	wordMap.insert(wordFreqPair);
+                    	std::map<std::string, int>::iterator it2 = wordMap.find(wordFreqPair->first);
+                    	int x;
+                    	if(it2 != wordMap.end())
+                    	{
+                    		//element found
+                    		x = it2 -> second += (wordFreqPair-> second);
+                    	}
+                    	else
+                    	{
+                    		wordMap.insert(wordFreqPair);
+                    	}
                     }
                 }
             }
