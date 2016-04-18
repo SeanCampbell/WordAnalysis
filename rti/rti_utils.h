@@ -18,6 +18,10 @@ namespace rti_utils
                                      vcl_vector<vcl_pair<vcl_string, vcl_string> > cmu_arpabets, bool *up_to_date);
 
     rti_word_frequency_list *generate_word_frequency_list_from_literature(rti_literature *literature, int frequencyThreshold);
+
+    std::vector<rti_word> compareLists(rti_word stateList[], rti_word gradeList[]);
+    std::vector<rti_word> compareListsGrade(rti_word stateList[], rti_word gradeList[]);
+    std::vector<rti_word> findSimilarWords(rti_word stateList[], rti_word gradeList[]);
 }
 
 #endif // RTI_UTIL

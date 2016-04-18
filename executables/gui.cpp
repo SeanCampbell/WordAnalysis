@@ -11,6 +11,7 @@
 #include "rti/rti_literature.h"
 #include "rti/rti_literature_sptr.h"
 #include "rti/rti_word.h"
+#include "rti/rti_word_frequency_list.h"
 #include <iostream>
 
 int main(int argc, char *argv[])
@@ -65,7 +66,10 @@ int main(int argc, char *argv[])
     libForm.show();
 */
 
+    rti_word_frequency_list *wflist = new rti_word_frequency_list;
     WordFrequencyForm wordForm;
+    wordForm.setInputtedWordFrequencyList(wflist);
+    wordForm.setGeneratedWordFrequencyList(wflist);
     wordForm.show();
 
     MainWindow mainWin;

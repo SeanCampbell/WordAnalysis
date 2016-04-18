@@ -27,21 +27,21 @@ namespace rti_utils
 {
     std::string join(std::vector<std::string> v, std::string delimiter)
     {
-	std::stringstream ss;
-	for (std::vector<std::string>::iterator it = v.begin(); it != v.end(); it++)
-	{
-	    if (it != v.begin())
-		ss << delimiter;
-	    ss << *it;
-	}
-	return ss.str();
+    std::stringstream ss;
+    for (std::vector<std::string>::iterator it = v.begin(); it != v.end(); it++)
+    {
+        if (it != v.begin())
+        ss << delimiter;
+        ss << *it;
+    }
+    return ss.str();
     }
 
     vcl_string trim(const vcl_string& str)
     {
-	size_t first = str.find_first_not_of(' ');
-	size_t last = str.find_last_not_of(' ');
-	return str.substr(first, (last-first+1));
+    size_t first = str.find_first_not_of(' ');
+    size_t last = str.find_last_not_of(' ');
+    return str.substr(first, (last-first+1));
     }
 
     bool import_cmu_dictionary(vcl_string cmu_filename, vcl_vector<vcl_pair<vcl_string, vcl_string> >& arpabets)
@@ -55,24 +55,24 @@ namespace rti_utils
       vcl_string arpabet, line;
       vcl_string spelling;
       while(!cmu_stream.eof()) {
-	vcl_getline(cmu_stream, line);
-	vcl_stringstream line_str(line);
-	line_str>>spelling;
-	if (spelling == vcl_string(";;;")) continue; //skip the comment
-	vcl_getline(line_str, arpabet);
-	if (!re.find(spelling)) {
-	  arpabet = trim(arpabet);
-	  //arpabets.push_back(vcl_pair<vcl_string, vcl_string>(vul_string_downcase(spelling), arpabet));
-	  arpabets.push_back(vcl_pair<vcl_string, vcl_string>(spelling, arpabet)); //keep the upper case
-	}
-	/*
-	cmu_stream>>spelling;
-	vcl_getline(cmu_stream, arpabet);
-	if (!re.find(spelling)) {
-	  arpabet = trim(arpabet);
-	  arpabets.push_back(vcl_pair<vcl_string, vcl_string>(vul_string_downcase(spelling), arpabet));
-	}
-	*/
+    vcl_getline(cmu_stream, line);
+    vcl_stringstream line_str(line);
+    line_str>>spelling;
+    if (spelling == vcl_string(";;;")) continue; //skip the comment
+    vcl_getline(line_str, arpabet);
+    if (!re.find(spelling)) {
+      arpabet = trim(arpabet);
+      //arpabets.push_back(vcl_pair<vcl_string, vcl_string>(vul_string_downcase(spelling), arpabet));
+      arpabets.push_back(vcl_pair<vcl_string, vcl_string>(spelling, arpabet)); //keep the upper case
+    }
+    /*
+    cmu_stream>>spelling;
+    vcl_getline(cmu_stream, arpabet);
+    if (!re.find(spelling)) {
+      arpabet = trim(arpabet);
+      arpabets.push_back(vcl_pair<vcl_string, vcl_string>(vul_string_downcase(spelling), arpabet));
+    }
+    */
       }
       return true;
     }
@@ -86,14 +86,14 @@ namespace rti_utils
       int imin = 0;
       int idx;
       while (imax >= imin) {
-	idx = (imax+imin)/2; // calculate the midpoint for roughly equal partition
-	if(cmu_arpabets[idx].first == spelling) {
-	  arpabet = cmu_arpabets[idx].second;
-	  return true; // key found at index imid
-	}
-	else if (cmu_arpabets[idx].first < spelling)// determine which subarray to search
-	  imin = idx + 1; // change min index to search upper subarray
-	else imax = idx - 1; // change max index to search lower subarray
+    idx = (imax+imin)/2; // calculate the midpoint for roughly equal partition
+    if(cmu_arpabets[idx].first == spelling) {
+      arpabet = cmu_arpabets[idx].second;
+      return true; // key found at index imid
+    }
+    else if (cmu_arpabets[idx].first < spelling)// determine which subarray to search
+      imin = idx + 1; // change min index to search upper subarray
+    else imax = idx - 1; // change max index to search lower subarray
       }
 
       if (cmu_arpabets[idx].first < spelling) idx++;
@@ -102,46 +102,46 @@ namespace rti_utils
 
 
     rti_dictionary *build_dictionary(rti_literature *literature, rti_dictionary *old_dict,
-				     vcl_vector<vcl_pair<vcl_string, vcl_string> > cmu_arpabets, bool *up_to_date)
+                     vcl_vector<vcl_pair<vcl_string, vcl_string> > cmu_arpabets, bool *up_to_date)
     {
-	if (cmu_arpabets.empty())
-	    return NULL;
+    if (cmu_arpabets.empty())
+        return NULL;
 
-	rti_dictionary *dict = new rti_dictionary();
-	rti_word_sptr word;
-	//iterate through the book list to collect the words
-	int pos;
-	//vcl_cout<<"Compiling the dictionary from "<<lit()<<" ..."<<vcl_endl;
-	for (unsigned int i=0; i<literature->size(); i++) {
-	  rti_book_sptr book = (*literature)[i];
-	  for (unsigned int j=0; j<book->size(); j++) {
-	    if (dict->find((*book)[j].first, pos)) (*dict)[pos]->increase_frequency((*book)[j].second);
-	    else {
-	      vcl_string arpabet;
-	      if (find_arpabet((*book)[j].first, cmu_arpabets, arpabet)) word = new rti_word((*book)[j].first, (*book)[j].second, arpabet);
-	      else {
-		word = new rti_word((*book)[j].first,(*book)[j].second);
-		vcl_cout<<"\t"<<word->spelling()<<" not found"<<vcl_endl;
-		*up_to_date = false;
-	      }
-	      dict->insert(word, pos);
-	    }
-	  }
-	}
+    rti_dictionary *dict = new rti_dictionary();
+    rti_word_sptr word;
+    //iterate through the book list to collect the words
+    int pos;
+    //vcl_cout<<"Compiling the dictionary from "<<lit()<<" ..."<<vcl_endl;
+    for (unsigned int i=0; i<literature->size(); i++) {
+      rti_book_sptr book = (*literature)[i];
+      for (unsigned int j=0; j<book->size(); j++) {
+        if (dict->find((*book)[j].first, pos)) (*dict)[pos]->increase_frequency((*book)[j].second);
+        else {
+          vcl_string arpabet;
+          if (find_arpabet((*book)[j].first, cmu_arpabets, arpabet)) word = new rti_word((*book)[j].first, (*book)[j].second, arpabet);
+          else {
+        word = new rti_word((*book)[j].first,(*book)[j].second);
+        vcl_cout<<"\t"<<word->spelling()<<" not found"<<vcl_endl;
+        *up_to_date = false;
+          }
+          dict->insert(word, pos);
+        }
+      }
+    }
 
     dict->import_dictionary(old_dict, up_to_date);
 
-	vcl_cout<<"Computing phonotactic information ..."<<vcl_endl;
-	dict->compute_PSegAves();
-	dict->compute_BiphAves();
-	dict->compute_neighbors();
+    vcl_cout<<"Computing phonotactic information ..."<<vcl_endl;
+    dict->compute_PSegAves();
+    dict->compute_BiphAves();
+    dict->compute_neighbors();
 
-	return dict;
+    return dict;
     }
 
 
-    rti_word_frequency_list *generate_word_frequency_list_from_literature(rti_literature *literature, int frequencyThreshold)
-    {/*
+    rti_word_frequency_list *generate_word_frequency_list_from_literature(rti_literature *literature, double frequencyRatioThreshold)
+    {
         int i;
         std::vector<rti_book*> gradeLevels[5];
 
@@ -173,7 +173,7 @@ namespace rti_utils
         rti_word_frequency_list *wflist = new rti_word_frequency_list;
         // For each grade level...
         for (i = 0; i < 5; i++)
-        {
+        {/*
             int totalWords = 0;
             std::map<std::string, int> wordMap;
             // Go through each word in each book...
@@ -185,48 +185,37 @@ namespace rti_utils
                     vcl_pair<std::string, int> wordFreqPair = (*book)[k];
                     bool check = false;
                     //Check to see if word exists in previous lists
-                    for(int n = 0; n < i, n++)
+                    for(int n = 0; n < i; n++)
                     {
-                    	
-                    	std::map<std::string, int>::iterator it1 = gradeLevelMaps[n].find(wordFreqPair->first);
-		    	if(it1 != gradeLevelMaps[n].end())
-		        {
-			 	//element found;
-   			 	check = true;
-		    	}
+
+                        std::map<std::string, int>::iterator it1 = gradeLevelMaps[n].find(wordFreqPair->first);
+                if(it1 != gradeLevelMaps[n].end())
+                {
+                //element found;
+                check = true;
+                }
                     }
                     if(check == false)
                     {
-                    	std::map<std::string, int>::iterator it2 = wordMap.find(wordFreqPair->first);
-                    	int x;
-                    	if(it2 != wordMap.end())
-                    	{
-                    		//element found
-                    		x = it2 -> second += (wordFreqPair-> second);
-                    	}
-                    	else
-                    	{
-                    		wordMap.insert(wordFreqPair);
-                    	}
+                        std::map<std::string, int>::iterator it2 = wordMap.find(wordFreqPair->first);
+                        int x;
+                        if(it2 != wordMap.end())
+                        {
+                            //element found
+                            x = it2 -> second += (wordFreqPair-> second);
+                        }
+                        else
+                        {
+                            wordMap.insert(wordFreqPair);
+                        }
                     }
                 }
             }
             wflist->gradeLevelMaps[i] = wordMap;
-        }
+        */}
 
         return wflist;
-*/
-        /*
-            For each grade level...
-                Go through each word in each book
-                    Check if word is in previous grade level lists
-                    If not, tally occurrences of word in master map
-                Add # of occurrences to tally of total # of words
-                Calculate expected frequency of each word
-                For each word in map...
-                    Compare to expected frequency – if ratio is greater than a given
-                    parameter, add to list of words for that grade level
-        */
+
         /*
             For each grade level...
                 Go through each word in each book
@@ -241,5 +230,86 @@ namespace rti_utils
         */
     }
 
-}
 
+
+
+    std::vector<rti_word> compareLists(rti_word stateList[], rti_word gradeList[])
+    {
+            //perform a set difference on the two lists (cplusplus.com)
+            //return the resulting list
+            std::vector<rti_word> v;
+
+            rti_word temp;
+
+            int i,n;
+
+            bool notFound;
+            for(i=0; i<sizeof stateList;i++)
+            {
+                temp = stateList[i];
+                notFound = false;
+                for(n=0;n<sizeof gradeList;n++)
+                {
+                    if(gradeList[n].spelling() == temp)
+                    {
+                        notFound = false;
+                        break;
+                    }
+                    else
+                    {
+                        notFound = true;
+                    }
+                }
+                if(notFound == true)
+                {
+                    v.push_back(temp);
+                }
+            }
+            return v;
+    }
+
+    std::vector<rti_word> compareListsGrade(rti_word stateList[], rti_word gradeList[])
+    {		std::vector<rti_word> c;
+            rti_word other;
+            int j,k;
+
+            bool notFound;
+            for(j=0; j<sizeof gradeList; j++)
+            {
+                other = gradeList[j];
+                notFound = false;
+                for(k=0; k<sizeof stateList; k++)
+                {
+                    if(gradeList[k].spelling() == other)
+                    {
+                        notFound = false;
+                        break;
+                    }
+                    else
+                    {
+                        notFound = true;
+                    }
+                }
+                if(notFound == true)
+                {
+                    c.push_back(other);
+                }
+            }
+            return c;
+    }
+
+    std::vector<rti_word> findSimilarWords(rti_word stateList[], rti_word gradeList[])
+    {
+        std::vector<rti_word> k;
+        std::sort(stateList.begin(), stateList.end());
+            std::sort(gradeList.begin(), gradeList.end());
+                std::set_intersection(stateList.begin(), stateList.end(),
+                              gradeList.begin(), gradeList.end(),
+                              std::back_inserter(k));
+        return k;
+            //std::vector<int>::iterator it;
+            //it=std::set_difference(stateList[0],stateList[sizeof stateList],gradeList[0],gradeList[sizeof gradeList],v.begin());
+    }
+
+
+}

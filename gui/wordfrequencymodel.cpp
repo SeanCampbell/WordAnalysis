@@ -1,6 +1,8 @@
 #include "wordfrequencymodel.h"
+#include <QDebug>
 
 WordFrequencyModel::WordFrequencyModel()
+    : inputtedList_(), generatedList_()
 {
 
 }
@@ -44,7 +46,7 @@ QVariant WordFrequencyModel::data(const QModelIndex &index, int role) const
     if (!index.isValid())
         return QVariant();
 
-    if (role == Qt::DisplayRole || role == Qt::EditRole)
+    if (role == Qt::DisplayRole)
     {
         switch (index.column())
         {
@@ -81,7 +83,7 @@ QVariant WordFrequencyModel::headerData(int section, Qt::Orientation orientation
             case 2:
                 return tr("Intersection");
             case 3:
-                return tr("Only Input");
+                return tr("Only Inputted");
             case 4:
                 return tr("Only Generated");
             default:
