@@ -59,8 +59,11 @@ std::vector<rti_word> Frequency::compareLists(rti_word stateList[], rti_word gra
 		//perform a set difference on the two lists (cplusplus.com)
 		//return the resulting list
 		std::vector<rti_word> v;
+		
 		rti_word temp;
+		
 		int i,n;
+		
 		bool notFound;
 		for(i=0; i<sizeof stateList;i++)
 		{
@@ -84,8 +87,46 @@ std::vector<rti_word> Frequency::compareLists(rti_word stateList[], rti_word gra
 			}
 		}
 		return v;
+		
+std::vector<rti_word> Frequency::compareListsGrade(rti_word stateList[], rti_word gradeList[])
+{		std::vector<rti_word> c;
+		rti_word other;
+		int j,k;
+		
+		bool notFound;
+		for(j=0; j<sizeof gradeList; j++)
+		{
+			other = gradeList[j];
+			notFound = false;
+			for(k=0; k<sizeof stateList; k++)
+			{
+				if(gradeList[k].spelling() == other)
+				{
+					notFound = false;
+					break;
+				}
+				else
+				{
+					notFound = true;
+				}
+			}
+			if(notFound == true)
+			{
+				c.push_back(other);	
+			}
+		}
+		return c;
 
-
+std::vector<rti_word> Frequency::findSimilarWords(rti_word stateList[], rti_word gradeList[])
+{		
+	std::vector<rti_word> k;
+	std::sort(stateList.begin(), stateList.end());
+    	std::sort(gradeList.begin(), gradeList.end());
+    		std::set_intersection(stateList.begin(), stateList.end(),
+                          gradeList.begin(), gradeList.end(),
+                          std::back_inserter(k));
+}
+	return k;
 		//std::vector<int>::iterator it;
 		//it=std::set_difference(stateList[0],stateList[sizeof stateList],gradeList[0],gradeList[sizeof gradeList],v.begin());
 }
