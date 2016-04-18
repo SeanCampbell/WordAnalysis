@@ -140,8 +140,7 @@ namespace rti_utils
     }
 
 
-
-    rti_word_frequency_list generate_word_frequency_list_from_literature(rti_literature *literature)
+    rti_word_frequency_list *generate_word_frequency_list_from_literature(rti_literature *literature, double frequencyRatioThreshold)
     {
         int i;
         std::vector<rti_book*> gradeLevels[5];
@@ -174,29 +173,36 @@ namespace rti_utils
         rti_word_frequency_list *wflist = new rti_word_frequency_list;
         // For each grade level...
         for (i = 0; i < 5; i++)
-        {/*
-            std::map<string, int> wordMap;
+        {
+            int totalWords = 0;
+            std::map<std::string, int> wordMap;
+            // Go through each word in each book...
             for (int j = 0; j < gradeLevels[i].size(); j++)
             {
                 rti_book *book = gradeLevels[i].at(j);
                 for (int k = 0; k < book->size(); k++)
                 {
-                    if (wflist->)
+                    vcl_pair<std::string, int> wordFreqPair = (*book)[k];
+                    // If the word is not in previous lists...
+
                 }
-            }*/
+            }
+            wflist->gradeLevelMaps[i] = wordMap;
         }
+
+        return wflist;
 
         /*
             For each grade level...
                 Go through each word in each book
-                    Check if word is in previous grade level list
+                    Check if word is in previous grade level lists
                     If not, tally occurrences of word in master map
-        Add # of occurrences to tally of total # of words
-        Calculate expected frequency of each word
+                Add # of occurrences to tally of total # of words
+                Calculate expected frequency of each word
                 For each word in map...
                     Calculate normalized frequency by dividing by # of words in grade level
                     Compare to expected frequency – if ratio is greater than a given
-        parameter, add to list of words for that grade level
+                    parameter, add to list of words for that grade level
         */
     }
 

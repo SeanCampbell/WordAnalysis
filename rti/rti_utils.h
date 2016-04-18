@@ -17,7 +17,7 @@ namespace rti_utils
     rti_dictionary *build_dictionary(rti_literature *literature, rti_dictionary *old_dict,
                                      vcl_vector<vcl_pair<vcl_string, vcl_string> > cmu_arpabets, bool *up_to_date);
 
-    rti_word_frequency_list generate_word_frequency_list_from_literature(rti_literature *literature);
+    rti_word_frequency_list *generate_word_frequency_list_from_literature(rti_literature *literature, double frequencyRatioThreshold);
 }
 
 #endif // RTI_UTIL
