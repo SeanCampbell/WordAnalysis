@@ -17,6 +17,7 @@ private slots:
     void exportLibrary();
     void importMasterDictionary();
     void exportMasterDictionary();
+    void loadWordFrequencyList();
     void displayMorphemes() const;
 
     void createDictionary(QList<rti_book*> books);
@@ -36,9 +37,10 @@ private:
     QAction *exportLibraryAction;
     QAction *importMasterDictionaryAction;
     QAction *exportMasterDictionaryAction;
+    QAction *loadWordFrequencyListAction;
     QAction *quitAction;
-    QMenu *viewMenu;
-    QAction *displayMorphemesAction;
+    //QMenu *viewMenu;
+    //QAction *displayMorphemesAction;
 };
 
 #endif // MAINWINDOW_H

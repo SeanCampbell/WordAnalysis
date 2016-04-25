@@ -25,6 +25,9 @@ public:
 private:
     std::vector<std::string> generatedList_;
     std::vector<std::string> inputtedList_;
+    std::vector<std::string> intersectionList;
+    std::vector<std::string> generatedDiffList;
+    std::vector<std::string> inputtedDiffList;
 };
 
 #endif // WORDFREQUENCYMODEL_H

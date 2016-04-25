@@ -142,174 +142,50 @@ namespace rti_utils
 
     rti_word_frequency_list *generate_word_frequency_list_from_literature(rti_literature *literature, double frequencyRatioThreshold)
     {
-        int i;
-        std::vector<rti_book*> gradeLevels[5];
-
-        // Divide into groups by grade level:
-        // Nursery/Pre-K/Kindergarten, 1st, 2nd, 3rd, 4th
-        for (i = 0; i < literature->size(); i++)
+        rti_word_frequency_list *wflist = new rti_word_frequency_list;
+        for (int i = 0; i < literature->size(); i++)
         {
             rti_book *book = (*literature)[i].ptr();
-            // Add book to the correct grade level.
-            switch (book->age_range())
+            for (int j = 0; j < book->size(); j++)
             {
-                case rti_book::NS:
-                    gradeLevels[0].push_back(book);
-                case rti_book::PK:
-                    gradeLevels[0].push_back(book);
-                case rti_book::K:
-                    gradeLevels[0].push_back(book);
-                case rti_book::G1:
-                    gradeLevels[1].push_back(book);
-                case rti_book::G2:
-                    gradeLevels[2].push_back(book);
-                case rti_book::G3:
-                    gradeLevels[3].push_back(book);
-                case rti_book::G4:
-                    gradeLevels[4].push_back(book);
+                vcl_pair<std::string, int> wordFreqPair = (*book)[j];
+                wflist->add_word_in_grade_level(wordFreqPair.first, wordFreqPair.second, book->age_range());
             }
         }
 
-        rti_word_frequency_list *wflist = new rti_word_frequency_list;
-        // For each grade level...
-        for (i = 0; i < 5; i++)
-        {/*
-            int totalWords = 0;
-            std::map<std::string, int> wordMap;
-            // Go through each word in each book...
-            for (int j = 0; j < gradeLevels[i].size(); j++)
-            {
-                rti_book *book = gradeLevels[i].at(j);
-                for (int k = 0; k < book->size(); k++)
-                {
-                    vcl_pair<std::string, int> wordFreqPair = (*book)[k];
-                    bool check = false;
-                    //Check to see if word exists in previous lists
-                    for(int n = 0; n < i; n++)
-                    {
-
-                        std::map<std::string, int>::iterator it1 = gradeLevelMaps[n].find(wordFreqPair->first);
-                if(it1 != gradeLevelMaps[n].end())
-                {
-                //element found;
-                check = true;
-                }
-                    }
-                    if(check == false)
-                    {
-                        std::map<std::string, int>::iterator it2 = wordMap.find(wordFreqPair->first);
-                        int x;
-                        if(it2 != wordMap.end())
-                        {
-                            //element found
-                            x = it2 -> second += (wordFreqPair-> second);
-                        }
-                        else
-                        {
-                            wordMap.insert(wordFreqPair);
-                        }
-                    }
-                }
-            }
-            wflist->gradeLevelMaps[i] = wordMap;
-        */}
+        wflist->set_threshold(frequencyRatioThreshold);
+        wflist->update_most_frequent_words();
 
         return wflist;
-
-        /*
-            For each grade level...
-                Go through each word in each book
-                    Check if word is in previous grade level lists
-                    If not, tally occurrences of word in master map
-                Add # of occurrences to tally of total # of words
-                Calculate expected frequency of each word
-                For each word in map...
-                    Calculate normalized frequency by dividing by # of words in grade level
-                    Compare to expected frequency – if ratio is greater than a given
-                    parameter, add to list of words for that grade level
-        */
     }
 
-
-
-
-    std::vector<rti_word> compareLists(rti_word stateList[], rti_word gradeList[])
+    std::vector<std::string> get_difference(std::vector<std::string> l1, std::vector<std::string> l2)
     {
-            //perform a set difference on the two lists (cplusplus.com)
-            //return the resulting list
-            std::vector<rti_word> v;
+        std::vector<std::string>::iterator it;
 
-            rti_word temp;
+        std::vector<std::string> differenceList(std::max(l1.size(), l2.size()));
+        std::sort(l1.begin(), l1.end());
+        std::sort(l2.begin(), l2.end());
+        it = std::set_difference(l1.begin(), l1.end(),
+                                 l2.begin(), l2.end(),
+                                 differenceList.begin());
 
-            int i,n;
-
-            bool notFound;
-            for(i=0; i<sizeof stateList;i++)
-            {
-                temp = stateList[i];
-                notFound = false;
-                for(n=0;n<sizeof gradeList;n++)
-                {
-                    if(gradeList[n].spelling() == temp)
-                    {
-                        notFound = false;
-                        break;
-                    }
-                    else
-                    {
-                        notFound = true;
-                    }
-                }
-                if(notFound == true)
-                {
-                    v.push_back(temp);
-                }
-            }
-            return v;
+        differenceList.resize(it - differenceList.begin());
+        return differenceList;
     }
 
-    std::vector<rti_word> compareListsGrade(rti_word stateList[], rti_word gradeList[])
-    {		std::vector<rti_word> c;
-            rti_word other;
-            int j,k;
-
-            bool notFound;
-            for(j=0; j<sizeof gradeList; j++)
-            {
-                other = gradeList[j];
-                notFound = false;
-                for(k=0; k<sizeof stateList; k++)
-                {
-                    if(gradeList[k].spelling() == other)
-                    {
-                        notFound = false;
-                        break;
-                    }
-                    else
-                    {
-                        notFound = true;
-                    }
-                }
-                if(notFound == true)
-                {
-                    c.push_back(other);
-                }
-            }
-            return c;
-    }
-
-    std::vector<rti_word> findSimilarWords(rti_word stateList[], rti_word gradeList[])
+    std::vector<std::string> get_intersection(std::vector<std::string> l1, std::vector<std::string> l2)
     {
-        std::vector<rti_word> k;
-        std::sort(stateList.begin(), stateList.end());
-            std::sort(gradeList.begin(), gradeList.end());
-                std::set_intersection(stateList.begin(), stateList.end(),
-                              gradeList.begin(), gradeList.end(),
-                              std::back_inserter(k));
-        return k;
-            //std::vector<int>::iterator it;
-            //it=std::set_difference(stateList[0],stateList[sizeof stateList],gradeList[0],gradeList[sizeof gradeList],v.begin());
+        std::vector<std::string>::iterator it;
+
+        std::vector<std::string> intersectionList(std::max(l1.size(), l2.size()));
+        std::sort(l1.begin(), l1.end());
+        std::sort(l2.begin(), l2.end());
+        it = std::set_intersection(l1.begin(), l1.end(),
+                                   l2.begin(), l2.end(),
+                                   intersectionList.begin());
+
+        intersectionList.resize(it - intersectionList.begin());
+        return intersectionList;
     }
-
-
 }

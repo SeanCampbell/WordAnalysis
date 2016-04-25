@@ -14,26 +14,88 @@ WordFrequencyForm::WordFrequencyForm(QWidget *parent)
 
 
 //
-// Public Methods
+// Public Slots
 //
-void WordFrequencyForm::setGeneratedWordFrequencyList(rti_word_frequency_list *list)
+bool WordFrequencyForm::addWordFrequencyList(const QString &name, rti_word_frequency_list *list)
 {
-    generatedWordFrequencyList_ = list;
-    wordFrequencyModels[0]->setGeneratedList(list->words_in_grade_level(rti_book::NS));
-    wordFrequencyModels[1]->setGeneratedList(list->words_in_grade_level(rti_book::G1));
-    wordFrequencyModels[2]->setGeneratedList(list->words_in_grade_level(rti_book::G2));
-    wordFrequencyModels[3]->setGeneratedList(list->words_in_grade_level(rti_book::G3));
-    wordFrequencyModels[4]->setGeneratedList(list->words_in_grade_level(rti_book::G4));
+    if (!frequencyListMap.contains(name))
+    {
+        frequencyListMap.insert(name, list);
+        wordFrequencyListComboBox->addItem(name);
+        wordFrequencyListComboBox->setCurrentText(name);
+        compareListComboBox->addItem(name);
+        return true;
+    }
+    return false;
 }
 
-void WordFrequencyForm::setInputtedWordFrequencyList(rti_word_frequency_list *list)
+//
+// Private Slots
+//
+void WordFrequencyForm::changeWordList(const QString &listName)
 {
-    inputtedWordFrequencyList_ = list;
-    wordFrequencyModels[0]->setInputtedList(list->words_in_grade_level(rti_book::NS));
-    wordFrequencyModels[1]->setInputtedList(list->words_in_grade_level(rti_book::G1));
-    wordFrequencyModels[2]->setInputtedList(list->words_in_grade_level(rti_book::G2));
-    wordFrequencyModels[3]->setInputtedList(list->words_in_grade_level(rti_book::G3));
-    wordFrequencyModels[4]->setInputtedList(list->words_in_grade_level(rti_book::G4));
+    if (frequencyListMap.contains(listName))
+    {
+        rti_word_frequency_list *frequencyList = frequencyListMap.value(listName);
+        for (int i = 0; i < 5; i++)
+        {
+            wordFrequencyModels[i]->setGeneratedList(frequencyList->most_frequent_words_in_grade_level((rti_book::AGE)(i+2), numberOfMostFrequentWordsSpinBox->value()));
+            wordFrequencyViews[i]->resizeColumnsToContents();
+        }
+
+    }
+    else
+    {
+        std::vector<std::string> emptyList;
+        for (int i = 0; i < 5; i++)
+            wordFrequencyModels[i]->setGeneratedList(emptyList);
+    }
+}
+
+void WordFrequencyForm::changeCompareWordList(const QString &listName)
+{
+    if (frequencyListMap.contains(listName))
+    {
+        rti_word_frequency_list *frequencyList = frequencyListMap.value(listName);
+        for (int i = 0; i < 5; i++)
+        {
+            wordFrequencyModels[i]->setInputtedList(frequencyList->most_frequent_words_in_grade_level((rti_book::AGE)(i+2), numberOfMostFrequentWordsSpinBox->value()));
+            wordFrequencyViews[i]->resizeColumnsToContents();
+        }
+
+    }
+    else
+    {
+        std::vector<std::string> emptyList;
+        for (int i = 0; i < 5; i++)
+            wordFrequencyModels[i]->setInputtedList(emptyList);
+    }
+}
+
+void WordFrequencyForm::updateGeneratedList(int num)
+{
+    rti_word_frequency_list *frequencyList = frequencyListMap.value(wordFrequencyListComboBox->currentText());
+    if (frequencyList)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            wordFrequencyModels[i]->setGeneratedList(frequencyList->most_frequent_words_in_grade_level((rti_book::AGE)(i+2), num));
+            wordFrequencyViews[i]->resizeColumnsToContents();
+        }
+    }
+}
+
+void WordFrequencyForm::updateInputtedList(int num)
+{
+    rti_word_frequency_list *frequencyList = frequencyListMap.value(compareListComboBox->currentText());
+    if (frequencyList)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            wordFrequencyModels[i]->setInputtedList(frequencyList->most_frequent_words_in_grade_level((rti_book::AGE)(i+2), num));
+            wordFrequencyViews[i]->resizeColumnsToContents();
+        }
+    }
 }
 
 
@@ -44,6 +106,10 @@ void WordFrequencyForm::createInterface()
 {
     wordFrequencyListLabel = new QLabel(tr("Word Frequency List"));
     wordFrequencyListComboBox = new QComboBox;
+    connect(wordFrequencyListComboBox, SIGNAL(currentTextChanged(QString)), this, SLOT(changeWordList(QString)));
+    compareListLabel = new QLabel(tr("Compare to"));
+    compareListComboBox = new QComboBox;
+    connect(compareListComboBox, SIGNAL(currentTextChanged(QString)), this, SLOT(changeCompareWordList(QString)));
 
     for (int i = 0; i < NUMBER_OF_GRADE_GROUPS; i++)
     {
@@ -59,6 +125,13 @@ void WordFrequencyForm::createInterface()
 
     searchLabel = new QLabel(tr("Search"));
     searchLineEdit = new QLineEdit;
+
+    numberOfMostFrequentWordsLabel = new QLabel(tr("Number of most frequent words:"));
+    numberOfMostFrequentWordsSpinBox = new QSpinBox;
+    numberOfMostFrequentWordsSpinBox->setRange(1, 100);
+    numberOfMostFrequentWordsSpinBox->setValue(50);
+    connect(numberOfMostFrequentWordsSpinBox, SIGNAL(valueChanged(int)), this, SLOT(updateGeneratedList(int)));
+    connect(numberOfMostFrequentWordsSpinBox, SIGNAL(valueChanged(int)), this, SLOT(updateInputtedList(int)));
 }
 
 void WordFrequencyForm::layoutInterface()
@@ -66,7 +139,11 @@ void WordFrequencyForm::layoutInterface()
     QHBoxLayout *topLayout = new QHBoxLayout;
     topLayout->addWidget(wordFrequencyListLabel);
     topLayout->addWidget(wordFrequencyListComboBox);
+    topLayout->addWidget(compareListLabel);
+    topLayout->addWidget(compareListComboBox);
     topLayout->addStretch();
+    topLayout->addWidget(numberOfMostFrequentWordsLabel);
+    topLayout->addWidget(numberOfMostFrequentWordsSpinBox);
     //topLayout->addWidget(searchLabel);
     //topLayout->addWidget(searchLineEdit);
 

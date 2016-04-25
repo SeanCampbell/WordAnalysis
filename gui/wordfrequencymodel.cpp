@@ -1,5 +1,5 @@
 #include "wordfrequencymodel.h"
-#include <QDebug>
+#include "rti/rti_utils.h"
 
 WordFrequencyModel::WordFrequencyModel()
     : inputtedList_(), generatedList_()
@@ -11,6 +11,9 @@ WordFrequencyModel::WordFrequencyModel(std::vector<std::string> glist, std::vect
 {
     generatedList_ = glist;
     inputtedList_ = ilist;
+    intersectionList = rti_utils::get_intersection(glist, ilist);
+    generatedDiffList = rti_utils::get_difference(glist, ilist);
+    inputtedDiffList = rti_utils::get_difference(ilist, glist);
 }
 
 //
@@ -20,6 +23,9 @@ void WordFrequencyModel::setGeneratedList(std::vector<std::string> list)
 {
     emit layoutAboutToBeChanged();
     generatedList_ = list;
+    intersectionList = rti_utils::get_intersection(generatedList_, inputtedList_);
+    generatedDiffList = rti_utils::get_difference(generatedList_, inputtedList_);
+    inputtedDiffList = rti_utils::get_difference(inputtedList_, generatedList_);
     emit layoutChanged();
 }
 
@@ -27,6 +33,9 @@ void WordFrequencyModel::setInputtedList(std::vector<std::string> list)
 {
     emit layoutAboutToBeChanged();
     inputtedList_ = list;
+    intersectionList = rti_utils::get_intersection(generatedList_, inputtedList_);
+    generatedDiffList = rti_utils::get_difference(generatedList_, inputtedList_);
+    inputtedDiffList = rti_utils::get_difference(inputtedList_, generatedList_);
     emit layoutChanged();
 }
 
@@ -55,11 +64,11 @@ QVariant WordFrequencyModel::data(const QModelIndex &index, int role) const
             case 1:
                 return index.row() < generatedList_.size() ? QString::fromStdString(generatedList_.at(index.row())) : "";
             case 2:
-                return "";
+                return index.row() < intersectionList.size() ? QString::fromStdString(intersectionList.at(index.row())) : "";;
             case 3:
-                return "";
+                return index.row() < inputtedDiffList.size() ? QString::fromStdString(inputtedDiffList.at(index.row())) : "";;
             case 4:
-                return "";
+                return index.row() < generatedDiffList.size() ? QString::fromStdString(generatedDiffList.at(index.row())) : "";;
             default:
                 return QVariant();
         }

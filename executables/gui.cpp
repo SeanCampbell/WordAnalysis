@@ -12,7 +12,14 @@
 #include "rti/rti_literature_sptr.h"
 #include "rti/rti_word.h"
 #include "rti/rti_word_frequency_list.h"
+#include "rti/rti_utils.h"
+#include <vector>
 #include <iostream>
+#include <cstdlib>
+#include <cstdio>
+#include <QDebug>
+#include <algorithm>
+#include <unistd.h>
 
 int main(int argc, char *argv[])
 {
@@ -65,15 +72,30 @@ int main(int argc, char *argv[])
     LibraryForm libForm(lit);
     libForm.show();
 */
-
-    rti_word_frequency_list *wflist = new rti_word_frequency_list;
+/*
+    rti_word_frequency_list *wflist1 = new rti_word_frequency_list;
+    sleep(2);
+    rti_word_frequency_list *wflist2 = new rti_word_frequency_list;
     WordFrequencyForm wordForm;
-    wordForm.setInputtedWordFrequencyList(wflist);
-    wordForm.setGeneratedWordFrequencyList(wflist);
+    wordForm.setInputtedWordFrequencyList(wflist1);
+    wordForm.setGeneratedWordFrequencyList(wflist2);
     wordForm.show();
+*/
+
+/*
+    rti_word_frequency_list l;
+    l.add_word_in_grade_level("string", 5, rti_book::NS);
+    l.add_word_in_grade_level("string", 2, rti_book::NS);
+    l.add_word_in_grade_level("hello", 2, rti_book::NS);
+    l.add_word_in_grade_level("string", 2, rti_book::NS);
+    l.add_word_in_grade_level("yo", 1, rti_book::NS);
+    std::vector<std::string> list = l.most_frequent_words_in_grade_level(rti_book::NS, 10);
+    for (int i = 0; i < list.size(); i++)
+        std::cout << list[i] << std::endl;
+*/
 
     MainWindow mainWin;
-    //mainWin.show();
+    mainWin.show();
 
     return app.exec();
 }

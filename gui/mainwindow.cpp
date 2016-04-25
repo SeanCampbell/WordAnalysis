@@ -61,6 +61,40 @@ void MainWindow::exportMasterDictionary()
         dictionaryForm->masterDictionary()->write_xml(masterDictionaryFilePath.toStdString(), true);
 }
 
+void MainWindow::loadWordFrequencyList()
+{
+    QString frequencyListFilePath = QFileDialog::getOpenFileName(this, tr("Choose word frequency list to laod..."),
+                                                                    "", "Text files (*.txt)");
+
+    if (!frequencyListFilePath.isEmpty())
+    {
+        rti_word_frequency_list *wflist = new rti_word_frequency_list;
+        QFile listFile(frequencyListFilePath);
+        if (!listFile.open(QIODevice::ReadOnly))
+            return;
+        QTextStream in(&listFile);
+        int gradeLevel = 0;
+        while (!in.atEnd())
+        {
+            // Only take the first five lines.
+            if (gradeLevel < 5)
+            {
+                QStringList words = in.readLine().split(" ");
+                foreach (QString word, words)
+                    // Add word at the threshold so that we know it will be counted as a
+                    // most frequent word.
+                    wflist->add_word_in_grade_level(word.toStdString(), wflist->threshold(), (rti_book::AGE)(gradeLevel+2));
+            }
+            else
+                break;
+            gradeLevel++;
+        }
+        wflist->update_most_frequent_words();
+        wordFrequencyForm->addWordFrequencyList(listFile.fileName(), wflist);
+    }
+    tabWidget->setCurrentWidget(wordFrequencyForm);
+}
+
 void MainWindow::displayMorphemes() const
 {
 
@@ -96,7 +130,23 @@ void MainWindow::createDictionary(QList<rti_book*> books)
 
 void MainWindow::createFrequencyList(QList<rti_book*> books)
 {
+    int index;
+    rti_literature *library = new rti_literature;
+    foreach (rti_book *book, books)
+        if (!library->find(book->isbn(), index))
+            library->insert(book, index);
 
+    rti_word_frequency_list *wflist = rti_utils::generate_word_frequency_list_from_literature(library, 10);
+    // We have no more need of this. Dispose of it.
+    delete library;
+
+    // Prompt for a name for the word list.
+    QString frequencyListName = QInputDialog::getText(this, tr("Word Frequency List Name"), tr("Give a name to the word frequency list:"));
+    if (!frequencyListName.isEmpty())
+    {
+        wordFrequencyForm->addWordFrequencyList(frequencyListName, wflist);
+        tabWidget->setCurrentWidget(wordFrequencyForm);
+    }
 }
 
 
@@ -108,6 +158,8 @@ void MainWindow::setupInterface()
     libraryForm = new LibraryForm;
     connect(libraryForm, SIGNAL(createDictionaryRequested(QList<rti_book*>)),
             this, SLOT(createDictionary(QList<rti_book*>)));
+    connect(libraryForm, SIGNAL(createFrequencyListRequested(QList<rti_book*>)),
+            this, SLOT(createFrequencyList(QList<rti_book*>)));
     dictionaryForm = new DictionaryForm;
     wordFrequencyForm = new WordFrequencyForm;
     tabWidget = new QTabWidget;
@@ -143,11 +195,14 @@ void MainWindow::createMenus()
     exportMasterDictionaryAction = fileMenu->addAction(tr("Export Master Dictionary"));
     connect(exportMasterDictionaryAction, SIGNAL(triggered(bool)), this, SLOT(exportMasterDictionary()));
     fileMenu->addSeparator();
+    loadWordFrequencyListAction = fileMenu->addAction(tr("Load Word Frequency List"));
+    connect(loadWordFrequencyListAction, SIGNAL(triggered(bool)), this, SLOT(loadWordFrequencyList()));
+    fileMenu->addSeparator();
     quitAction = fileMenu->addAction(tr("&Quit"));
     quitAction->setShortcut(tr("Ctrl+Q"));
     connect(quitAction, SIGNAL(triggered(bool)), this, SLOT(close()));
 
-    viewMenu = menuBar()->addMenu(tr("&View"));
-    displayMorphemesAction = viewMenu->addAction(tr("Display Morphemes"));
-    connect(displayMorphemesAction, SIGNAL(triggered(bool)), this, SLOT(displayMorphemes()));
+    //viewMenu = menuBar()->addMenu(tr("&View"));
+    //displayMorphemesAction = viewMenu->addAction(tr("Display Morphemes"));
+    //connect(displayMorphemesAction, SIGNAL(triggered(bool)), this, SLOT(displayMorphemes()));
 }

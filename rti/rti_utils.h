@@ -17,11 +17,10 @@ namespace rti_utils
     rti_dictionary *build_dictionary(rti_literature *literature, rti_dictionary *old_dict,
                                      vcl_vector<vcl_pair<vcl_string, vcl_string> > cmu_arpabets, bool *up_to_date);
 
-    rti_word_frequency_list *generate_word_frequency_list_from_literature(rti_literature *literature, int frequencyThreshold);
+    rti_word_frequency_list *generate_word_frequency_list_from_literature(rti_literature *literature, double frequencyThreshold);
 
-    std::vector<rti_word> compareLists(rti_word stateList[], rti_word gradeList[]);
-    std::vector<rti_word> compareListsGrade(rti_word stateList[], rti_word gradeList[]);
-    std::vector<rti_word> findSimilarWords(rti_word stateList[], rti_word gradeList[]);
+    std::vector<std::string> get_difference(std::vector<std::string> l1, std::vector<std::string> l2);
+    std::vector<std::string> get_intersection(std::vector<std::string> l1, std::vector<std::string> l2);
 }
 
 #endif // RTI_UTIL

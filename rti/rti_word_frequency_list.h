@@ -11,12 +11,19 @@ class rti_word_frequency_list
 {
 public:
     rti_word_frequency_list();
-    std::vector<std::string> words_in_grade_level(rti_book::AGE gradeLevel);
-
-    //std::vector<std::string> get_most_frequent_words(int count);
+    void set_threshold(double t) { threshold_ = t; }
+    double threshold() const { return threshold_; }
+    int add_word_in_grade_level(std::string word, int count, rti_book::AGE gradeLevel);
+    void update_most_frequent_words();
+    std::vector<std::string> words_in_grade_level(rti_book::AGE gradeLevel) const;
+    std::vector<std::string> most_frequent_words_in_grade_level(rti_book::AGE gradeLevel, int count) const;
 
 private:
+    int get_index_from_grade_level(rti_book::AGE gradeLevel) const;
     std::map<std::string, int> gradeLevelMaps[5];
+    std::map<std::string, int> frequencyGradeLevelMaps[5];
+    int totalWords;
+    double threshold_;
 };
 
 #endif // RTI_WORD_FREQUENCY_LIST_H
