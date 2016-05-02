@@ -130,11 +130,26 @@ bool DictionaryModel::setData(const QModelIndex &index, const QVariant &value, i
             || role != Qt::EditRole)
         return false;
 
-    if (index.column() == MORPHEME_COL)
+    /*if (index.column() == ARPABET_COL)
     {
         (*dictionary_)[index.row()]->set_morphemes(value.toString().toStdString());
         return true;
     }
+    else if (index.column() == PHONEME_COL)
+    {
+        (*dictionary_)[index.row()]->set_(value.toString().toStdString());
+        return true;
+    }
+    else */if (index.column() == MORPHEME_COL)
+    {
+        (*dictionary_)[index.row()]->set_morphemes(value.toString().toStdString());
+        return true;
+    }/*
+    else if (index.column() == FUNC_WORD_COL)
+    {
+        (*dictionary_)[index.row()]->set_morphemes(value.toString().toStdString());
+        return true;
+    }*/
 
     return false;
 }

@@ -8,7 +8,7 @@ class rti_dictionary;
 class DictionaryModel : public QAbstractTableModel
 {
 public:
-    enum { MORPHEME_COL = 3 };
+    enum { ARPABET_COL = 1, PHONEME_COL = 2, MORPHEME_COL = 3, FUNC_WORD_COL = 5 };
 
     DictionaryModel(rti_dictionary *dictionary = NULL);
 

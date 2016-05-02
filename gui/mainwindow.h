@@ -19,11 +19,14 @@ private slots:
     void exportMasterDictionary();
     void loadWordFrequencyList();
     void displayMorphemes() const;
+    void displayArpabets() const;
+    void displayFunctionWords() const;
 
     void createDictionary(QList<rti_book*> books);
     void createFrequencyList(QList<rti_book*> books);
 
 private:
+    void popupImage(const QString &fileName) const;
     void setupInterface();
     void createMenus();
 
@@ -39,8 +42,10 @@ private:
     QAction *exportMasterDictionaryAction;
     QAction *loadWordFrequencyListAction;
     QAction *quitAction;
-    //QMenu *viewMenu;
-    //QAction *displayMorphemesAction;
+    QMenu *viewMenu;
+    QAction *displayMorphemesAction;
+    QAction *displayArpabetsAction;
+    QAction *displayFunctionWordsAction;
 };
 
 #endif // MAINWINDOW_H

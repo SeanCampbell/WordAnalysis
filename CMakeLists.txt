@@ -51,7 +51,6 @@ add_definitions(${Qt5Widgets_DEFINITIONS})
 set(CMAKE_CXX_FLAGS "${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS}")
 # END QT
 
-
 # This is to make all subdirs accessible to programs in the project
 INCLUDE_DIRECTORIES( ${iona_SOURCE_DIR} )
 

@@ -97,9 +97,19 @@ void MainWindow::loadWordFrequencyList()
 
 void MainWindow::displayMorphemes() const
 {
-
+    popupImage("morphemes.png");
 }
 
+void MainWindow::displayArpabets() const
+{
+    popupImage("arpabet.png");
+}
+
+void MainWindow::displayFunctionWords() const
+{
+    popupImage("content_and_functions_words_01.png");
+    popupImage("content_and_functions_words_02.png");
+}
 
 void MainWindow::createDictionary(QList<rti_book*> books)
 {
@@ -153,6 +163,15 @@ void MainWindow::createFrequencyList(QList<rti_book*> books)
 //
 // Private Methods
 //
+void MainWindow::popupImage(const QString &fileName) const
+{
+    QPixmap image = QPixmap::fromImage(QImage(fileName));
+    QLabel *morphemesLabel = new QLabel;
+    morphemesLabel->setPixmap(image);
+    morphemesLabel->resize(image.size());
+    morphemesLabel->show();
+}
+
 void MainWindow::setupInterface()
 {
     libraryForm = new LibraryForm;
@@ -202,7 +221,11 @@ void MainWindow::createMenus()
     quitAction->setShortcut(tr("Ctrl+Q"));
     connect(quitAction, SIGNAL(triggered(bool)), this, SLOT(close()));
 
-    //viewMenu = menuBar()->addMenu(tr("&View"));
-    //displayMorphemesAction = viewMenu->addAction(tr("Display Morphemes"));
-    //connect(displayMorphemesAction, SIGNAL(triggered(bool)), this, SLOT(displayMorphemes()));
+    viewMenu = menuBar()->addMenu(tr("&View"));
+    displayMorphemesAction = viewMenu->addAction(tr("Display Morphemes"));
+    connect(displayMorphemesAction, SIGNAL(triggered(bool)), this, SLOT(displayMorphemes()));
+    displayArpabetsAction = viewMenu->addAction(tr("Display Arpabets"));
+    connect(displayArpabetsAction, SIGNAL(triggered(bool)), this, SLOT(displayArpabets()));
+    displayFunctionWordsAction = viewMenu->addAction(tr("Display Function Word Information"));
+    connect(displayFunctionWordsAction, SIGNAL(triggered(bool)), this, SLOT(displayFunctionWords()));
 }
