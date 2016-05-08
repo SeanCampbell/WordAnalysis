@@ -8,55 +8,34 @@
 //
 DictionaryForm::DictionaryForm(QWidget *parent) : QWidget(parent)
 {
-    init(QMap<QString, rti_dictionary *>());
+    init(NULL);
 }
 
-DictionaryForm::DictionaryForm(QMap<QString, rti_dictionary *> dictMap, QWidget *parent) : QWidget(parent)
+DictionaryForm::DictionaryForm(rti_dictionary *dict, QWidget *parent) : QWidget(parent)
 {
-    init(dictMap);
-}
-
-DictionaryForm::DictionaryForm(std::map<std::string, rti_dictionary *> dictMap, QWidget *parent) : QWidget(parent)
-{
-    QMap<QString, rti_dictionary *> qdictMap;
-    for (std::map<std::string, rti_dictionary *>::iterator it = dictMap.begin(); it != dictMap.end(); it++)
-        qdictMap.insert(QString::fromStdString(it->first), it->second);
-    init(qdictMap);
+    init(dict);
 }
 
 
 //
 // Public Slots
 //
-
 /**
- * @brief DictionaryForm::addDictionary
- * @param name - name of dictionary in the form
- * @param dictionary - the dictionary to add
- * @return true if the dictionary is inserted,
- *      false if a dictionary of the same name
- *      is already in the form, so the dictionary
- *      can't be added
+ * @brief DictionaryForm::setDictionary
+ * @param dictionary - the new dictionary
  */
-bool DictionaryForm::addDictionary(const QString &name, rti_dictionary *dictionary)
+void DictionaryForm::setDictionary(rti_dictionary *dictionary)
 {
-    if (!dictionaryMap.contains(name))
-    {
-        dictionaryMap.insert(name, dictionary);
-        //dictionaryComboBox->clear();
-        //dictionaryComboBox->addItems(dictionaryMap.keys());
-        dictionaryComboBox->addItem(name);
-        //connect(dictionaryComboBox, SIGNAL(currentIndexChanged(QString)), this, SLOT(changeDictionary(QString)));
-        dictionaryComboBox->setCurrentText(name);
-        return true;
-    }
-    return false;
+    dictionary_ = dictionary;
+    dictionaryModel->setDictionary(dictionary_);
+    dictionaryView->resizeColumnsToContents();
+    currentDictionaryRadioButton->setChecked(true);
 }
 
 void DictionaryForm::setMasterDictionary(rti_dictionary *master)
 {
     masterDictionary_ = master;
-    dictionaryComboBox->setCurrentText("Master Dictionary");
+    masterDictionaryRadioButton->setChecked(true);
 }
 
 
@@ -83,80 +62,46 @@ void DictionaryForm::showOnlyIncompleteWords(bool incomplete)
     }
 }
 
-void DictionaryForm::changeDictionary(const QString &dictName)
+void DictionaryForm::changeDictionary()
 {
-    if (dictName == "Master Dictionary")
+    if (masterDictionaryRadioButton->isChecked())
         dictionaryModel->setDictionary(masterDictionary_);
-    else if (dictionaryMap.contains(dictName))
-    {
-        dictionaryModel->setDictionary(dictionaryMap.value(dictName));
-        dictionaryView->resizeColumnsToContents();
-    }
     else
-    {
-        dictionaryModel = NULL;
-        proxyModel->setSourceModel(NULL);
-    }
+        dictionaryModel->setDictionary(dictionary_);
 }
 
 void DictionaryForm::importFromMaster()
 {
     if (masterDictionary_ == NULL)
     {
-        QMessageBox::warning(this, tr("No Master Dictionary"), tr("Cannot import from master dictionary because"
-                                                                  "no master dictionary is loaded. Please import"
+        QMessageBox::warning(this, tr("No Master Dictionary"), tr("Cannot import from master dictionary because "
+                                                                  "no master dictionary is loaded. Please import "
                                                                   "a master dictionary and try again."));
         return;
     }
 
-    QString curDictName = dictionaryComboBox->currentText();
-    if (curDictName == "Master Dictionary")
+    if (dictionary_ == NULL)
     {
-        QMessageBox::warning(this, tr("Master Dictionary Selected"), tr("Cannot import master dictionary into itself."));
-        return;
-    }
-    rti_dictionary *curDictionary = dictionaryMap.value(curDictName);
-    if (curDictionary == NULL)
-    {
-        QMessageBox::warning(this, tr("No Dictionary Selected"), tr("Cannot import from master dictionary because"
-                                                                    "no dictionary is currently selected."));
+        QMessageBox::warning(this, tr("No Dictionary Selected"), tr("Cannot import from master dictionary because "
+                                                                    "no dictionary is currently loaded."));
         return;
     }
 
     bool up_to_date;
-    if (curDictionary->import_dictionary(masterDictionary_, &up_to_date))
+    if (dictionary_->import_dictionary(masterDictionary_, &up_to_date))
         QMessageBox::information(this, tr("Success"), tr("Master dictionary imported successfully."));
-}
-
-void DictionaryForm::deleteDictionary()
-{
-    QString curDictName = dictionaryComboBox->currentText();
-    if (curDictName == "Master Dictionary")
-    {
-        QMessageBox::warning(this, tr("Cannot Delete Dictionary"), tr("You cannot delete the master dictionary."));
-        return;
-    }
-    rti_dictionary *curDict = dictionaryMap.value(curDictName);
-    if (curDict != NULL)
-    {
-        dictionaryMap.remove(curDictName);
-        dictionaryComboBox->removeItem(dictionaryComboBox->currentIndex());
-        delete curDict;
-    }
-    dictionaryView->resizeColumnsToContents();
 }
 
 
 //
 // Private Methods
 //
-void DictionaryForm::init(QMap<QString, rti_dictionary *> dictMap)
+void DictionaryForm::init(rti_dictionary *dict)
 {
     masterDictionary_ = NULL;
-    dictionaryMap = dictMap;
-    // Set the dictionary to be whatever the iterator starts at.
-    if (!dictMap.isEmpty())
-        dictionaryModel = new DictionaryModel(dictionaryMap.begin().value());
+    dictionary_ = dict;
+    if (!dict)
+        dictionaryModel = new DictionaryModel(dictionary_);
     else
         dictionaryModel = new DictionaryModel;
     proxyModel = new QSortFilterProxyModel;
@@ -175,10 +120,11 @@ void DictionaryForm::createInterface()
     dictionaryView->horizontalHeader()->setStretchLastSection(true);
 
     dictionaryLabel = new QLabel(tr("Dictionary"));
-    dictionaryComboBox = new QComboBox;
-    connect(dictionaryComboBox, SIGNAL(currentIndexChanged(QString)), this, SLOT(changeDictionary(QString)));
-    dictionaryComboBox->addItem("Master Dictionary");
-    dictionaryComboBox->addItems(dictionaryMap.keys());
+    masterDictionaryRadioButton = new QRadioButton(tr("Master Dictionary"), this);
+    masterDictionaryRadioButton->setChecked(true);
+    currentDictionaryRadioButton = new QRadioButton(tr("Current Dictionary"), this);
+    connect(masterDictionaryRadioButton, SIGNAL(clicked(bool)), this, SLOT(changeDictionary()));
+    connect(currentDictionaryRadioButton, SIGNAL(clicked(bool)), this, SLOT(changeDictionary()));
     incompleteWordsCheckBox = new QCheckBox(tr("Show only incomplete words"));
     connect(incompleteWordsCheckBox, SIGNAL(clicked(bool)), this, SLOT(showOnlyIncompleteWords(bool)));
     searchLabel = new QLabel(tr("Search"));
@@ -186,15 +132,14 @@ void DictionaryForm::createInterface()
     connect(searchLineEdit, SIGNAL(textChanged(QString)), this, SLOT(search(QString)));
     importFromMasterButton = new QPushButton(tr("Import From Master"));
     connect(importFromMasterButton, SIGNAL(clicked(bool)), this, SLOT(importFromMaster()));
-    deleteDictionaryButton = new QPushButton(tr("Delete Dictionary"));
-    connect(deleteDictionaryButton, SIGNAL(clicked(bool)), this, SLOT(deleteDictionary()));
 }
 
 void DictionaryForm::layoutInterface()
 {
     QHBoxLayout *topLayout = new QHBoxLayout;
     topLayout->addWidget(dictionaryLabel);
-    topLayout->addWidget(dictionaryComboBox);
+    topLayout->addWidget(masterDictionaryRadioButton);
+    topLayout->addWidget(currentDictionaryRadioButton);
     topLayout->addStretch();
     topLayout->addWidget(incompleteWordsCheckBox);
     topLayout->addStretch();
@@ -204,7 +149,6 @@ void DictionaryForm::layoutInterface()
     QHBoxLayout *bottomLayout = new QHBoxLayout;
     bottomLayout->addWidget(importFromMasterButton);
     bottomLayout->addStretch();
-    bottomLayout->addWidget(deleteDictionaryButton);
 
     QVBoxLayout *mainLayout = new QVBoxLayout;
     mainLayout->addLayout(topLayout);

@@ -55,20 +55,18 @@ QVariant DictionaryModel::data(const QModelIndex &index, int role) const
             case 1:
                 return QString::fromStdString(word->arpabet());
             case 2:
-                return QString::fromStdString(rti_utils::join(word->phonemes(), ", "));
-            case 3:
                 return QString::fromStdString(word->morphemes());
-            case 4:
+            case 3:
                 return word->syllables();
-            case 5:
+            case 4:
                 return word->is_function();
-            case 6:
+            case 4:
                 return word->frequency();
-            case 7:
+            case 5:
                 return word->psa();
-            case 8:
+            case 6:
                 return word->bipha();
-            case 9:
+            case 7:
                 return tr(QString::fromStdString(rti_utils::join(word->neighbors(), ", ")).toLatin1());
             default:
                 return QVariant();
@@ -95,20 +93,18 @@ QVariant DictionaryModel::headerData(int section, Qt::Orientation orientation, i
             case 1:
                 return tr("Arpabet");
             case 2:
-                return tr("Phonemes");
-            case 3:
                 return tr("Morphemes");
-            case 4:
+            case 3:
                 return tr("Syllables");
-            case 5:
+            case 4:
                 return tr("Is Function Word");
-            case 6:
+            case 5:
                 return tr("Frequency");
-            case 7:
+            case 6:
                 return tr("Positional Segment Average");
-            case 8:
+            case 7:
                 return tr("Biphone Average");
-            case 9:
+            case 8:
                 return tr("Neighbors");
             default:
                 return QVariant();
@@ -133,11 +129,6 @@ bool DictionaryModel::setData(const QModelIndex &index, const QVariant &value, i
     /*if (index.column() == ARPABET_COL)
     {
         (*dictionary_)[index.row()]->set_morphemes(value.toString().toStdString());
-        return true;
-    }
-    else if (index.column() == PHONEME_COL)
-    {
-        (*dictionary_)[index.row()]->set_(value.toString().toStdString());
         return true;
     }
     else */if (index.column() == MORPHEME_COL)

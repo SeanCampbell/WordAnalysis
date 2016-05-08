@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
     //dMap.insert("Dictionary 1", d1);
     dMap.insert("Dictionary 2", d2);
     DictionaryForm dictForm;//(dMap);
-    dictForm.addDictionary("Name", d1);
+    dictForm.setDictionary(d1);
     //dictForm.show();
 
 /*

@@ -10,6 +10,7 @@ class QLabel;
 class QComboBox;
 class QCheckBox;
 class QPushButton;
+class QRadioButton;
 class QLineEdit;
 class QSortFilterProxyModel;
 
@@ -18,30 +19,28 @@ class DictionaryForm : public QWidget
     Q_OBJECT
 public:
     explicit DictionaryForm(QWidget *parent = 0);
-    explicit DictionaryForm(QMap<QString, rti_dictionary *> dictMap, QWidget *parent = 0);
-    explicit DictionaryForm(std::map<std::string, rti_dictionary *> dictMap, QWidget *parent = 0);
+    explicit DictionaryForm(rti_dictionary *dict, QWidget *parent);
 
     rti_dictionary *masterDictionary() const { return masterDictionary_; }
 
 public slots:
-    bool addDictionary(const QString &name, rti_dictionary *dictionary);
+    void setDictionary(rti_dictionary *dictionary);
     void setMasterDictionary(rti_dictionary *master);
 
 private slots:
     void search(const QString &searchTerm);
     void showOnlyIncompleteWords(bool incomplete);
-    void changeDictionary(const QString &dictName);
+    void changeDictionary();
     void importFromMaster();
-    void deleteDictionary();
 
 private:
-    void init(QMap<QString, rti_dictionary *> dictMap);
+    void init(rti_dictionary *dict);
     void createInterface();
     void layoutInterface();
 
     // Data
     rti_dictionary *masterDictionary_;
-    QMap<QString, rti_dictionary *> dictionaryMap;
+    rti_dictionary *dictionary_;
     DictionaryModel *dictionaryModel;
     QSortFilterProxyModel *proxyModel;
 
@@ -49,12 +48,12 @@ private:
     QTableView *dictionaryView;
 
     QLabel *dictionaryLabel;
-    QComboBox *dictionaryComboBox;
+    QRadioButton *masterDictionaryRadioButton;
+    QRadioButton *currentDictionaryRadioButton;
     QCheckBox *incompleteWordsCheckBox;
     QLabel *searchLabel;
     QLineEdit *searchLineEdit;
     QPushButton *importFromMasterButton;
-    QPushButton *deleteDictionaryButton;
 };
 
 #endif // DICTIONARYFORM_H

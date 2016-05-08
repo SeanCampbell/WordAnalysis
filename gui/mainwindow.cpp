@@ -127,15 +127,10 @@ void MainWindow::createDictionary(QList<rti_book*> books)
     delete library;
 
     // Prompt for a name for the dictionary.
-    QString masterDictionaryMessage = dictionaryForm->masterDictionary() != NULL
-            ? "Some missing information imported from master dictionary.\n\n"
-            : "";
-    QString dictionaryName = QInputDialog::getText(this, tr("Dictionary Name"), tr("%1Give a name to the dictionary:").arg(masterDictionaryMessage));
-    if (!dictionaryName.isEmpty())
-    {
-        dictionaryForm->addDictionary(dictionaryName, dictionary);
-        tabWidget->setCurrentWidget(dictionaryForm);
-    }
+    if (dictionaryForm->masterDictionary() != NULL)
+        QMessageBox::information(this, tr("Information Imported From Master Dictionary"), tr("Some missing information imported from master dictionary."));
+    dictionaryForm->setDictionary(dictionary);
+    tabWidget->setCurrentWidget(dictionaryForm);
 }
 
 void MainWindow::createFrequencyList(QList<rti_book*> books)
