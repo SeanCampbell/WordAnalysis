@@ -31,6 +31,7 @@ signals:
 
 private slots:
     void selectBooksWithGradeLevel(const QString &gradeLevel);
+    void removeSelectedBooks();
     void search(const QString &searchTerm);
 
     void addBook();

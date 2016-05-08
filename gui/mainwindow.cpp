@@ -159,6 +159,11 @@ void MainWindow::createFrequencyList(QList<rti_book*> books)
     }
 }
 
+void MainWindow::setWorkingDirectoryPath(const QString &path)
+{
+
+}
+
 
 //
 // Private Methods
@@ -221,11 +226,11 @@ void MainWindow::createMenus()
     quitAction->setShortcut(tr("Ctrl+Q"));
     connect(quitAction, SIGNAL(triggered(bool)), this, SLOT(close()));
 
-    viewMenu = menuBar()->addMenu(tr("&View"));
-    displayMorphemesAction = viewMenu->addAction(tr("Display Morphemes"));
+    lookupTablesMenu = menuBar()->addMenu(tr("&Lookup Tables"));
+    displayMorphemesAction = lookupTablesMenu->addAction(tr("Morphemes"));
     connect(displayMorphemesAction, SIGNAL(triggered(bool)), this, SLOT(displayMorphemes()));
-    displayArpabetsAction = viewMenu->addAction(tr("Display Arpabets"));
+    displayArpabetsAction = lookupTablesMenu->addAction(tr("Arpabets"));
     connect(displayArpabetsAction, SIGNAL(triggered(bool)), this, SLOT(displayArpabets()));
-    displayFunctionWordsAction = viewMenu->addAction(tr("Display Function Word Information"));
+    displayFunctionWordsAction = lookupTablesMenu->addAction(tr("Function/Content Word Information"));
     connect(displayFunctionWordsAction, SIGNAL(triggered(bool)), this, SLOT(displayFunctionWords()));
 }

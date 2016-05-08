@@ -31,6 +31,14 @@ void LibraryForm::selectBooksWithGradeLevel(const QString &gradeLevel)
     libraryModel->selectAllBooksInGradeLevel(wa_utils::gradeLevelMap().key(gradeLevel));
 }
 
+void LibraryForm::removeSelectedBooks()
+{
+    if (QMessageBox::question(this, tr("Remove selected books"),
+                              tr("Are you sure you want to remove the selected "
+                                 "books? This action cannot be undone.")) == QMessageBox::Yes)
+    libraryModel->removeCheckedBooks();
+}
+
 void LibraryForm::search(const QString &searchTerm)
 {
     QRegExp regExp = QRegExp(searchTerm);
@@ -93,7 +101,7 @@ void LibraryForm::createInterface()
     addBookButton = new QPushButton(tr("Add Book"));
     connect(addBookButton, SIGNAL(clicked()), this, SLOT(addBook()));
     removeBooksButton = new QPushButton(tr("Remove Books"));
-    connect(removeBooksButton, SIGNAL(clicked()), libraryModel, SLOT(removeCheckedBooks()));
+    connect(removeBooksButton, SIGNAL(clicked()), this, SLOT(removeSelectedBooks()));
     createDictionaryButton = new QPushButton(tr("Create Dictionary"));
     connect(createDictionaryButton, SIGNAL(clicked(bool)), this, SLOT(createDictionary()));
     createFrequencyListButton = new QPushButton(tr("Create Frequency List"));

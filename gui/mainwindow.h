@@ -25,10 +25,15 @@ private slots:
     void createDictionary(QList<rti_book*> books);
     void createFrequencyList(QList<rti_book*> books);
 
+    void setWorkingDirectoryPath(const QString &path);
+
 private:
     void popupImage(const QString &fileName) const;
     void setupInterface();
     void createMenus();
+
+    // Data
+    QString workingDirectoryPath;
 
     // GUI
     DictionaryForm *dictionaryForm;
@@ -42,7 +47,7 @@ private:
     QAction *exportMasterDictionaryAction;
     QAction *loadWordFrequencyListAction;
     QAction *quitAction;
-    QMenu *viewMenu;
+    QMenu *lookupTablesMenu;
     QAction *displayMorphemesAction;
     QAction *displayArpabetsAction;
     QAction *displayFunctionWordsAction;
