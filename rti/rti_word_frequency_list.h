@@ -15,6 +15,8 @@ public:
     double threshold() const { return threshold_; }
     int add_word_in_grade_level(std::string word, int count, rti_book::AGE gradeLevel);
     void update_most_frequent_words();
+    int number_of_words_in_grade_level(rti_book::AGE gradeLevel) const;
+    int total_number_of_words() const { return totalWords; }
     std::vector<std::string> words_in_grade_level(rti_book::AGE gradeLevel) const;
     std::vector<std::string> most_frequent_words_in_grade_level(rti_book::AGE gradeLevel, int count) const;
 
@@ -22,6 +24,7 @@ private:
     int get_index_from_grade_level(rti_book::AGE gradeLevel) const;
     std::map<std::string, int> gradeLevelMaps[5];
     std::map<std::string, int> frequencyGradeLevelMaps[5];
+    int numberOfWordsInGradeLevel[5];
     int totalWords;
     double threshold_;
 };

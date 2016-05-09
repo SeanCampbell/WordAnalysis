@@ -120,8 +120,8 @@ void DictionaryForm::createInterface()
 
     dictionaryLabel = new QLabel(tr("Dictionary"));
     masterDictionaryRadioButton = new QRadioButton(tr("Master Dictionary"), this);
-    masterDictionaryRadioButton->setChecked(true);
     currentDictionaryRadioButton = new QRadioButton(tr("Current Dictionary"), this);
+    currentDictionaryRadioButton->setChecked(true);
     connect(masterDictionaryRadioButton, SIGNAL(clicked(bool)), this, SLOT(changeDictionary()));
     connect(currentDictionaryRadioButton, SIGNAL(clicked(bool)), this, SLOT(changeDictionary()));
     incompleteWordsCheckBox = new QCheckBox(tr("Show only incomplete words"));

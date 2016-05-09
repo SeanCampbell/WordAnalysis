@@ -17,15 +17,15 @@ private slots:
     void exportLibrary();
     void importMasterDictionary();
     void exportMasterDictionary();
-    void loadWordFrequencyList();
     void displayMorphemes() const;
     void displayArpabets() const;
     void displayFunctionWords() const;
 
-    void createDictionary(QList<rti_book*> books);
+    void createDictionaryAndFrequencyList(QList<rti_book*> books);
+    bool createDictionary(QList<rti_book*> books);
     void createFrequencyList(QList<rti_book*> books);
 
-    void setWorkingDirectoryPath(const QString &path);
+    void setWorkingDirectoryPath();
 
 private:
     void popupImage(const QString &fileName) const;
@@ -45,7 +45,7 @@ private:
     QAction *exportLibraryAction;
     QAction *importMasterDictionaryAction;
     QAction *exportMasterDictionaryAction;
-    QAction *loadWordFrequencyListAction;
+    QAction *setWorkingDirectoryPathAction;
     QAction *quitAction;
     QMenu *lookupTablesMenu;
     QAction *displayMorphemesAction;

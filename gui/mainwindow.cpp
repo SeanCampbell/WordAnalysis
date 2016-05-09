@@ -10,6 +10,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
     setupInterface();
     setWindowTitle(tr("Word Analysis"));
+    QSettings settings("Iona College", "Word Frequency Analysis");
+    workingDirectoryPath = settings.value("workingDirectoryPath").toString();
 }
 
 
@@ -19,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 void MainWindow::importLibrary()
 {
     QString libraryFilePath = QFileDialog::getOpenFileName(this, tr("Choose library file to import..."),
-                                                           "", "XML files (*.xml)");
+                                                           workingDirectoryPath, "XML files (*.xml)");
     if (!libraryFilePath.isEmpty())
     {
         rti_literature *library = new rti_literature;
@@ -32,7 +34,7 @@ void MainWindow::importLibrary()
 void MainWindow::exportLibrary()
 {
     QString libraryFilePath = QFileDialog::getSaveFileName(this, tr("Choose file to save exported library into..."),
-                                                           "", "XML files (*.xml)");
+                                                           workingDirectoryPath, "XML files (*.xml)");
     if (!libraryFilePath.isEmpty())
         libraryForm->library()->write_xml(libraryFilePath.toStdString());
 }
@@ -40,59 +42,25 @@ void MainWindow::exportLibrary()
 void MainWindow::importMasterDictionary()
 {
     QString masterDictionaryFilePath = QFileDialog::getOpenFileName(this, tr("Choose master dictionary file to import..."),
-                                                                    "", "XML files (*.xml)");
+                                                                    workingDirectoryPath, "XML files (*.xml)");
 
     if (!masterDictionaryFilePath.isEmpty())
     {
         rti_dictionary *masterDictionary = new rti_dictionary;
         masterDictionary->read_xml(masterDictionaryFilePath.toStdString());
         dictionaryForm->setMasterDictionary(masterDictionary);
-        tabWidget->setCurrentWidget(dictionaryForm);
+        QMessageBox::information(this, tr("Master Dictionary Loaded"), tr("Master dictionary loaded successfully."));
     }
 }
 
 void MainWindow::exportMasterDictionary()
 {
     QString masterDictionaryFilePath = QFileDialog::getSaveFileName(this, tr("Choose file to save master dictionary into..."),
-                                                                    "", "XML files (*.xml)");
+                                                                    workingDirectoryPath, "XML files (*.xml)");
 
     if (!masterDictionaryFilePath.isEmpty())
         // boolean value isn't used for anything - should double check why it's there
         dictionaryForm->masterDictionary()->write_xml(masterDictionaryFilePath.toStdString(), true);
-}
-
-void MainWindow::loadWordFrequencyList()
-{
-    QString frequencyListFilePath = QFileDialog::getOpenFileName(this, tr("Choose word frequency list to laod..."),
-                                                                    "", "Text files (*.txt)");
-
-    if (!frequencyListFilePath.isEmpty())
-    {
-        rti_word_frequency_list *wflist = new rti_word_frequency_list;
-        QFile listFile(frequencyListFilePath);
-        if (!listFile.open(QIODevice::ReadOnly))
-            return;
-        QTextStream in(&listFile);
-        int gradeLevel = 0;
-        while (!in.atEnd())
-        {
-            // Only take the first five lines.
-            if (gradeLevel < 5)
-            {
-                QStringList words = in.readLine().split(" ");
-                foreach (QString word, words)
-                    // Add word at the threshold so that we know it will be counted as a
-                    // most frequent word.
-                    wflist->add_word_in_grade_level(word.toStdString(), wflist->threshold(), (rti_book::AGE)(gradeLevel+2));
-            }
-            else
-                break;
-            gradeLevel++;
-        }
-        wflist->update_most_frequent_words();
-        wordFrequencyForm->addWordFrequencyList(listFile.fileName(), wflist);
-    }
-    tabWidget->setCurrentWidget(wordFrequencyForm);
 }
 
 void MainWindow::displayMorphemes() const
@@ -111,15 +79,23 @@ void MainWindow::displayFunctionWords() const
     popupImage("content_and_functions_words_02.png");
 }
 
-void MainWindow::createDictionary(QList<rti_book*> books)
+void MainWindow::createDictionaryAndFrequencyList(QList<rti_book *> books)
 {
     if (books.isEmpty())
     {
-        QMessageBox::information(this, tr("No books selected"), tr("Unable to create dictionary. "
-                                                                   "No books selected."));
+        QMessageBox::information(this, tr("No books selected"),
+                                 tr("Unable to create dictionary and word frequency list. "
+                                    "No books selected."));
         return;
     }
 
+    createFrequencyList(books);
+    if (createDictionary(books))
+        tabWidget->setCurrentWidget(dictionaryForm);
+}
+
+bool MainWindow::createDictionary(QList<rti_book*> books)
+{
     int index;
     rti_literature *library = new rti_literature;
     foreach (rti_book *book, books)
@@ -129,15 +105,31 @@ void MainWindow::createDictionary(QList<rti_book*> books)
     // TODO: REFERENCE A RESOURCE HERE
     rti_utils::import_cmu_dictionary("cmudict-0.7b.txt", arpabets);
     bool upToDate;
-    rti_dictionary *dictionary = rti_utils::build_dictionary(library, dictionaryForm->masterDictionary(), arpabets, &upToDate);
+
+    rti_dictionary *dictionary;
+    // Check if user would like to import information from the master dictionary.
+    if (QMessageBox::question(this, tr("Import from Master Dictionary"),
+                          tr("Would you like to import information from the master dictionary?"))
+            == QMessageBox::Yes)
+    {
+        if (!dictionaryForm->masterDictionary())
+        {
+            QMessageBox::information(this, tr("No Master Dictionary"), tr("There is no master dictionary set. "
+                                     "Please import a master dictionary and try again."));
+            return false;
+        }
+        dictionary = rti_utils::build_dictionary(library, dictionaryForm->masterDictionary(), arpabets, &upToDate);
+    }
+    else
+    {
+        dictionary = rti_utils::build_dictionary(library, NULL, arpabets, &upToDate);
+    }
+
     // We have no more need of this. Dispose of it.
     delete library;
 
-    // Prompt for a name for the dictionary.
-    if (dictionaryForm->masterDictionary() != NULL)
-        QMessageBox::information(this, tr("Information Imported From Master Dictionary"), tr("Some missing information imported from master dictionary."));
     dictionaryForm->setDictionary(dictionary);
-    tabWidget->setCurrentWidget(dictionaryForm);
+    return true;
 }
 
 void MainWindow::createFrequencyList(QList<rti_book*> books)
@@ -153,17 +145,18 @@ void MainWindow::createFrequencyList(QList<rti_book*> books)
     delete library;
 
     // Prompt for a name for the word list.
-    QString frequencyListName = QInputDialog::getText(this, tr("Word Frequency List Name"), tr("Give a name to the word frequency list:"));
-    if (!frequencyListName.isEmpty())
-    {
-        wordFrequencyForm->addWordFrequencyList(frequencyListName, wflist);
-        tabWidget->setCurrentWidget(wordFrequencyForm);
-    }
+    wordFrequencyForm->setWordFrequencyList(wflist);
 }
 
-void MainWindow::setWorkingDirectoryPath(const QString &path)
+void MainWindow::setWorkingDirectoryPath()
 {
-
+    QString path = QFileDialog::getExistingDirectory(this, tr("Choose working directory..."), workingDirectoryPath);
+    if (!path.isEmpty())
+    {
+        workingDirectoryPath = path;
+        QSettings settings("Iona College", "Word Frequency Analysis");
+        settings.setValue("workingDirectoryPath", workingDirectoryPath);
+    }
 }
 
 
@@ -182,10 +175,8 @@ void MainWindow::popupImage(const QString &fileName) const
 void MainWindow::setupInterface()
 {
     libraryForm = new LibraryForm;
-    connect(libraryForm, SIGNAL(createDictionaryRequested(QList<rti_book*>)),
-            this, SLOT(createDictionary(QList<rti_book*>)));
-    connect(libraryForm, SIGNAL(createFrequencyListRequested(QList<rti_book*>)),
-            this, SLOT(createFrequencyList(QList<rti_book*>)));
+    connect(libraryForm, SIGNAL(createDictionaryAndFrequencyListRequested(QList<rti_book*>)),
+            this, SLOT(createDictionaryAndFrequencyList(QList<rti_book*>)));
     dictionaryForm = new DictionaryForm;
     wordFrequencyForm = new WordFrequencyForm;
     tabWidget = new QTabWidget;
@@ -221,8 +212,8 @@ void MainWindow::createMenus()
     exportMasterDictionaryAction = fileMenu->addAction(tr("Export Master Dictionary"));
     connect(exportMasterDictionaryAction, SIGNAL(triggered(bool)), this, SLOT(exportMasterDictionary()));
     fileMenu->addSeparator();
-    loadWordFrequencyListAction = fileMenu->addAction(tr("Load Word Frequency List"));
-    connect(loadWordFrequencyListAction, SIGNAL(triggered(bool)), this, SLOT(loadWordFrequencyList()));
+    setWorkingDirectoryPathAction = fileMenu->addAction(tr("Set Working Directory"));
+    connect(setWorkingDirectoryPathAction, SIGNAL(triggered(bool)), this, SLOT(setWorkingDirectoryPath()));
     fileMenu->addSeparator();
     quitAction = fileMenu->addAction(tr("&Quit"));
     quitAction->setShortcut(tr("Ctrl+Q"));

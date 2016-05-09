@@ -12,43 +12,44 @@ class QTableView;
 class QLabel;
 class QLineEdit;
 class QSpinBox;
+class QPushButton;
 
 class WordFrequencyForm : public QWidget
 {
         Q_OBJECT
     public:
-        explicit WordFrequencyForm(QWidget *parent = 0);
+        explicit WordFrequencyForm(const QString &wdPath = "", QWidget *parent = 0);
         //explicit LibraryForm(rti_word_frequency_list *list, QWidget *parent = 0);
 
     public slots:
-        bool addWordFrequencyList(const QString &name, rti_word_frequency_list *list);
+        void setWordFrequencyList(rti_word_frequency_list *list);
+        void setCompareWordFrequencyList(rti_word_frequency_list *list);
 
     private slots:
-        void changeWordList(const QString &listName);
-        void changeCompareWordList(const QString &listName);
         void updateGeneratedList(int num);
-        void updateInputtedList(int num);
+        void browseForFrequencyList();
+        void exportFrequencyList();
 
     private:
         void createInterface();
         void layoutInterface();
 
         // Data
-        rti_word_frequency_list *generatedWordFrequencyList_;
-        rti_word_frequency_list *inputtedWordFrequencyList_;
-        QMap<QString, rti_word_frequency_list*> frequencyListMap;
+        QString workingDirectoryPath;
+        rti_word_frequency_list *wordFrequencyList_;
+        rti_word_frequency_list *compareWordFrequencyList_;
         WordFrequencyModel *wordFrequencyModels[NUMBER_OF_GRADE_GROUPS];
         QSortFilterProxyModel *proxyModels[NUMBER_OF_GRADE_GROUPS];
 
         // GUI
-        QLabel *wordFrequencyListLabel;
-        QComboBox *wordFrequencyListComboBox;
         QLabel *compareListLabel;
-        QComboBox *compareListComboBox;
+        QLabel *compareListNameLabel;
+        QPushButton *browseButton;
         QLabel *searchLabel;
         QLineEdit *searchLineEdit;
         QLabel *numberOfMostFrequentWordsLabel;
         QSpinBox *numberOfMostFrequentWordsSpinBox;
+        QPushButton *exportFrequencyListButton;
         QTabWidget *gradeLevelTabWidget;
         QTableView *wordFrequencyViews[NUMBER_OF_GRADE_GROUPS];
 };

@@ -26,8 +26,7 @@ public:
     rti_literature *library() { return libraryModel->library(); }
 
 signals:
-    void createDictionaryRequested(QList<rti_book *> books);
-    void createFrequencyListRequested(QList<rti_book *> books);
+    void createDictionaryAndFrequencyListRequested(QList<rti_book *> books);
 
 private slots:
     void selectBooksWithGradeLevel(const QString &gradeLevel);
@@ -35,8 +34,7 @@ private slots:
     void search(const QString &searchTerm);
 
     void addBook();
-    void createDictionary();
-    void createFrequencyList();
+    void createDictionaryAndFrequencyList();
 
 private:
     void init(rti_literature *library);
@@ -58,8 +56,7 @@ private:
 
     QPushButton *addBookButton;
     QPushButton *removeBooksButton;
-    QPushButton *createDictionaryButton;
-    QPushButton *createFrequencyListButton;
+    QPushButton *createDictionaryAndFrequencyListButton;
 };
 
 #endif // LIBRARYFORM_H

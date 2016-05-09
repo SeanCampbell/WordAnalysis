@@ -54,14 +54,9 @@ void LibraryForm::addBook()
     bookForm->show();
 }
 
-void LibraryForm::createDictionary()
+void LibraryForm::createDictionaryAndFrequencyList()
 {
-    emit createDictionaryRequested(libraryModel->selectedBooks());
-}
-
-void LibraryForm::createFrequencyList()
-{
-    emit createFrequencyListRequested(libraryModel->selectedBooks());
+    emit createDictionaryAndFrequencyListRequested(libraryModel->selectedBooks());
 }
 
 
@@ -102,10 +97,8 @@ void LibraryForm::createInterface()
     connect(addBookButton, SIGNAL(clicked()), this, SLOT(addBook()));
     removeBooksButton = new QPushButton(tr("Remove Books"));
     connect(removeBooksButton, SIGNAL(clicked()), this, SLOT(removeSelectedBooks()));
-    createDictionaryButton = new QPushButton(tr("Create Dictionary"));
-    connect(createDictionaryButton, SIGNAL(clicked(bool)), this, SLOT(createDictionary()));
-    createFrequencyListButton = new QPushButton(tr("Create Frequency List"));
-    connect(createFrequencyListButton, SIGNAL(clicked(bool)), this, SLOT(createFrequencyList()));
+    createDictionaryAndFrequencyListButton = new QPushButton(tr("Create Dictionary and Word Frequency List"));
+    connect(createDictionaryAndFrequencyListButton, SIGNAL(clicked(bool)), this, SLOT(createDictionaryAndFrequencyList()));
 }
 
 void LibraryForm::layoutInterface()
@@ -123,8 +116,7 @@ void LibraryForm::layoutInterface()
     bottomLayout->addWidget(addBookButton);
     bottomLayout->addWidget(removeBooksButton);
     bottomLayout->addStretch();
-    bottomLayout->addWidget(createDictionaryButton);
-    bottomLayout->addWidget(createFrequencyListButton);
+    bottomLayout->addWidget(createDictionaryAndFrequencyListButton);
 
     QVBoxLayout *mainLayout = new QVBoxLayout;
     mainLayout->addLayout(topLayout);

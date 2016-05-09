@@ -41,32 +41,26 @@ void rti_word_frequency_list::update_most_frequent_words()
         frequencyGradeLevelMaps[i].insert(gradeLevelMaps[i].begin(), gradeLevelMaps[i].end());
     }
 
+    // For each grade level...
     for (i = 0; i < 5; i++)
     {
+        // Go through every word...
         std::map<std::string, int> map = gradeLevelMaps[i];
         for (std::map<std::string, int>::iterator it = map.begin(); it != map.end(); it++)
         {
+            // If the word does not occur frequently enough, remove it.
             if (it->second < threshold_)
                 frequencyGradeLevelMaps[i].erase(it->first);
+            // Otherwise, erase the word from maps of all higher grade levels.
             else
                 for (int j = i+1; j < 5; j++)
                     frequencyGradeLevelMaps[j].erase(it->first);
         }
     }
+}
 
-
-    /*
-        For each grade level...
-            Go through each word in each book
-                Check if word is in previous grade level lists
-                If not, tally occurrences of word in master map
-            Add # of occurrences to tally of total # of words
-            Calculate expected frequency of each word
-            For each word in map...
-                Calculate normalized frequency by dividing by # of words in grade level
-                Compare to expected frequency – if ratio is greater than a given
-                parameter, add to list of words for that grade level
-    */
+int rti_word_frequency_list::number_of_words_in_grade_level(rti_book::AGE gradeLevel) const
+{
 
 }
 
