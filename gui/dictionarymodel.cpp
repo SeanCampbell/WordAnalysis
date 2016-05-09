@@ -3,6 +3,7 @@
 #include "rti/rti_utils.h"
 #include "dictionarymodel.h"
 #include <QFont>
+#include <QDebug>
 
 DictionaryModel::DictionaryModel(rti_dictionary *dictionary)
 {
@@ -27,7 +28,7 @@ int DictionaryModel::rowCount(const QModelIndex &/*parent*/) const
 
 int DictionaryModel::columnCount(const QModelIndex &/*parent*/) const
 {
-    return 10;
+    return 9;
 }
 
 QVariant DictionaryModel::data(const QModelIndex &index, int role) const
@@ -36,14 +37,23 @@ QVariant DictionaryModel::data(const QModelIndex &index, int role) const
         return QVariant();
 
     // Color and italicize editable columns.
-    if (role == Qt::TextColorRole && index.column() == MORPHEME_COL)
+    if (role == Qt::TextColorRole &&
+            (index.column() == MORPHEME_COL
+             || index.column() == ARPABET_COL
+             || index.column() == FUNC_WORD_COL))
         return QColor(Qt::blue);
-    if (role == Qt::FontRole && index.column() == MORPHEME_COL)
+    if (role == Qt::FontRole &&
+            (index.column() == MORPHEME_COL
+             || index.column() == ARPABET_COL
+             || index.column() == FUNC_WORD_COL))
     {
         QFont font;
         font.setItalic(true);
         return font;
     }
+    if (role == Qt::CheckStateRole)
+        if (index.column() == FUNC_WORD_COL)
+            return (*dictionary_)[index.row()]->is_function() ? Qt::Checked : Qt::Unchecked;
 
     rti_word_sptr word = (*dictionary_)[index.row()];
     if (role == Qt::DisplayRole || role == Qt::EditRole)
@@ -58,15 +68,15 @@ QVariant DictionaryModel::data(const QModelIndex &index, int role) const
                 return QString::fromStdString(word->morphemes());
             case 3:
                 return word->syllables();
-            case 4:
-                return word->is_function();
-            case 4:
-                return word->frequency();
+            //case 4:
+                //return word->is_function();
             case 5:
-                return word->psa();
+                return word->frequency();
             case 6:
-                return word->bipha();
+                return word->psa();
             case 7:
+                return word->bipha();
+            case 8:
                 return tr(QString::fromStdString(rti_utils::join(word->neighbors(), ", ")).toLatin1());
             default:
                 return QVariant();
@@ -122,25 +132,31 @@ bool DictionaryModel::setData(const QModelIndex &index, const QVariant &value, i
 {
     if (dictionary_ == NULL
             || !index.isValid()
-            || index.row() > dictionary_->size()
-            || role != Qt::EditRole)
+            || index.row() > dictionary_->size())
         return false;
 
-    /*if (index.column() == ARPABET_COL)
+    if (role == Qt::EditRole)
     {
-        (*dictionary_)[index.row()]->set_morphemes(value.toString().toStdString());
-        return true;
+        if (index.column() == ARPABET_COL)
+        {
+            (*dictionary_)[index.row()]->set_arpabet(value.toString().toStdString());
+            return true;
+        }
+        else if (index.column() == MORPHEME_COL)
+        {
+            (*dictionary_)[index.row()]->set_morphemes(value.toString().toStdString());
+            return true;
+        }
     }
-    else */if (index.column() == MORPHEME_COL)
+    else if (role == Qt::CheckStateRole)
     {
-        (*dictionary_)[index.row()]->set_morphemes(value.toString().toStdString());
-        return true;
-    }/*
-    else if (index.column() == FUNC_WORD_COL)
-    {
-        (*dictionary_)[index.row()]->set_morphemes(value.toString().toStdString());
-        return true;
-    }*/
+        if (index.column() == FUNC_WORD_COL)
+        {
+            qDebug() << index.row() << ":" << value.toInt() << value.toBool();
+            (*dictionary_)[index.row()]->set_function((Qt::CheckState)value.toInt());
+            return true;
+        }
+    }
 
     return false;
 }
@@ -149,8 +165,11 @@ Qt::ItemFlags DictionaryModel::flags(const QModelIndex &index) const
 {
     if (!index.isValid())
         return 0;
-    if (index.column() == MORPHEME_COL)
-        return Qt::ItemIsSelectable | Qt::ItemIsEditable | Qt::ItemIsEnabled | QAbstractItemModel::flags(index);
+    if (index.column() == MORPHEME_COL || index.column() == ARPABET_COL)
+        return Qt::ItemIsSelectable | Qt::ItemIsEditable | Qt::ItemIsEnabled | QAbstractItemModel::flags(index);    
+    if (index.column() == FUNC_WORD_COL)
+        return Qt::ItemIsUserCheckable | Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable | QAbstractItemModel::flags(index);
+
     return QAbstractItemModel::flags(index);
 }
 

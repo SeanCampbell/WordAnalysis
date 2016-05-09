@@ -104,6 +104,8 @@ namespace rti_utils
     rti_dictionary *build_dictionary(rti_literature *literature, rti_dictionary *old_dict,
                      vcl_vector<vcl_pair<vcl_string, vcl_string> > cmu_arpabets, bool *up_to_date)
     {
+    if (literature->size() == 0)
+        return NULL;
     if (cmu_arpabets.empty())
         return NULL;
 

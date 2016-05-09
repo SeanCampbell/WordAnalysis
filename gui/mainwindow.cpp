@@ -113,6 +113,13 @@ void MainWindow::displayFunctionWords() const
 
 void MainWindow::createDictionary(QList<rti_book*> books)
 {
+    if (books.isEmpty())
+    {
+        QMessageBox::information(this, tr("No books selected"), tr("Unable to create dictionary. "
+                                                                   "No books selected."));
+        return;
+    }
+
     int index;
     rti_literature *library = new rti_literature;
     foreach (rti_book *book, books)
@@ -185,7 +192,7 @@ void MainWindow::setupInterface()
 
     tabWidget->addTab(libraryForm, tr("Library"));
     tabWidget->addTab(dictionaryForm, tr("Dictionary"));
-    tabWidget->addTab(wordFrequencyForm, tr("Word Frequency"));
+    tabWidget->addTab(wordFrequencyForm, tr("Word Frequency List"));
 
     // Stick tab widget in another widget, because
     // otherwise the margins are too small.

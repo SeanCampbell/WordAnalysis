@@ -35,7 +35,6 @@ void DictionaryForm::setDictionary(rti_dictionary *dictionary)
 void DictionaryForm::setMasterDictionary(rti_dictionary *master)
 {
     masterDictionary_ = master;
-    masterDictionaryRadioButton->setChecked(true);
 }
 
 

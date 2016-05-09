@@ -92,6 +92,18 @@ rti_word::set_morphemes(const vcl_string & in_morphemes)
     decompose(in_morphemes, morphemes_);
 }
 
+void
+rti_word::set_arpabet(const vcl_string & in_arpabet)
+{
+    arpabet_ = in_arpabet;
+    arpabet_no_stresses_ = "";
+    decompose(arpabet_, phonemes_);
+    destress_arpabet(phonemes_, stresses_);
+    for (unsigned int i=0; i<phonemes_.size()-1; i++)
+      arpabet_no_stresses_ += phonemes_[i] + vcl_string(" ");
+    arpabet_no_stresses_ += phonemes_[phonemes_.size()-1];
+}
+
 XMLError
 rti_word::read_xml_node(XMLElement* pRoot)
 {

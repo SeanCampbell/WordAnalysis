@@ -1,5 +1,5 @@
 SET(gui_sources
-    comboboxdelegate.h	        comboboxdelegate.cpp
+    comboboxdelegate.h		comboboxdelegate.cpp
     bookform.h		        bookform.cpp
     libraryform.h	        libraryform.cpp
     librarymodel.h	        librarymodel.cpp
