@@ -1,3 +1,8 @@
+//:
+// \file
+// \author Sean Campbell
+// \date   February 2016
+
 #ifndef BOOKFORM_H
 #define BOOKFORM_H
 

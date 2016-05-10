@@ -1,3 +1,8 @@
+//:
+// \file
+// \author Sean Campbell
+// \date   March 2016
+
 #ifndef LIBRARYMODEL_H
 #define LIBRARYMODEL_H
 

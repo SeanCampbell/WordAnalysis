@@ -1,3 +1,8 @@
+//:
+// \file
+// \author Sean Campbell
+// \date   March 2016
+
 #ifndef LIBRARYFORM_H
 #define LIBRARYFORM_H
 

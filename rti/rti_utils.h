@@ -1,3 +1,9 @@
+//:
+// \file
+// \author Sean Campbell
+// \date   March 2016
+// \modified-by Brandon Gratta - April 2016
+
 #ifndef RTI_UTIL
 #define RTI_UTIL
 

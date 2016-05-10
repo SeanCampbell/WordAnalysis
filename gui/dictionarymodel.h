@@ -1,3 +1,8 @@
+//:
+// \file
+// \author Sean Campbell
+// \date   March 2016
+
 #ifndef DICTIONARYMODEL_H
 #define DICTIONARYMODEL_H
 

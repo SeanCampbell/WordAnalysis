@@ -1,3 +1,8 @@
+//:
+// \file
+// \author Sean Campbell
+// \date   May 2016
+
 #ifndef WORDFREQUENCYMODEL_H
 #define WORDFREQUENCYMODEL_H
 

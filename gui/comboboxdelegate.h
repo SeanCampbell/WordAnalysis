@@ -1,3 +1,8 @@
+//:
+// \file
+// \author Sean Campbell
+// \date   April 2016
+
 #ifndef COMBOBOXDELEGATE_H
 #define COMBOBOXDELEGATE_H
 

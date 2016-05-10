@@ -1,3 +1,8 @@
+//:
+// \file
+// \author Sean Campbell
+// \date   April 2016
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 

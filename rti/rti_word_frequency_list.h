@@ -1,3 +1,8 @@
+//:
+// \file
+// \author Brandon Gratta
+// \date   April 2016
+
 #ifndef RTI_WORD_FREQUENCY_LIST_H
 #define RTI_WORD_FREQUENCY_LIST_H
 
