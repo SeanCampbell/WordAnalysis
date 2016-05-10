@@ -3,6 +3,8 @@
 // \brief defines database for a collection of books
 // \author Charlene Tsai
 // \date May 2015
+// \updated file Nicole Gallagher
+// \date March 2016
 
 #ifndef rti_literature_h_
 #define rti_literature_h_
