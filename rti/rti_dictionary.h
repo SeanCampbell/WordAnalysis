@@ -3,6 +3,8 @@
 // \brief defines dictionary containing a collection of words in the book database
 // \author Charlene Tsai
 // \date May 2015
+// \updated file Chelsea Ramsingh
+// \date March 2016
 
 #ifndef rti_dictionary_h_
 #define rti_dictionary_h_
