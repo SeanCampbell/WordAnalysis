@@ -139,15 +139,19 @@ bool LibraryModel::setData(const QModelIndex &index, const QVariant &value, int 
         {
             case 1:
                 (*library_)[index.row()]->set_isbn(value.toString().toStdString());
+                emit dataChanged(index, index);
                 return true;
             case 2:
                 (*library_)[index.row()]->set_title(value.toString().toStdString());
+                emit dataChanged(index, index);
                 return true;
             case 3:
                 (*library_)[index.row()]->set_author(value.toString().toStdString());
+                emit dataChanged(index, index);
                 return true;
             case 4:
                 (*library_)[index.row()]->set_age_range(wa_utils::gradeLevelMap().key(value.toString()));
+                emit dataChanged(index, index);
                 return true;
         }
     }

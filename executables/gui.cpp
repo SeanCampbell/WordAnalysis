@@ -84,14 +84,25 @@ int main(int argc, char *argv[])
 
 /*
     rti_word_frequency_list l;
-    l.add_word_in_grade_level("string", 5, rti_book::NS);
-    l.add_word_in_grade_level("string", 2, rti_book::NS);
-    l.add_word_in_grade_level("hello", 2, rti_book::NS);
-    l.add_word_in_grade_level("string", 2, rti_book::NS);
-    l.add_word_in_grade_level("yo", 1, rti_book::NS);
-    std::vector<std::string> list = l.most_frequent_words_in_grade_level(rti_book::NS, 10);
+    l.set_threshold(3);
+    l.add_word_in_grade_level("string", 5, rti_book::K);
+    l.add_word_in_grade_level("string", 2, rti_book::K);
+    l.add_word_in_grade_level("hello", 2, rti_book::K);
+    l.add_word_in_grade_level("string", 2, rti_book::K);
+    l.add_word_in_grade_level("hi", 1, rti_book::K);
+
+    l.add_word_in_grade_level("string", 5, rti_book::G1);
+    l.add_word_in_grade_level("a", 2, rti_book::G2);
+    l.add_word_in_grade_level("hi", 7, rti_book::G2);
+    l.add_word_in_grade_level("string", 2, rti_book::G3);
+    l.add_word_in_grade_level("hi", 10, rti_book::G3);
+    l.update_most_frequent_words();
+    std::vector<std::string> list = l.most_frequent_words_in_grade_level(rti_book::G2, 10);
     for (int i = 0; i < list.size(); i++)
         std::cout << list[i] << std::endl;
+    for (int i = 0; i < 1; i++)
+        for (int j = 0; j < 5; j++)
+            std::cout << "freq " << i << " " << j << ": " << l.normalized_frequencies_in_grade_level((rti_book::AGE)(i+2))[j] << std::endl;
 */
 
     MainWindow mainWin;

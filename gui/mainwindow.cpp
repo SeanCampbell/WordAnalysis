@@ -16,10 +16,45 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
 
 //
+// Protected Methods
+//
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    QString modComponent = libraryForm->isWindowModified() ? "library"
+                                : (dictionaryForm->isWindowModified() ? "dictionary"
+                                : (wordFrequencyForm->isWindowModified() ? "word frequency list"
+                                : ""));
+    if (!modComponent.isEmpty())
+    {
+        if (QMessageBox::question(this, tr("Save Changes"), tr("Your %1 has unsaved changes. Are you sure "
+                                                               "you want to quit without saving?").arg(modComponent))
+                == QMessageBox::Yes)
+        {
+            libraryForm->setWindowModified(false);
+            dictionaryForm->setWindowModified(false);
+            wordFrequencyForm->setWindowModified(false);
+            event->accept();
+        }
+        else
+            event->ignore();
+    }
+    else
+        event->accept();
+}
+
+
+
+//
 // Private Slots
 //
 void MainWindow::importLibrary()
-{
+{    if (libraryForm->library())
+        if (QMessageBox::question(this, tr("Replace Library"),
+                                  tr("The imported library will replace the current one. "
+                                     "Are you sure you want to continue?"))
+                == QMessageBox::No)
+            return;
+
     QString libraryFilePath = QFileDialog::getOpenFileName(this, tr("Choose library file to import..."),
                                                            workingDirectoryPath, "XML files (*.xml)");
     if (!libraryFilePath.isEmpty())
@@ -37,10 +72,18 @@ void MainWindow::exportLibrary()
                                                            workingDirectoryPath, "XML files (*.xml)");
     if (!libraryFilePath.isEmpty())
         libraryForm->library()->write_xml(libraryFilePath.toStdString());
+    libraryForm->setWindowModified(false);
 }
 
 void MainWindow::importMasterDictionary()
 {
+    if (dictionaryForm->masterDictionary())
+        if (QMessageBox::question(this, tr("Replace Master Dictionary"),
+                                  tr("The imported master dictionary will replace the current one. "
+                                     "Are you sure you want to continue?"))
+                == QMessageBox::No)
+            return;
+
     QString masterDictionaryFilePath = QFileDialog::getOpenFileName(this, tr("Choose master dictionary file to import..."),
                                                                     workingDirectoryPath, "XML files (*.xml)");
 
@@ -81,6 +124,14 @@ void MainWindow::displayFunctionWords() const
 
 void MainWindow::createDictionaryAndFrequencyList(QList<rti_book *> books)
 {
+    if (dictionaryForm->dictionary())
+        if (QMessageBox::question(this, tr("Replace Dictionary and Word Frequency List"),
+                                  tr("Generating a new dictionary and word frequency list "
+                                     "will replace the current ones. Are you sure you want "
+                                     "to continue?"))
+                == QMessageBox::No)
+            return;
+
     if (books.isEmpty())
     {
         QMessageBox::information(this, tr("No books selected"),
@@ -154,6 +205,8 @@ void MainWindow::setWorkingDirectoryPath()
     if (!path.isEmpty())
     {
         workingDirectoryPath = path;
+        dictionaryForm->setWorkingDirectoryPath(path);
+        wordFrequencyForm->setWorkingDirectoryPath(path);
         QSettings settings("Iona College", "Word Frequency Analysis");
         settings.setValue("workingDirectoryPath", workingDirectoryPath);
     }

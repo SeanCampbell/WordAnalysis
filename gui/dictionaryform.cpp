@@ -6,14 +6,14 @@
 //
 // Constructors
 //
-DictionaryForm::DictionaryForm(QWidget *parent) : QWidget(parent)
+DictionaryForm::DictionaryForm(const QString &wdPath, QWidget *parent) : QWidget(parent)
 {
-    init(NULL);
+    init(NULL, wdPath);
 }
 
-DictionaryForm::DictionaryForm(rti_dictionary *dict, QWidget *parent) : QWidget(parent)
+DictionaryForm::DictionaryForm(rti_dictionary *dict, const QString &wdPath, QWidget *parent) : QWidget(parent)
 {
-    init(dict);
+    init(dict, wdPath);
 }
 
 
@@ -30,6 +30,7 @@ void DictionaryForm::setDictionary(rti_dictionary *dictionary)
     dictionaryModel->setDictionary(dictionary_);
     dictionaryView->resizeColumnsToContents();
     currentDictionaryRadioButton->setChecked(true);
+    setWindowModified(true);
 }
 
 void DictionaryForm::setMasterDictionary(rti_dictionary *master)
@@ -89,20 +90,39 @@ void DictionaryForm::importFromMaster()
     bool up_to_date;
     if (dictionary_->import_dictionary(masterDictionary_, &up_to_date))
         QMessageBox::information(this, tr("Success"), tr("Master dictionary imported successfully."));
+    setWindowModified(true);
+}
+
+void DictionaryForm::setModified()
+{
+    setWindowModified(true);
+}
+
+void DictionaryForm::exportDictionary()
+{
+    QString dictionaryFilePath = QFileDialog::getSaveFileName(this, tr("Choose file to save dictionary into..."),
+                                                                    workingDirectoryPath_, "XML files (*.xml)");
+
+    if (!dictionaryFilePath.isEmpty())
+    {
+        // boolean value isn't used for anything - should double check why it's there
+        dictionary_->write_xml(dictionaryFilePath.toStdString(), true);
+        setWindowModified(false);
+    }
 }
 
 
 //
 // Private Methods
 //
-void DictionaryForm::init(rti_dictionary *dict)
+void DictionaryForm::init(rti_dictionary *dict, const QString &wdPath)
 {
+    workingDirectoryPath_ = wdPath;
     masterDictionary_ = NULL;
     dictionary_ = dict;
-    if (!dict)
-        dictionaryModel = new DictionaryModel(dictionary_);
-    else
-        dictionaryModel = new DictionaryModel;
+    dictionaryModel = new DictionaryModel(dictionary_);
+    connect(dictionaryModel, SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
+            this, SLOT(setModified()));
     proxyModel = new QSortFilterProxyModel;
     proxyModel->setSourceModel(dictionaryModel);
 
@@ -129,6 +149,8 @@ void DictionaryForm::createInterface()
     searchLabel = new QLabel(tr("Search"));
     searchLineEdit = new QLineEdit;
     connect(searchLineEdit, SIGNAL(textChanged(QString)), this, SLOT(search(QString)));
+    exportDictionaryButton = new QPushButton(tr("Export Dictionary"));
+    connect(exportDictionaryButton, SIGNAL(clicked(bool)), this, SLOT(exportDictionary()));
     importFromMasterButton = new QPushButton(tr("Import From Master"));
     connect(importFromMasterButton, SIGNAL(clicked(bool)), this, SLOT(importFromMaster()));
 }
@@ -146,8 +168,9 @@ void DictionaryForm::layoutInterface()
     topLayout->addWidget(searchLineEdit);
 
     QHBoxLayout *bottomLayout = new QHBoxLayout;
-    bottomLayout->addWidget(importFromMasterButton);
+    bottomLayout->addWidget(exportDictionaryButton);
     bottomLayout->addStretch();
+    bottomLayout->addWidget(importFromMasterButton);
 
     QVBoxLayout *mainLayout = new QVBoxLayout;
     mainLayout->addLayout(topLayout);

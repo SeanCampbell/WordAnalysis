@@ -35,6 +35,7 @@ private slots:
 
     void addBook();
     void createDictionaryAndFrequencyList();
+    void setModified();
 
 private:
     void init(rti_literature *library);

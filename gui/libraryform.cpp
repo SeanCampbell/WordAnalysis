@@ -37,6 +37,7 @@ void LibraryForm::removeSelectedBooks()
                               tr("Are you sure you want to remove the selected "
                                  "books? This action cannot be undone.")) == QMessageBox::Yes)
     libraryModel->removeCheckedBooks();
+    setWindowModified(true);
 }
 
 void LibraryForm::search(const QString &searchTerm)
@@ -51,12 +52,18 @@ void LibraryForm::addBook()
 {
     BookForm *bookForm = new BookForm;
     connect(bookForm, SIGNAL(bookAdded(rti_book*)), libraryModel, SLOT(addBook(rti_book*)));
+    connect(bookForm, SIGNAL(bookAdded(rti_book*)), this, SLOT(setModified()));
     bookForm->show();
 }
 
 void LibraryForm::createDictionaryAndFrequencyList()
 {
     emit createDictionaryAndFrequencyListRequested(libraryModel->selectedBooks());
+}
+
+void LibraryForm::setModified()
+{
+    setWindowModified(true);
 }
 
 
@@ -66,6 +73,8 @@ void LibraryForm::createDictionaryAndFrequencyList()
 void LibraryForm::init(rti_literature *library)
 {
     libraryModel = new LibraryModel(library);
+    connect(libraryModel, SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
+            this, SLOT(setModified()));
     proxyModel = new QSortFilterProxyModel;
     proxyModel->setSourceModel(libraryModel);
 

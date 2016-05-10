@@ -84,7 +84,7 @@ QVariant DictionaryModel::data(const QModelIndex &index, int role) const
     }
     else if (role == Qt::BackgroundColorRole)
     {
-        return word->morphemes() == "XXX" ? incompleteEntryBgColor_ : QColor(Qt::white);
+        return (word->morphemes() == "XXX" || word->arpabet() == "XXX") ? incompleteEntryBgColor_ : QColor(Qt::white);
     }
     return QVariant();
 }

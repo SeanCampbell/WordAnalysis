@@ -9,7 +9,7 @@ WordFrequencyForm::WordFrequencyForm(const QString &wdPath, QWidget *parent)
     for (int i = 0; i < NUMBER_OF_GRADE_GROUPS; i++)
         wordFrequencyModels[i] = new WordFrequencyModel;
 
-    workingDirectoryPath = wdPath;
+    workingDirectoryPath_ = wdPath;
     createInterface();
     layoutInterface();
 }
@@ -23,18 +23,30 @@ void WordFrequencyForm::setWordFrequencyList(rti_word_frequency_list *list)
     wordFrequencyList_ = list;
     if (wordFrequencyList_ != NULL)
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < NUMBER_OF_GRADE_GROUPS; i++)
         {
             wordFrequencyModels[i]->setGeneratedList(wordFrequencyList_->most_frequent_words_in_grade_level((rti_book::AGE)(i+2), numberOfMostFrequentWordsSpinBox->value()));
             wordFrequencyViews[i]->resizeColumnsToContents();
         }
-
+        for (int i = 0; i < NUMBER_OF_GRADE_GROUPS; i++)
+        {
+            double *normalizedFrequencies = wordFrequencyList_->normalized_frequencies_in_grade_level((rti_book::AGE)(i+2));
+            for (int j = 0; j < NUMBER_OF_GRADE_GROUPS; j++)
+            {
+                QString labelValue = tr("%1%").arg(normalizedFrequencies[j]*100, 6, 'f', 2);
+                gradeLevelFrequencyValueLabels[i*NUMBER_OF_GRADE_GROUPS+j]->setText(labelValue);
+            }
+            delete normalizedFrequencies;
+        }
+        setWindowModified(true);
     }
     else
     {
         std::vector<std::string> emptyList;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < NUMBER_OF_GRADE_GROUPS; i++)
             wordFrequencyModels[i]->setGeneratedList(emptyList);
+        for (int i = 0; i < NUMBER_OF_GRADE_GROUPS*NUMBER_OF_GRADE_GROUPS; i++)
+            gradeLevelFrequencyValueLabels[i]->setText("");
     }
 }
 
@@ -71,13 +83,14 @@ void WordFrequencyForm::updateGeneratedList(int num)
             wordFrequencyModels[i]->setGeneratedList(wordFrequencyList_->most_frequent_words_in_grade_level((rti_book::AGE)(i+2), num));
             wordFrequencyViews[i]->resizeColumnsToContents();
         }
+        setWindowModified(true);
     }
 }
 
 void WordFrequencyForm::browseForFrequencyList()
 {
     QString frequencyListFilePath = QFileDialog::getOpenFileName(this, tr("Choose word frequency list to laod..."),
-                                                                 workingDirectoryPath, "Text files (*.txt)");
+                                                                 workingDirectoryPath_, "Text files (*.txt)");
 
     if (!frequencyListFilePath.isEmpty())
     {
@@ -121,23 +134,49 @@ void WordFrequencyForm::exportFrequencyList()
     }
 
     QString wflistFilePath = QFileDialog::getSaveFileName(this, tr("Save word frequency list file..."),
-                             workingDirectoryPath, tr("Text files (*.txt)"));
-    QFile wflistFile(wflistFilePath);
-    if (!wflistFile.open(QIODevice::WriteOnly))
+                             workingDirectoryPath_, tr("Text files (*.txt)"));
+    if (!wflistFilePath.isEmpty())
     {
-        QMessageBox::critical(this, tr("Error Opening File"), tr("There was an error opening the file."));
-        return;
+        QFile wflistFile(wflistFilePath);
+        if (!wflistFile.open(QIODevice::WriteOnly))
+        {
+            QMessageBox::critical(this, tr("Error Opening File"), tr("There was an error opening the file."));
+            return;
+        }
+        QTextStream stream(&wflistFile);
+        for (int i = 0; i < 5; i++)
+            stream << QString::fromStdString(rti_utils::join(wordFrequencyList_->most_frequent_words_in_grade_level((rti_book::AGE)(i+2), numberOfMostFrequentWordsSpinBox->value()), " ")) << "\n";
+        wflistFile.close();
+        setWindowModified(false);
     }
-    QTextStream stream(&wflistFile);
-    for (int i = 0; i < 5; i++)
-        stream << QString::fromStdString(rti_utils::join(wordFrequencyList_->most_frequent_words_in_grade_level((rti_book::AGE)(i+2), numberOfMostFrequentWordsSpinBox->value()), " ")) << "\n";
-    wflistFile.close();
 }
 
 
 //
 // Private Methods
 //
+QWidget *WordFrequencyForm::createTabWidgetPanel(int index) const
+{
+    QWidget *tabPanel = new QWidget;
+
+    QWidget *frequencyPanel = new QWidget;
+    QGridLayout *frequencyLayout = new QGridLayout;
+    frequencyLayout->addWidget(gradeLevelFrequencyDescriptionLabels[index], 0, 0, 2, 1);
+    for (int i = 0; i < NUMBER_OF_GRADE_GROUPS; i++)
+    {
+        frequencyLayout->addWidget(gradeLevelFrequencyLabels[index*NUMBER_OF_GRADE_GROUPS+i], i+1, 0);
+        frequencyLayout->addWidget(gradeLevelFrequencyValueLabels[index*NUMBER_OF_GRADE_GROUPS+i], i+1, 1);
+    }
+    frequencyPanel->setLayout(frequencyLayout);
+
+    QHBoxLayout *layout = new QHBoxLayout;
+    layout->addWidget(wordFrequencyViews[index]);
+    layout->addWidget(frequencyPanel);
+    tabPanel->setLayout(layout);
+    return tabPanel;
+
+}
+
 void WordFrequencyForm::createInterface()
 {
     compareListLabel = new QLabel(tr("Compare to"));
@@ -146,16 +185,30 @@ void WordFrequencyForm::createInterface()
     connect(browseButton, SIGNAL(clicked(bool)), this, SLOT(browseForFrequencyList()));
 
     for (int i = 0; i < NUMBER_OF_GRADE_GROUPS; i++)
+        gradeLevelFrequencyDescriptionLabels[i] = new QLabel(tr("Frequency of words from each grade level:"));
+
+    for (int i = 0; i < NUMBER_OF_GRADE_GROUPS*NUMBER_OF_GRADE_GROUPS; i += NUMBER_OF_GRADE_GROUPS)
+    {
+        gradeLevelFrequencyLabels[i]   = new QLabel(tr("Nursery/Pre-K/Kindergarten:"));
+        gradeLevelFrequencyLabels[i+1] = new QLabel(tr("Grade 1:"));
+        gradeLevelFrequencyLabels[i+2] = new QLabel(tr("Grade 2:"));
+        gradeLevelFrequencyLabels[i+3] = new QLabel(tr("Grade 3:"));
+        gradeLevelFrequencyLabels[i+4] = new QLabel(tr("Grade 4:"));
+        for (int j = i; j < i + NUMBER_OF_GRADE_GROUPS; j++)
+            gradeLevelFrequencyValueLabels[j] = new QLabel;
+    }
+
+    for (int i = 0; i < NUMBER_OF_GRADE_GROUPS; i++)
     {
         wordFrequencyViews[i] = new QTableView;
         wordFrequencyViews[i]->setModel(wordFrequencyModels[i]);
     }
     gradeLevelTabWidget = new QTabWidget;
-    gradeLevelTabWidget->addTab(wordFrequencyViews[0], tr("Nursery/Pre-K/Kindergarten"));
-    gradeLevelTabWidget->addTab(wordFrequencyViews[1], tr("Grade 1"));
-    gradeLevelTabWidget->addTab(wordFrequencyViews[2], tr("Grade 2"));
-    gradeLevelTabWidget->addTab(wordFrequencyViews[3], tr("Grade 3"));
-    gradeLevelTabWidget->addTab(wordFrequencyViews[4], tr("Grade 4"));
+    gradeLevelTabWidget->addTab(createTabWidgetPanel(0), tr("Nursery/Pre-K/Kindergarten"));
+    gradeLevelTabWidget->addTab(createTabWidgetPanel(1), tr("Grade 1"));
+    gradeLevelTabWidget->addTab(createTabWidgetPanel(2), tr("Grade 2"));
+    gradeLevelTabWidget->addTab(createTabWidgetPanel(3), tr("Grade 3"));
+    gradeLevelTabWidget->addTab(createTabWidgetPanel(4), tr("Grade 4"));
 
     searchLabel = new QLabel(tr("Search"));
     searchLineEdit = new QLineEdit;

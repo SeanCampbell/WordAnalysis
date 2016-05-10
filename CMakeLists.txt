@@ -1,17 +1,17 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.7)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12)
 
 # Support for CMake 2.6
-IF( COMMAND CMAKE_POLICY )
-  CMAKE_POLICY(SET CMP0003 NEW)
-ENDIF( COMMAND CMAKE_POLICY )
+#IF( COMMAND CMAKE_POLICY )
+#  CMAKE_POLICY(SET CMP0003 NEW)
+#ENDIF( COMMAND CMAKE_POLICY )
 
 # CMake 2.8 stuff
-SET( CMAKE_LEGACY_CYGWIN_WIN32 0 ) # Remove when CMake >= 2.8.4 is required
+#SET( CMAKE_LEGACY_CYGWIN_WIN32 0 ) # Remove when CMake >= 2.8.4 is required
 
 # This is the iona private libraries project.
 PROJECT(iona)
 
-FIND_PACKAGE(VXL)
+FIND_PACKAGE(VXL REQUIRED)
 IF(VXL_FOUND)
   # include the standard stuff, such as Dart test
   SET(VXL_PROVIDE_STANDARD_OPTIONS 1)
@@ -48,7 +48,7 @@ add_definitions(${Qt5Widgets_DEFINITIONS})
 
 # Executables fail to build with Qt 5 in the default configuration
 # without -fPIE. We add that here.
-set(CMAKE_CXX_FLAGS "${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS}")
+#set(CMAKE_CXX_FLAGS "${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS}")
 # END QT
 
 # This is to make all subdirs accessible to programs in the project

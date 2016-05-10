@@ -59,9 +59,53 @@ void rti_word_frequency_list::update_most_frequent_words()
     }
 }
 
-int rti_word_frequency_list::number_of_words_in_grade_level(rti_book::AGE gradeLevel) const
+double *rti_word_frequency_list::normalized_frequencies_in_grade_level(rti_book::AGE gradeLevel) const
 {
+    // If they give an invalid grade level, return NULL.
+    int index = get_index_from_grade_level(gradeLevel);
+    if (index == -1)
+        return NULL;
+    // If the map is empty, return NULL.
+    double *frequencies = new double[5];
+    std::map<std::string, int> map = gradeLevelMaps[index];
+    if (map.size() == 0)
+    {
+        frequencies[0] = frequencies[1] = frequencies[2] = frequencies[3] = frequencies[4] = 0.0;
+        return frequencies;
+    }
 
+    int i;
+    // Initialize all frequencies to 0.
+    for (i = 0; i < 5; i++)
+        frequencies[i] = 0.0;
+    int totalWordCount = 0;
+
+    // For each word in the given grade level map...
+    for (std::map<std::string, int>::iterator it = map.begin(); it != map.end(); it++)
+    {
+        // Add the frequency to the total word count.
+        totalWordCount += it->second;
+        // Check if the word is in any of the most frequent word lists.
+        for (i = 0; i < 5; i++)
+        {
+            // If it's in the grade level, add its counts to
+            // the frequency of words in that grade level.
+            if (frequencyGradeLevelMaps[i].count(it->first) > 0)
+            {
+                frequencies[i] += it->second;
+                // Break out of the loop early. A given
+                // word should be in at most one most
+                // frequent word list.
+                break;
+            }
+        }
+    }
+
+    // Divide all counts by total count
+    // to normalize the frequency.
+    for (i = 0; i < 5; i++)
+        frequencies[i] /= totalWordCount;
+    return frequencies;
 }
 
 std::vector<std::string> rti_word_frequency_list::words_in_grade_level(rti_book::AGE gradeLevel) const

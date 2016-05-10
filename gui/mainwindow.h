@@ -12,6 +12,9 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
 
+protected:
+    void closeEvent(QCloseEvent *event);
+
 private slots:
     void importLibrary();
     void exportLibrary();

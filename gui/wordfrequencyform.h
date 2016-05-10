@@ -20,6 +20,7 @@ class WordFrequencyForm : public QWidget
     public:
         explicit WordFrequencyForm(const QString &wdPath = "", QWidget *parent = 0);
         //explicit LibraryForm(rti_word_frequency_list *list, QWidget *parent = 0);
+        void setWorkingDirectoryPath(const QString &wdPath) { workingDirectoryPath_ = wdPath; }
 
     public slots:
         void setWordFrequencyList(rti_word_frequency_list *list);
@@ -31,11 +32,12 @@ class WordFrequencyForm : public QWidget
         void exportFrequencyList();
 
     private:
+        QWidget *createTabWidgetPanel(int index) const;
         void createInterface();
         void layoutInterface();
 
         // Data
-        QString workingDirectoryPath;
+        QString workingDirectoryPath_;
         rti_word_frequency_list *wordFrequencyList_;
         rti_word_frequency_list *compareWordFrequencyList_;
         WordFrequencyModel *wordFrequencyModels[NUMBER_OF_GRADE_GROUPS];
@@ -52,6 +54,9 @@ class WordFrequencyForm : public QWidget
         QPushButton *exportFrequencyListButton;
         QTabWidget *gradeLevelTabWidget;
         QTableView *wordFrequencyViews[NUMBER_OF_GRADE_GROUPS];
+        QLabel *gradeLevelFrequencyDescriptionLabels[NUMBER_OF_GRADE_GROUPS];
+        QLabel *gradeLevelFrequencyLabels[NUMBER_OF_GRADE_GROUPS*NUMBER_OF_GRADE_GROUPS];
+        QLabel *gradeLevelFrequencyValueLabels[NUMBER_OF_GRADE_GROUPS*NUMBER_OF_GRADE_GROUPS];
 };
 
 #endif // WORDFREQUENCYFORM_H

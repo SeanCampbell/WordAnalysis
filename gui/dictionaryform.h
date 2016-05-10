@@ -18,10 +18,12 @@ class DictionaryForm : public QWidget
 {
     Q_OBJECT
 public:
-    explicit DictionaryForm(QWidget *parent = 0);
-    explicit DictionaryForm(rti_dictionary *dict, QWidget *parent);
+    explicit DictionaryForm(const QString &wdPath = "", QWidget *parent = 0);
+    explicit DictionaryForm(rti_dictionary *dict, const QString &wdPath = "", QWidget *parent = 0);
 
+    void setWorkingDirectoryPath(const QString &wdPath) { workingDirectoryPath_ = wdPath; }
     rti_dictionary *masterDictionary() const { return masterDictionary_; }
+    rti_dictionary *dictionary() const { return dictionary_; }
 
 public slots:
     void setDictionary(rti_dictionary *dictionary);
@@ -32,13 +34,16 @@ private slots:
     void showOnlyIncompleteWords(bool incomplete);
     void changeDictionary();
     void importFromMaster();
+    void setModified();
+    void exportDictionary();
 
 private:
-    void init(rti_dictionary *dict);
+    void init(rti_dictionary *dict, const QString &wdPath);
     void createInterface();
     void layoutInterface();
 
     // Data
+    QString workingDirectoryPath_;
     rti_dictionary *masterDictionary_;
     rti_dictionary *dictionary_;
     DictionaryModel *dictionaryModel;
@@ -53,6 +58,7 @@ private:
     QCheckBox *incompleteWordsCheckBox;
     QLabel *searchLabel;
     QLineEdit *searchLineEdit;
+    QPushButton *exportDictionaryButton;
     QPushButton *importFromMasterButton;
 };
 
