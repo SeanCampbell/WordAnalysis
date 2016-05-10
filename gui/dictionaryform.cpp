@@ -54,7 +54,10 @@ void DictionaryForm::showOnlyIncompleteWords(bool incomplete)
     if (incomplete)
     {
         proxyModel->setFilterRegExp("XXX");
-        proxyModel->setFilterKeyColumn(DictionaryModel::MORPHEME_COL);
+        // Ideally, should be MORPHEME_COL and ARPABET_COL, but it would
+        // be a good bit more work there isn't time for now, and this will
+        // work in most cases by searching every column.
+        proxyModel->setFilterKeyColumn(-1);//DictionaryModel::MORPHEME_COL);
     }
     else
     {
