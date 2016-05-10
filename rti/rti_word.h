@@ -3,6 +3,8 @@
 // \brief defines the word record in the dictionary
 // \author Charlene Tsai
 // \date May 2015
+// \updated file Sean Campbell
+// \date April 2016
 
 #ifndef rti_word_h_
 #define rti_word_h_
