@@ -3,6 +3,8 @@
 // \brief defines the word record in the dictionary
 // \author Charlene Tsai
 // \date May 2015
+// \updated file (isbn field) Nicole Gallagher
+// \date February 2016
 
 #ifndef rti_book_h_
 #define rti_book_h_
