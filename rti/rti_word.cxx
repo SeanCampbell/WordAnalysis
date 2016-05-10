@@ -40,6 +40,7 @@ rti_word::reset_arpabet_morpheme()
   bipha_ = 0;
   neighbors_.clear();
 }
+
 void
 rti_word::decompose(const vcl_string& in_str, vcl_vector<vcl_string>& components)
 {

@@ -13,6 +13,7 @@ public:
     DictionaryModel(rti_dictionary *dictionary = NULL);
 
     void setDictionary(rti_dictionary *dictionary);
+    void setMasterDictionary(rti_dictionary *master) { masterDictionary_ = master; }
     void setIncompleteEntryBackgroundColor(QColor color) { incompleteEntryBgColor_ = color; }
     rti_dictionary *dictionary() const { return dictionary_; }
     QColor incompleteEntryBackgroundColor() const { return incompleteEntryBgColor_; }
@@ -26,6 +27,7 @@ public:
 
 private:
     rti_dictionary *dictionary_;
+    rti_dictionary *masterDictionary_;
     QColor incompleteEntryBgColor_;
 };
 

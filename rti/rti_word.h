@@ -51,6 +51,7 @@ public:
   void write_xml_node(XMLDocument& xmlDoc, XMLElement* root_node);
   void copy_arpabet_morpheme(rti_word_sptr old); //copy everything related to arpabet and morpheme
   void reset_arpabet_morpheme(); //clear up all components related to arpabet and morpheme
+  bool incomplete() const { return arpabet_ == "XXX" || morphemes_str_ == "XXX"; }
  
 private:
   void decompose(const vcl_string& in_str, vcl_vector<vcl_string>& components);

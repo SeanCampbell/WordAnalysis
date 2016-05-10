@@ -36,6 +36,7 @@ void DictionaryForm::setDictionary(rti_dictionary *dictionary)
 void DictionaryForm::setMasterDictionary(rti_dictionary *master)
 {
     masterDictionary_ = master;
+    dictionaryModel->setMasterDictionary(master);
 }
 
 
@@ -93,6 +94,11 @@ void DictionaryForm::importFromMaster()
     bool up_to_date;
     if (dictionary_->import_dictionary(masterDictionary_, &up_to_date))
         QMessageBox::information(this, tr("Success"), tr("Master dictionary imported successfully."));
+    masterDictionary_->add_missing_words(dictionary_);
+    // If there are any new words in the dictionary, import their information into the master. Since we
+    // just wrote all the master's information to the dictionary, we will only change fields of new words
+    // in master if there was a difference.
+    masterDictionary()->import_dictionary(dictionary_, &up_to_date);
     setWindowModified(true);
 }
 

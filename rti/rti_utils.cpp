@@ -131,7 +131,11 @@ namespace rti_utils
       }
     }
 
-    dict->import_dictionary(old_dict, up_to_date);
+    if (old_dict)
+    {
+        dict->import_dictionary(old_dict, up_to_date);
+        old_dict->add_missing_words(dict);
+    }
 
     vcl_cout<<"Computing phonotactic information ..."<<vcl_endl;
     dict->compute_PSegAves();

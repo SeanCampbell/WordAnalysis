@@ -38,8 +38,7 @@ public:
     bool import_dictionary(rti_dictionary *other_dictionary, bool *up_to_date);
 
     // New methods
-    void get_words_added(std::vector<rti_word_sptr> listofWords);
-    void incomplete(rti_word_sptr word);
+    void add_missing_words(rti_dictionary *other_dictionary);
     rti_word_sptr get(vcl_string spelling);
     std::vector<rti_word_sptr> get_words();
     void display_message();

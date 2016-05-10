@@ -283,24 +283,23 @@ rti_dictionary::import_dictionary(rti_dictionary *other_dictionary, bool *up_to_
 
 //New Code
 void
-rti_dictionary::get_words_added(std::vector<rti_word_sptr> listofWords)
+rti_dictionary::add_missing_words(rti_dictionary *other_dictionary)
 {
+    if (other_dictionary == NULL)
+        return;
     int idx;
-    for(int i; listofWords.size(); i++)
+    for(int i = 0; i < other_dictionary->size(); i++)
     {
-        rti_word_sptr word = listofWords[i];
+        rti_word_sptr word = (*other_dictionary)[i];
         if (!find(word->spelling(), idx))
-            insert(word, idx);
+        {
+            rti_word_sptr newWord = new rti_word(word->spelling(), word->frequency(), word->arpabet(),
+                                                 word->morphemes(), word->is_function(), word->psa(),
+                                                 word->bipha());
+            insert(newWord, idx);
+        }
     }
 }
-
-void
-rti_dictionary::incomplete(rti_word_sptr word) //search each field
-{
-    if (word->arpabet() == "XXX" || word->morphemes() == "XXX")
-        std::cout<< word;
-}
-
 
 rti_word_sptr
 rti_dictionary::get(vcl_string spelling)

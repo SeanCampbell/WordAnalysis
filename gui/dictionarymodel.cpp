@@ -9,6 +9,7 @@ DictionaryModel::DictionaryModel(rti_dictionary *dictionary)
 {
     incompleteEntryBgColor_ = QColor(255, 200, 200);
     dictionary_ = dictionary;
+    masterDictionary_ = NULL;
 }
 
 //
@@ -84,7 +85,7 @@ QVariant DictionaryModel::data(const QModelIndex &index, int role) const
     }
     else if (role == Qt::BackgroundColorRole)
     {
-        return (word->morphemes() == "XXX" || word->arpabet() == "XXX") ? incompleteEntryBgColor_ : QColor(Qt::white);
+        return word->incomplete() ? incompleteEntryBgColor_ : QColor(Qt::white);
     }
     return QVariant();
 }
@@ -140,11 +141,25 @@ bool DictionaryModel::setData(const QModelIndex &index, const QVariant &value, i
         if (index.column() == ARPABET_COL)
         {
             (*dictionary_)[index.row()]->set_arpabet(value.toString().toStdString());
+            // Also update word in master dictionary if it is in there.
+            if (masterDictionary_)
+            {
+                int pos;
+                if (masterDictionary_->find((*dictionary_)[index.row()]->spelling(), pos))
+                    (*masterDictionary_)[pos]->set_arpabet(value.toString().toStdString());
+            }
             return true;
         }
         else if (index.column() == MORPHEME_COL)
         {
             (*dictionary_)[index.row()]->set_morphemes(value.toString().toStdString());
+            // Also update word in master dictionary if it is in there.
+            if (masterDictionary_)
+            {
+                int pos;
+                if (masterDictionary_->find((*dictionary_)[index.row()]->spelling(), pos))
+                   (*masterDictionary_)[pos]->set_morphemes(value.toString().toStdString());
+            }
             return true;
         }
     }
@@ -152,8 +167,14 @@ bool DictionaryModel::setData(const QModelIndex &index, const QVariant &value, i
     {
         if (index.column() == FUNC_WORD_COL)
         {
-            qDebug() << index.row() << ":" << value.toInt() << value.toBool();
             (*dictionary_)[index.row()]->set_function((Qt::CheckState)value.toInt());
+            // Also update word in master dictionary if it is in there.
+            if (masterDictionary_)
+            {
+                int pos;
+                if (masterDictionary_->find((*dictionary_)[index.row()]->spelling(), pos))
+                    (*masterDictionary_)[pos]->set_function((Qt::CheckState)value.toInt());
+            }
             return true;
         }
     }
