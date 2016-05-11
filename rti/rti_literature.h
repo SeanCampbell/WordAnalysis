@@ -14,7 +14,6 @@
 #include <tinyxml2/tinyxml2.h>
 #include <rti/rti_book_sptr.h>
 #include <rti/rti_book.h>
-#include <vector>
 
 using namespace tinyxml2;
 #ifndef XMLCheckResult
@@ -35,7 +34,7 @@ public:
 //*****New Code  
   void remove(int idx); //remove specified book from library
   rti_book_sptr getBook(vcl_string isbn); //retrieve book with specified ISBN #
-  std::vector<rti_book_sptr> getAllBooks(); //retrieve all books that exist in the library
+  vcl_vector<rti_book_sptr> getAllBooks(); //retrieve all books that exist in the library
 //*****New Code
 
   XMLError read_xml(const vcl_string& xml_filename); 

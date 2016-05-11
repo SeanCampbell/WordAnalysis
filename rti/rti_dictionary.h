@@ -42,9 +42,8 @@ public:
     // New methods
     void add_missing_words(rti_dictionary *other_dictionary);
     rti_word_sptr get(vcl_string spelling);
-    std::vector<rti_word_sptr> get_words();
+    vcl_vector<rti_word_sptr> get_words();
     void display_message();
-    XMLError display_list(const vcl_string& filename);
     //
 
     XMLError read_xml(const vcl_string& xml_filename);

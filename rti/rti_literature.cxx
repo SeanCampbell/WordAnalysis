@@ -106,7 +106,7 @@ rti_literature::getBook(vcl_string isbn)
 	return NULL;
 }
 
-std::vector<rti_book_sptr>
+vcl_vector<rti_book_sptr>
 rti_literature::getAllBooks()
 {
     return books_;

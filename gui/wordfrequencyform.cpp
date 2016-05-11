@@ -134,19 +134,10 @@ void WordFrequencyForm::exportFrequencyList()
     }
 
     QString wflistFilePath = QFileDialog::getSaveFileName(this, tr("Save word frequency list file..."),
-                             workingDirectoryPath_, tr("Text files (*.txt)"));
+                             workingDirectoryPath_, tr("XML files (*.xml)"));
     if (!wflistFilePath.isEmpty())
     {
-        QFile wflistFile(wflistFilePath);
-        if (!wflistFile.open(QIODevice::WriteOnly))
-        {
-            QMessageBox::critical(this, tr("Error Opening File"), tr("There was an error opening the file."));
-            return;
-        }
-        QTextStream stream(&wflistFile);
-        for (int i = 0; i < 5; i++)
-            stream << QString::fromStdString(rti_utils::join(wordFrequencyList_->most_frequent_words_in_grade_level((rti_book::AGE)(i+2), numberOfMostFrequentWordsSpinBox->value()), " ")) << "\n";
-        wflistFile.close();
+        wordFrequencyList_->write_xml(wflistFilePath.toStdString());
         setWindowModified(false);
     }
 }

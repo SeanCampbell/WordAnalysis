@@ -25,10 +25,10 @@
 
 namespace rti_utils
 {
-    std::string join(std::vector<std::string> v, std::string delimiter)
+    vcl_string join(vcl_vector<vcl_string> v, vcl_string delimiter)
     {
     std::stringstream ss;
-    for (std::vector<std::string>::iterator it = v.begin(); it != v.end(); it++)
+    for (vcl_vector<vcl_string>::iterator it = v.begin(); it != v.end(); it++)
     {
         if (it != v.begin())
         ss << delimiter;
@@ -154,7 +154,7 @@ namespace rti_utils
             rti_book *book = (*literature)[i].ptr();
             for (int j = 0; j < book->size(); j++)
             {
-                vcl_pair<std::string, int> wordFreqPair = (*book)[j];
+                vcl_pair<vcl_string, int> wordFreqPair = (*book)[j];
                 wflist->add_word_in_grade_level(wordFreqPair.first, wordFreqPair.second, book->age_range());
             }
         }
@@ -165,11 +165,11 @@ namespace rti_utils
         return wflist;
     }
 
-    std::vector<std::string> get_difference(std::vector<std::string> l1, std::vector<std::string> l2)
+    vcl_vector<vcl_string> get_difference(vcl_vector<vcl_string> l1, vcl_vector<vcl_string> l2)
     {
-        std::vector<std::string>::iterator it;
+        vcl_vector<vcl_string>::iterator it;
 
-        std::vector<std::string> differenceList(std::max(l1.size(), l2.size()));
+        vcl_vector<vcl_string> differenceList(std::max(l1.size(), l2.size()));
         std::sort(l1.begin(), l1.end());
         std::sort(l2.begin(), l2.end());
         it = std::set_difference(l1.begin(), l1.end(),
@@ -180,11 +180,11 @@ namespace rti_utils
         return differenceList;
     }
 
-    std::vector<std::string> get_intersection(std::vector<std::string> l1, std::vector<std::string> l2)
+    vcl_vector<vcl_string> get_intersection(vcl_vector<vcl_string> l1, vcl_vector<vcl_string> l2)
     {
-        std::vector<std::string>::iterator it;
+        vcl_vector<vcl_string>::iterator it;
 
-        std::vector<std::string> intersectionList(std::max(l1.size(), l2.size()));
+        vcl_vector<vcl_string> intersectionList(std::max(l1.size(), l2.size()));
         std::sort(l1.begin(), l1.end());
         std::sort(l2.begin(), l2.end());
         it = std::set_intersection(l1.begin(), l1.end(),

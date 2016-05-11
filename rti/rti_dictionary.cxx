@@ -314,7 +314,7 @@ rti_dictionary::get(vcl_string spelling)
     return NULL;
 }
 
-std::vector<rti_word_sptr>
+vcl_vector<rti_word_sptr>
 rti_dictionary::get_words()
 {
     return words_;
@@ -324,41 +324,7 @@ rti_dictionary::get_words()
 void
 rti_dictionary::display_message()
 {
-    std::cout<<"There are no differences between the lists";
-}
-
-XMLError
-rti_dictionary::display_list(const vcl_string& filename)
-{
-    words_.clear();
-    is_empty_ = true;
-    is_valid_ = true;
-
-    XMLDocument xmlDoc;
-
-    //Parse the resource
-    XMLError eResult = xmlDoc.LoadFile(filename.c_str() );
-    XMLCheckResult(eResult);
-
-    /*Get the root element node */
-    XMLElement * pRoot = xmlDoc.RootElement();
-    if (pRoot == nullptr) return XML_ERROR_FILE_READ_ERROR;
-
-    //Read the words
-    words_.reserve(10000);
-    XMLElement* pElement = pRoot->FirstChildElement();
-    while (pElement != nullptr) {
-        rti_word_sptr word = new rti_word();
-        word->read_xml_node(pElement);
-        std::cout << word;
-        if (!word->valid())
-            is_valid_ = false;
-    }
-    if (!is_valid_)
-        vcl_cout << filename << " has incomplete entries" << vcl_endl;
-
-    is_empty_ = false;
-    return XML_SUCCESS;
+    vcl_cout<<"There are no differences between the lists";
 }
 //New Code
 
