@@ -35,31 +35,37 @@ int rti_word_frequency_list::add_word_in_grade_level(vcl_string word, int count,
 void rti_word_frequency_list::update_most_frequent_words()
 {
     int i;
+
+    vcl_map<vcl_string, int> frequencyGradeLevelMaps[5];
     for (i = 0; i < 5; i++)
     {
-        frequencyGradeLevelMaps[i].clear();
+        //frequencyGradeLevelMaps[i].clear();
         frequencyGradeLevelMaps[i].insert(gradeLevelMaps[i].begin(), gradeLevelMaps[i].end());
     }
 
     // For each grade level...
     for (i = 0; i < 5; i++)
     {
-        // Go through every word...
-        vcl_map<vcl_string, int> map = gradeLevelMaps[i];
-        for (vcl_map<vcl_string, int>::iterator it = map.begin(); it != map.end(); it++)
-        {
-            // If the word does not occur frequently enough, remove it.
-            if (it->second < threshold_)
-                frequencyGradeLevelMaps[i].erase(it->first);
-            // Otherwise, erase the word from maps of all higher grade levels.
-            else
-                for (int j = i+1; j < 5; j++)
-                    frequencyGradeLevelMaps[j].erase(it->first);
-        }
+        // Clear out old information.
+        frequencyGradeLevelLists[i].clear();
+        vcl_map<vcl_string, int> map = frequencyGradeLevelMaps[i];
+        frequencyGradeLevelLists[i].reserve(map.size());
+        // Copy everything over from the frequency map. The words in younger grades are
+        // removed from the older grades' maps, so we are guaranteed unique words.
+        for (vcl_map<vcl_string, int>::iterator it = map.begin(); it != map.end(); ++it)
+            frequencyGradeLevelLists[i].push_back(*it);
+        // Sort with highest frequency words at the beginning.
+        std::sort(frequencyGradeLevelLists[i].begin(), frequencyGradeLevelLists[i].end(), greaterThan);
+        // Shrink to the number of words we want.
+        frequencyGradeLevelLists[i].resize(threshold_);
+        // Remove words in this grade from all higher grades.
+        for (vcl_vector<std::pair<vcl_string, int> >::iterator it = frequencyGradeLevelLists[i].begin(); it != frequencyGradeLevelLists[i].end(); ++it)
+            for (int j = i; j < 5; j++)
+                frequencyGradeLevelMaps[j].erase(it->first);
     }
 }
 
-double *rti_word_frequency_list::normalized_frequencies_in_grade_level(rti_book::AGE gradeLevel) const
+double *rti_word_frequency_list::normalized_frequencies_in_grade_level(rti_book::AGE gradeLevel)
 {
     // If they give an invalid grade level, return NULL.
     int index = get_index_from_grade_level(gradeLevel);
@@ -90,7 +96,18 @@ double *rti_word_frequency_list::normalized_frequencies_in_grade_level(rti_book:
         {
             // If it's in the grade level, add its counts to
             // the frequency of words in that grade level.
-            if (frequencyGradeLevelMaps[i].count(it->first) > 0)
+            bool found = false;
+            for (vcl_vector<std::pair<vcl_string, int> >::iterator searchIt = frequencyGradeLevelLists[i].begin();
+                 searchIt != frequencyGradeLevelLists[i].end();
+                 ++searchIt)
+            {
+                if (searchIt->first == it->first)
+                {
+                    found = true;
+                    break;
+                }
+            }
+            if (found)
             {
                 frequencies[i] += it->second;
                 // Break out of the loop early. A given
@@ -124,16 +141,10 @@ vcl_vector<vcl_string> rti_word_frequency_list::words_in_grade_level(rti_book::A
 
 vcl_vector<vcl_string> rti_word_frequency_list::most_frequent_words_in_grade_level(rti_book::AGE gradeLevel, int count) const
 {
-    vcl_vector<std::pair<vcl_string, int> > wordPairList;
+    vcl_vector<std::pair<vcl_string, int> > wordPairList = frequencyGradeLevelLists[get_index_from_grade_level(gradeLevel)];
     vcl_vector<vcl_string> frequentWordList;
-    vcl_map<vcl_string, int> map = frequencyGradeLevelMaps[get_index_from_grade_level(gradeLevel)];
 
-    // Put everything into a vector so we can sort it.
-    for (vcl_map<vcl_string, int>::iterator it = map.begin(); it != map.end(); it++)
-        wordPairList.push_back(*it);
-    // Sort by count with highest count at the top.
-    std::sort(wordPairList.begin(), wordPairList.end(), greaterThan);
-    // Put most frequent in new list.
+    // Put just words into new list.
     for (int i = 0; i < std::min((int)wordPairList.size(), count); i++)
         frequentWordList.push_back(wordPairList[i].first);
     // Sort by spelling.
@@ -181,8 +192,8 @@ XMLError rti_word_frequency_list::write_xml(vcl_string xml_filename)
             gradeLevelWordCount += it->second;
         wsElement->SetAttribute("total_count", gradeLevelWordCount);
         // Now we're looking only at the most frequent words.
-        map = frequencyGradeLevelMaps[i];
-        for (vcl_map<vcl_string, int>::iterator it = map.begin(); it != map.end(); it++)
+        vcl_vector<std::pair<vcl_string, int> > vector = frequencyGradeLevelLists[i];
+        for (vcl_vector<std::pair<vcl_string, int> >::iterator it = vector.begin(); it != vector.end(); it++)
         {
             XMLElement *wElement = xmlDoc.NewElement("W");
             wElement->SetText(it->first.c_str());
@@ -222,4 +233,3 @@ int rti_word_frequency_list::get_index_from_grade_level(rti_book::AGE gradeLevel
     }
     return -1;
 }
-

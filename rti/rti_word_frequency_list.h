@@ -20,7 +20,7 @@ public:
     int add_word_in_grade_level(vcl_string word, int count, rti_book::AGE gradeLevel);
     void update_most_frequent_words();
     int total_number_of_words() const { return totalWords; }
-    double *normalized_frequencies_in_grade_level(rti_book::AGE gradeLevel) const;
+    double *normalized_frequencies_in_grade_level(rti_book::AGE gradeLevel);
     vcl_vector<vcl_string> words_in_grade_level(rti_book::AGE gradeLevel) const;
     vcl_vector<vcl_string> most_frequent_words_in_grade_level(rti_book::AGE gradeLevel, int count) const;
     //XMLError read_xml(const vcl_string &xml_filename);
@@ -29,7 +29,7 @@ public:
 private:
     int get_index_from_grade_level(rti_book::AGE gradeLevel) const;
     vcl_map<vcl_string, int> gradeLevelMaps[5];
-    vcl_map<vcl_string, int> frequencyGradeLevelMaps[5];
+    vcl_vector<std::pair<vcl_string, int> > frequencyGradeLevelLists[5];
     int totalWords;
     double threshold_;
 };

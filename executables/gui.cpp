@@ -84,9 +84,10 @@ int main(int argc, char *argv[])
 
 /*
     rti_word_frequency_list l;
-    l.set_threshold(3);
+    //l.set_threshold(3);
     l.add_word_in_grade_level("string", 5, rti_book::K);
     l.add_word_in_grade_level("string", 2, rti_book::K);
+    l.add_word_in_grade_level("string", 3, rti_book::K);
     l.add_word_in_grade_level("hello", 2, rti_book::K);
     l.add_word_in_grade_level("string", 2, rti_book::K);
     l.add_word_in_grade_level("hi", 1, rti_book::K);

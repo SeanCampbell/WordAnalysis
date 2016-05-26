@@ -23,6 +23,8 @@ void WordFrequencyForm::setWordFrequencyList(rti_word_frequency_list *list)
     wordFrequencyList_ = list;
     if (wordFrequencyList_ != NULL)
     {
+        wordFrequencyList_->set_threshold(numberOfMostFrequentWordsSpinBox->value());
+        wordFrequencyList_->update_most_frequent_words();
         for (int i = 0; i < NUMBER_OF_GRADE_GROUPS; i++)
         {
             wordFrequencyModels[i]->setGeneratedList(wordFrequencyList_->most_frequent_words_in_grade_level((rti_book::AGE)(i+2), numberOfMostFrequentWordsSpinBox->value()));
@@ -78,6 +80,8 @@ void WordFrequencyForm::updateGeneratedList(int num)
 {
     if (wordFrequencyList_)
     {
+        wordFrequencyList_->set_threshold(num);
+        wordFrequencyList_->update_most_frequent_words();
         for (int i = 0; i < 5; i++)
         {
             wordFrequencyModels[i]->setGeneratedList(wordFrequencyList_->most_frequent_words_in_grade_level((rti_book::AGE)(i+2), num));
